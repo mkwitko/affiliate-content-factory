@@ -1,0 +1,83 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`compositionFromPlan > matches the stored snapshot 1`] = `
+"<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>HyperFrames composition</title>
+<style>:root{--hf-surface:#F6F1E7;--hf-muted:#D9D2C5;--hf-ink:#161616;--hf-text:#161616;--hf-accent:#FF5A36;--hf-text-on:#ffffff;--hf-text-plate:#161616;--hf-caption-px:64;--hf-number-px:140;--hf-stroke-px:14;--hf-shadow-opacity:0.28;--hf-shadow-x:0px;--hf-shadow-y:0px;--hf-rim:transparent}@font-face{font-family:Inter;font-weight:400;src:url("fonts/Inter-400.ttf") format("truetype")}
+:root{font-family:Inter,"Helvetica Neue",Arial,sans-serif}
+html,body{margin:0;background:var(--hf-surface)}
+#root{position:relative;overflow:hidden;background:var(--hf-surface);color:var(--hf-text)}
+.clip,.scene,.cam,.bg{position:absolute;inset:0}
+.scene{opacity:0}
+.bg.grid{background-image:linear-gradient(var(--hf-muted) 2px,transparent 2px),linear-gradient(90deg,var(--hf-muted) 2px,transparent 2px);background-size:96px 96px;opacity:.55}
+.floor{position:absolute;left:0;right:0;bottom:0;background:var(--hf-muted)}
+.actor{position:absolute;filter:drop-shadow(var(--hf-shadow-x) 0 0 var(--hf-rim))}
+.prop{position:absolute;width:220px;height:150px;display:flex;align-items:center;justify-content:center;border:5px solid var(--hf-ink);border-radius:18px;background:#fff;font-weight:700;font-size:30px;text-transform:capitalize}
+.overlay{position:absolute;left:0;right:0;text-align:center;font-weight:800;font-size:76px;line-height:100px;color:var(--hf-text)}
+.overlay.hot{color:var(--hf-text-on);background:var(--hf-accent);margin:0 auto;width:max-content;padding:0 40px;left:50%;right:auto;transform:translateX(-50%);border-radius:20px}
+.diagram{position:absolute;display:flex;flex-direction:column;align-items:center;justify-content:center;font-weight:800;color:var(--hf-text)}
+.big{font-size:calc(var(--hf-number-px)*1px);font-weight:800;color:var(--hf-accent);line-height:1.1}
+.counter{counter-reset:n var(--n);--n:0}
+.label{font-size:36px;font-weight:700}
+.track{width:78%;height:26px;border-radius:13px;background:var(--hf-muted);margin-top:26px;overflow:hidden}
+.track i{display:block;height:100%;background:var(--hf-accent);transform-origin:left}
+.bars{flex-direction:row;align-items:flex-end;gap:70px;padding-bottom:40px}
+.bar{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:12px}
+.bar i{display:block;width:150px;background:var(--hf-accent);border-radius:14px 14px 0 0;transform-origin:bottom}
+.bar .v{font-size:48px}
+.row{flex-direction:row;gap:26px}
+.card{padding:26px 34px;border:5px solid var(--hf-ink);border-radius:20px;background:#fff;font-size:40px}
+.card.hot{background:var(--hf-accent);color:var(--hf-text-on)}
+.arrow{font-size:56px}
+.timeline{flex-direction:row;justify-content:space-around;align-items:center}
+.pt::before{content:"";position:absolute;top:21px;left:-50%;right:-50%;height:8px;background:var(--hf-ink);z-index:-1}
+.pt{position:relative;isolation:isolate;display:flex;flex-direction:column;align-items:center;gap:8px;z-index:1}
+.pt i{width:34px;height:34px;border-radius:50%;background:var(--hf-accent);border:5px solid var(--hf-ink)}
+.pt .at{font-size:44px;color:var(--hf-accent)}
+.caption{position:absolute;left:0;right:0;display:flex;align-items:center;justify-content:center;gap:.3em;font-weight:800;opacity:0;color:var(--hf-text-on);background:var(--hf-text-plate);width:max-content;max-width:90%;margin:0 auto;padding:0 36px;border-radius:24px;left:50%;right:auto;transform:translateX(-50%);height:auto!important;line-height:1.25}
+.caption span{opacity:.62}
+@property --n{syntax:"<integer>";inherits:true;initial-value:0}
+@keyframes show{from{opacity:1}to{opacity:1}}
+@keyframes fadein{from{opacity:0}to{opacity:1}}
+@keyframes pop{from{opacity:0;transform:scale(.85)}to{opacity:1;transform:scale(1)}}
+@keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@keyframes grow-x{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes grow-y{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+@keyframes hilite{from{opacity:.62}to{opacity:1;color:var(--hf-accent)}}
+@keyframes breath{from{transform:scaleY(1)}to{transform:scaleY(1.018)}}
+</style></head><body>
+<div id="root" data-composition-id="root" data-start="0" data-width="1920" data-height="1080" data-duration="8.000" style="width:1920px;height:1080px">
+<div class="clip" data-start="0" data-duration="8.000" data-track-index="0">
+<style>@keyframes cam1{from{transform:scale(1)}to{transform:scale(1.06)}}</style>
+<section class="scene" data-scene="1" data-purpose="explanation" style="animation:show 4000ms linear 0ms none">
+<div class="cam" style="transform-origin:960px 520px;animation:cam1 4000ms ease-in-out 0ms both"><div class="bg grid"></div><div class="floor" style="top:890px"></div><style>@keyframes c1{from{--n:0}to{--n:30}}</style><div class="diagram big counter c1" style="left:566px;top:100px;width:788px;height:630px;animation:fadein 300ms ease-out 300ms both,c1 1400ms ease-out 300ms both" data-unit="%"></div><style>.c1::after{content:counter(n) "%"}</style><div class="prop" style="left:1390px;top:510px;animation:pop 400ms ease-out 200ms both">Terms</div><div class="actor" data-character="sam" style="left:355.3px;top:681.3px;animation:rise 350ms ease-out 0ms both"><div style="transform:none"><div style="transform-origin:50% 100%;animation:breath 2993ms ease-in-out -2339ms infinite alternate"><svg viewBox="0 0 100 160" width="129.4" height="208.7" aria-hidden="true">
+<ellipse cx="50" cy="159" rx="30" ry="4" fill="#000" opacity="var(--hf-shadow-opacity)"/>
+<g stroke="var(--hf-ink)" stroke-width="5" stroke-linecap="round" fill="none">
+<path d="M50 90 L34 156" stroke="#161616"/><path d="M50 90 L66 156" stroke="#161616"/>
+<path d="M50 56 L22 34"/><path d="M50 56 L78 40"/>
+</g>
+<rect x="32" y="48" width="36" height="50" rx="12" fill="#2f6fdb" stroke="var(--hf-ink)" stroke-width="4"/>
+<circle cx="50" cy="26" r="21" fill="#ffffff" stroke="var(--hf-ink)" stroke-width="5"/>
+<path d="M29 24 Q50 -2 71 24 Q50 12 29 24Z" fill="#2b1d12"/>
+<circle cx="43" cy="26" r="2.4" fill="var(--hf-ink)"/><circle cx="57" cy="26" r="2.4" fill="var(--hf-ink)"/>
+</svg></div></div></div></div><div class="overlay hot" style="top:100px;animation:pop 400ms ease-out 800ms both">READ THIS</div><div class="caption" style="top:924px;height:102px;font-size:64px;animation:show 1200ms linear 200ms none"><span style="animation:hilite 120ms linear 200ms both">Every</span> <span style="animation:hilite 120ms linear 600ms both">fee</span> <span style="animation:hilite 120ms linear 1000ms both">changes</span></div><div class="caption" style="top:924px;height:102px;font-size:64px;animation:show 1200ms linear 1400ms none"><span style="animation:hilite 120ms linear 1400ms both">the</span> <span style="animation:hilite 120ms linear 1800ms both">final</span> <span style="animation:hilite 120ms linear 2200ms both">number</span></div><div class="caption" style="top:924px;height:102px;font-size:64px;animation:show 1010ms linear 2600ms none"><span style="animation:hilite 120ms linear 2600ms both">you</span> <span style="animation:hilite 120ms linear 3000ms both">pay</span></div>
+</section>
+<style>@keyframes cam2{from{transform:scale(1)}to{transform:scale(1.06)}}</style>
+<section class="scene" data-scene="2" data-purpose="explanation" style="animation:show 4000ms linear 4000ms none">
+<div class="cam" style="transform-origin:960px 520px;animation:cam2 4000ms ease-in-out 4000ms both"><div class="bg grid"></div><div class="floor" style="top:890px"></div><div class="diagram bars" style="left:566px;top:100px;width:788px;height:630px;animation:fadein 250ms ease-out 4300ms both"><div class="bar"><span class="v">40</span><i style="height:217.1px;animation:grow-y 700ms ease-out 4300ms both"></i><span class="label">A</span></div><div class="bar"><span class="v">70</span><i style="height:380px;animation:grow-y 700ms ease-out 4560ms both"></i><span class="label">B</span></div></div><div class="prop" style="left:1390px;top:510px;animation:pop 400ms ease-out 4200ms both">Terms</div><div class="actor" data-character="sam" style="left:355.3px;top:681.3px;animation:rise 350ms ease-out 4000ms both"><div style="transform:none"><div style="transform-origin:50% 100%;animation:breath 2911ms ease-in-out -2128ms infinite alternate"><svg viewBox="0 0 100 160" width="129.4" height="208.7" aria-hidden="true">
+<ellipse cx="50" cy="159" rx="30" ry="4" fill="#000" opacity="var(--hf-shadow-opacity)"/>
+<g stroke="var(--hf-ink)" stroke-width="5" stroke-linecap="round" fill="none">
+<path d="M50 90 L34 156" stroke="#161616"/><path d="M50 90 L66 156" stroke="#161616"/>
+<path d="M50 56 L22 34"/><path d="M50 56 L78 40"/>
+</g>
+<rect x="32" y="48" width="36" height="50" rx="12" fill="#2f6fdb" stroke="var(--hf-ink)" stroke-width="4"/>
+<circle cx="50" cy="26" r="21" fill="#ffffff" stroke="var(--hf-ink)" stroke-width="5"/>
+<path d="M29 24 Q50 -2 71 24 Q50 12 29 24Z" fill="#2b1d12"/>
+<circle cx="43" cy="26" r="2.4" fill="var(--hf-ink)"/><circle cx="57" cy="26" r="2.4" fill="var(--hf-ink)"/>
+</svg></div></div></div></div><div class="overlay hot" style="top:100px;animation:pop 400ms ease-out 4800ms both">READ THIS</div><div class="caption" style="top:924px;height:102px;font-size:64px;animation:show 1200ms linear 4200ms none"><span style="animation:hilite 120ms linear 4200ms both">Every</span> <span style="animation:hilite 120ms linear 4600ms both">fee</span> <span style="animation:hilite 120ms linear 5000ms both">changes</span></div><div class="caption" style="top:924px;height:102px;font-size:64px;animation:show 1200ms linear 5400ms none"><span style="animation:hilite 120ms linear 5400ms both">the</span> <span style="animation:hilite 120ms linear 5800ms both">final</span> <span style="animation:hilite 120ms linear 6200ms both">number</span></div><div class="caption" style="top:924px;height:102px;font-size:64px;animation:show 1010ms linear 6600ms none"><span style="animation:hilite 120ms linear 6600ms both">you</span> <span style="animation:hilite 120ms linear 7000ms both">pay</span></div>
+</section>
+</div>
+<audio id="voice-0" data-start="0.200" data-duration="3.500" data-track-index="1" data-volume="1" src="voice-0.wav"></audio>
+</div></body></html>
+"
+`;

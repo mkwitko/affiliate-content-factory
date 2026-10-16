@@ -1,0 +1,35 @@
+{
+  "name": "@money-maker/contracts",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./src/identifiers.ts",
+      "development": "./src/identifiers.ts",
+      "default": "./dist/identifiers.js"
+    },
+    "./visual-language-schema": {
+      "types": "./src/visual-language-schema.ts",
+      "development": "./src/visual-language-schema.ts",
+      "default": "./dist/visual-language-schema.js"
+    },
+    "./cloud-gpu-job": {
+      "types": "./src/cloud-gpu-job.ts",
+      "development": "./src/cloud-gpu-job.ts",
+      "default": "./dist/cloud-gpu-job.js"
+    },
+    "./scene-spec-schema": {
+      "types": "./src/scene-spec-schema.ts",
+      "development": "./src/scene-spec-schema.ts",
+      "default": "./dist/scene-spec-schema.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "zod": "catalog:"
+  }
+}

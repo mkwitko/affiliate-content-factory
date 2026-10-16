@@ -1,0 +1,18 @@
+packages:
+  - "apps/*"
+  - "packages/*"
+
+catalog:
+  zod: 4.6.5
+
+allowBuilds:
+  "@biomejs/biome": true
+  "@prisma/engines": true
+  prisma: true
+  # modal SDK deps: cbor-x falls back to pure JS; protobufjs postinstall is a version notice only.
+  cbor-extract: false
+  protobufjs: false
+
+minimumReleaseAgeExclude:
+  - '@aws-sdk/client-s3@3.1137.0'
+  - '@aws-sdk/s3-request-presigner@3.1137.0'

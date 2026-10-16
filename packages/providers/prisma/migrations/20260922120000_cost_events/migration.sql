@@ -1,0 +1,3 @@
+CREATE TABLE "cost_events" ("id" TEXT NOT NULL, "workspace_id" UUID NOT NULL, "provider" TEXT NOT NULL, "operation" TEXT NOT NULL, "estimated_minor" INTEGER NOT NULL, "actual_minor" INTEGER, "currency" TEXT NOT NULL, "status" TEXT NOT NULL, "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP, CONSTRAINT "cost_events_pkey" PRIMARY KEY ("id"));
+CREATE INDEX "cost_events_workspace_created_idx" ON "cost_events"("workspace_id", "created_at");
+ALTER TABLE "cost_events" ADD CONSTRAINT "cost_events_workspace_id_fkey" FOREIGN KEY ("workspace_id") REFERENCES "workspaces"("id") ON DELETE CASCADE ON UPDATE CASCADE;

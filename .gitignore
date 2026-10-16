@@ -1,0 +1,78 @@
+# Dependencies and build output
+node_modules/
+dist/
+dist-worker/
+build/
+coverage/
+.turbo/
+*.tsbuildinfo
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Editors and operating systems
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Runtime data
+tmp/
+logs/
+*.log
+
+# Local AI assets are large and must not enter Git
+models/
+outputs/
+ComfyUI/
+
+# Local worktrees
+.worktrees/
+/packages/providers/generated/
+money-maker-plugin-*.zip
+
+# Playwright MCP session output
+.playwright-mcp/
+
+# Impeccable review captures (regenerated per run)
+apps/web/.impeccable/review/
+
+# Benchmark and style-review outputs (generated, never committed)
+render-bench-out/
+style-frames-out*/
+style-frames-plates/
+director-bench-out/
+# Director production benchmark results. The exported fixtures (approved scripts) are committed
+# so the benchmark machine can pull them; re-export to refresh.
+director-bench-production/
+# Visual review packs (rendered stills of benchmark storyboards; regenerate with director:review-pack)
+director-review-pack/
+# Local image benchmark output (rows, summary, generated images)
+image-bench-out/
+edit-bench-out/
+autonomy-burn-in-out/
+video-bench-out/
+.claude/worktrees/
+voice-bench-out/
+copy-bench-out/
+artifacts/
+
+# CodeGraph local index (machine-specific SQLite; rebuild with `codegraph init`)
+.codegraph/
+reports/ai-arena/
+
+# Per-project cloud GPU CLI virtual environments (never commit installed SDKs)
+.local-tools/
+
+# Python bytecode
+__pycache__/
+*.pyc
+
+# Generated
+__pycache__/
+.impeccable/
+graphify-out/

@@ -1,0 +1,10 @@
+{
+  "$schema": "https://developers.cloudflare.com/workers/wrangler/config-schema.json",
+  "name": "money-maker-web",
+  "main": "dist-worker/inline-worker.js",
+  "compatibility_date": "2026-09-21",
+  "workers_dev": true,
+  "vars": {
+    "API_ORIGIN": "https://mcp.example.com"
+  }
+}

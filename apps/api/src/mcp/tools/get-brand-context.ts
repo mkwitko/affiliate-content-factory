@@ -1,0 +1,26 @@
+import { z } from "zod";
+import type { UserId } from "@money-maker/contracts";
+import type { McpDependencies, ToolResult } from "../server.js";
+import { authorizeWorkspaceTool, parseWorkspaceArgument } from "./workspace-access.js";
+
+export const getBrandContextInputSchema = z.object({ workspaceId: z.uuid() }).strict();
+
+export const getBrandContextTool = async (
+  args: unknown,
+  actorId: UserId,
+  deps: McpDependencies,
+): Promise<ToolResult> => {
+  const parsed = getBrandContextInputSchema.safeParse(args);
+  if (!parsed.success) return { ok: false, error: "INVALID_ARGUMENTS" };
+  const workspaceId = parseWorkspaceArgument(parsed.data.workspaceId);
+  if (!workspaceId) return { ok: false, error: "INVALID_ARGUMENTS" };
+  const denied = await authorizeWorkspaceTool(deps, actorId, workspaceId, [
+    "owner",
+    "operator",
+    "reviewer",
+  ]);
+  if (denied) return denied;
+  const getContext = deps.workspaces.getContext;
+  if (!getContext) throw new Error("Workspace context is not configured.");
+  return { ok: true, value: { context: await getContext.call(deps.workspaces, workspaceId) } };
+};

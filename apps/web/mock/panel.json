@@ -1,0 +1,284 @@
+{
+  "setup": {
+    "stages": [
+      { "id": "plugins", "status": "done", "action": "" },
+      { "id": "niche_research", "status": "done", "action": "" },
+      { "id": "structure", "status": "done", "action": "" },
+      { "id": "integrations", "status": "next", "action": "" },
+      { "id": "first_post", "status": "pending", "action": "" },
+      { "id": "automations", "status": "pending", "action": "", "optional": true }
+    ]
+  },
+  "niches": [
+    {
+      "id": "n1",
+      "name": "Example Shop Home",
+      "slug": "exampleshopcasa",
+      "state": "active",
+      "languages": ["pt-BR"]
+    },
+    {
+      "id": "n2",
+      "name": "Example Shop Tech",
+      "slug": "exampleshoptech",
+      "state": "active",
+      "languages": ["pt-BR"]
+    }
+  ],
+  "channels": [
+    {
+      "id": "c1",
+      "kind": "instagram_carousel",
+      "label": "@exampleshop.home",
+      "status": "active",
+      "nicheId": null
+    },
+    {
+      "id": "c2",
+      "kind": "tiktok_video",
+      "label": "@exampleshop.tech",
+      "status": "active",
+      "nicheId": null
+    },
+    {
+      "id": "c3",
+      "kind": "threads",
+      "label": "@exampleshop.home",
+      "status": "inactive",
+      "nicheId": null
+    }
+  ],
+  "offers": [
+    {
+      "id": "o1",
+      "title": "Organizador de gavetas em bambu ajustável 6 divisórias",
+      "state": "active",
+      "nicheId": "n1",
+      "marketplace": "mercado_livre",
+      "affiliateUrl": "https://mercadolivre.com/sec/abc",
+      "price": { "amountMinor": 8990, "currency": "BRL" },
+      "listPrice": { "amountMinor": 11900, "currency": "BRL" },
+      "verifiedAt": "2026-09-28T17:30:00.000Z",
+      "imageUrl": "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600&q=70"
+    },
+    {
+      "id": "o2",
+      "title": "Fone Bluetooth com cancelamento de ruído 40h de bateria",
+      "state": "draft",
+      "nicheId": "n2",
+      "marketplace": "mercado_livre",
+      "affiliateUrl": "https://mercadolivre.com/sec/def",
+      "price": { "amountMinor": 24900, "currency": "BRL" },
+      "listPrice": null,
+      "verifiedAt": "2026-09-26T12:00:00.000Z",
+      "imageUrl": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&q=70"
+    },
+    {
+      "id": "o3",
+      "title": "Luminária de mesa LED articulada com USB",
+      "state": "rejected",
+      "nicheId": "n1",
+      "marketplace": "mercado_livre",
+      "affiliateUrl": null,
+      "price": null,
+      "listPrice": null,
+      "verifiedAt": null,
+      "imageUrl": null
+    }
+  ],
+  "reviewQueue": [
+    {
+      "id": "v1",
+      "contentItemId": "ci1",
+      "title": "Organizador de gavetas: 6 divisórias que cabem em qualquer cômoda",
+      "nicheId": "n1",
+      "channelId": "c1",
+      "channelKind": "instagram_carousel",
+      "channelLabel": "@exampleshop.home",
+      "caption": "Gaveta bagunçada nunca mais. Esse organizador de bambu ajusta em 6 divisórias e cabe em cômoda de qualquer tamanho.\n\nPreço conferido hoje no Mercado Livre. Link na bio.",
+      "language": "pt-BR",
+      "state": "ready_for_review",
+      "policyMode": "manual",
+      "evidenceVerifiedAt": "2026-09-28T17:30:00.000Z",
+      "affiliateUrl": "https://mercadolivre.com/sec/abc",
+      "offer": {
+        "id": "o1",
+        "title": "Organizador de gavetas em bambu ajustável 6 divisórias",
+        "price": { "amountMinor": 8990, "currency": "BRL" }
+      },
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=800&q=70",
+          "width": 1080,
+          "height": 1350
+        },
+        {
+          "url": "https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=800&q=70",
+          "width": 1080,
+          "height": 1350
+        },
+        {
+          "url": "https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?w=800&q=70",
+          "width": 1080,
+          "height": 1350
+        }
+      ]
+    },
+    {
+      "id": "v2",
+      "contentItemId": "ci2",
+      "title": "Fone com cancelamento de ruído: vale por R$ 249?",
+      "nicheId": "n2",
+      "channelId": "c2",
+      "channelKind": "tiktok_video",
+      "channelLabel": "@exampleshop.tech",
+      "caption": "40 horas de bateria e cancelamento de ruído por menos de R$ 250. Testei no ônibus.",
+      "language": "pt-BR",
+      "state": "ready_for_review",
+      "policyMode": "manual",
+      "evidenceVerifiedAt": "2026-09-26T12:00:00.000Z",
+      "affiliateUrl": "https://mercadolivre.com/sec/def",
+      "offer": {
+        "id": "o2",
+        "title": "Fone Bluetooth com cancelamento de ruído 40h de bateria",
+        "price": { "amountMinor": 24900, "currency": "BRL" }
+      },
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&q=70",
+          "width": 1080,
+          "height": 1920
+        }
+      ]
+    }
+  ],
+  "variants": [
+    {
+      "id": "v1",
+      "contentItemId": "ci1",
+      "title": "Organizador de gavetas: 6 divisórias que cabem em qualquer cômoda",
+      "nicheId": "n1",
+      "channelId": "c1",
+      "channelKind": "instagram_carousel",
+      "channelLabel": "@exampleshop.home",
+      "state": "ready_for_review",
+      "language": "pt-BR",
+      "thumbnailUrl": "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=200&q=60"
+    },
+    {
+      "id": "v2",
+      "contentItemId": "ci2",
+      "title": "Fone com cancelamento de ruído: vale por R$ 249?",
+      "nicheId": "n2",
+      "channelId": "c2",
+      "channelKind": "tiktok_video",
+      "channelLabel": "@exampleshop.tech",
+      "state": "ready_for_review",
+      "language": "pt-BR",
+      "thumbnailUrl": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=200&q=60"
+    },
+    {
+      "id": "v3",
+      "contentItemId": "ci3",
+      "title": "Luminária LED articulada: a de R$ 59 que dura",
+      "nicheId": "n1",
+      "channelId": "c1",
+      "channelKind": "instagram_carousel",
+      "channelLabel": "@exampleshop.home",
+      "state": "approved",
+      "language": "pt-BR",
+      "thumbnailUrl": "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=200&q=60"
+    },
+    {
+      "id": "v4",
+      "contentItemId": "ci4",
+      "title": "Cesto de roupa dobrável: cabe atrás da porta",
+      "nicheId": "n1",
+      "channelId": "c1",
+      "channelKind": "instagram_carousel",
+      "channelLabel": "@exampleshop.home",
+      "state": "published",
+      "language": "pt-BR",
+      "thumbnailUrl": "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=200&q=60"
+    },
+    {
+      "id": "v5",
+      "contentItemId": "ci5",
+      "title": "Suporte de notebook de alumínio por R$ 45",
+      "nicheId": "n2",
+      "channelId": "c2",
+      "channelKind": "tiktok_video",
+      "channelLabel": "@exampleshop.tech",
+      "state": "published",
+      "language": "pt-BR",
+      "thumbnailUrl": "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=200&q=60"
+    },
+    {
+      "id": "v6",
+      "contentItemId": "ci6",
+      "title": "Kit potes herméticos 10 peças",
+      "nicheId": "n1",
+      "channelId": "c3",
+      "channelKind": "threads",
+      "channelLabel": "@exampleshop.home",
+      "state": "draft",
+      "language": "pt-BR",
+      "thumbnailUrl": null
+    }
+  ],
+  "connections": [
+    {
+      "id": "k1",
+      "provider": "post_for_me",
+      "mode": "api_key",
+      "status": "active",
+      "accountId": "exampleshop.home"
+    },
+    {
+      "id": "k2",
+      "provider": "mercado_livre",
+      "mode": "oauth",
+      "status": "active",
+      "accountId": "12345"
+    }
+  ],
+  "attribution": {
+    "groupBy": "niche",
+    "totalClicks": 1284,
+    "rows": [
+      {
+        "key": "n1",
+        "clicks": 941,
+        "uniqueClicks": 812,
+        "lastClickAt": "2026-09-28T19:12:00.000Z"
+      },
+      { "key": "n2", "clicks": 343, "uniqueClicks": 301, "lastClickAt": "2026-09-28T18:40:00.000Z" }
+    ]
+  },
+  "performance": {
+    "posts": [
+      {
+        "contentVariantId": "v4",
+        "channelId": "c1",
+        "publishedAt": "2026-09-20T12:00:00.000Z",
+        "observedAt": "2026-09-28T12:00:00.000Z",
+        "platformUrl": "https://instagram.com/p/x",
+        "metrics": { "views": 18400, "reach": 15200, "likes": 610, "saves": 220 },
+        "clicks": 702,
+        "uniqueClicks": 640,
+        "clickRate": 0.038
+      },
+      {
+        "contentVariantId": "v5",
+        "channelId": "c2",
+        "publishedAt": "2026-09-24T12:00:00.000Z",
+        "observedAt": "2026-09-28T12:00:00.000Z",
+        "platformUrl": "https://tiktok.com/@x/video/1",
+        "metrics": { "views": 42100, "likes": 1300, "shares": 88 },
+        "clicks": 343,
+        "uniqueClicks": 301,
+        "clickRate": 0.008
+      }
+    ]
+  }
+}

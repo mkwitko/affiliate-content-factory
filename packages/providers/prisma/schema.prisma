@@ -1,0 +1,1088 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum MembershipRole {
+  OWNER
+  OPERATOR
+  REVIEWER
+}
+
+enum MembershipStatus {
+  ACTIVE
+  REVOKED
+}
+
+enum InvitationStatus {
+  PENDING
+  ACCEPTED
+  REVOKED
+}
+
+enum JobStatus {
+  PENDING
+  RUNNING
+  COMPLETED
+  FAILED
+}
+
+enum ProviderConnectionProvider {
+  POST_FOR_ME
+  MERCADO_LIVRE
+  CANVA
+  MODAL
+  VERCEL_AI_GATEWAY
+}
+
+enum ProviderConnectionMode {
+  API_KEY
+  OAUTH
+}
+
+enum ProviderConnectionStatus {
+  ACTIVE
+  REVOKED
+  UNHEALTHY
+}
+
+enum OfferMarketplace {
+  MERCADO_LIVRE
+  TIKTOK_SHOP
+}
+
+enum OfferState {
+  DRAFT
+  ACTIVE
+  REJECTED
+  ARCHIVED
+}
+
+enum NicheState {
+  DRAFT
+  ACTIVE
+  ARCHIVED
+}
+
+enum NicheKind {
+  AFFILIATE
+  MEDIA
+}
+
+enum ChannelKind {
+  INSTAGRAM_CAROUSEL
+  INSTAGRAM_STORIES
+  THREADS
+  TIKTOK_PHOTO_POST
+  INSTAGRAM_REELS
+  YOUTUBE
+  TIKTOK_VIDEO
+}
+
+enum ReelRenderStatus {
+  PENDING
+  READY
+  FAILED
+}
+
+enum ReelVoiceMode {
+  SCRIPT
+  NONE
+}
+
+enum ChannelStatus {
+  ACTIVE
+  INACTIVE
+}
+
+enum AssetState {
+  PENDING
+  ACTIVE
+  ARCHIVED
+  PENDING_REVIEW
+}
+
+enum ContentItemState {
+  DRAFT
+  CANCELLED
+}
+
+enum ContentVariantState {
+  DRAFT
+  READY_FOR_REVIEW
+  APPROVED
+  REJECTED
+  SCHEDULED
+  PUBLISHED
+  CANCELLED
+}
+
+enum PublicationPolicyMode {
+  MANUAL
+  POLICY_BASED
+  PAUSED
+}
+
+enum PublicationStatus {
+  QUEUED
+  PUBLISHING
+  PUBLISHED
+  RETRYABLE_FAILURE
+  PERMANENT_FAILURE
+  UNKNOWN_OUTCOME
+  CANCELLED
+}
+
+enum ResearchProvider {
+  VIDIQ
+  HOOK_LAYER
+  MERCADO_LIVRE
+  MANUAL
+}
+
+enum ResearchPolicyFrequency {
+  DAILY
+  WEEKLY
+}
+
+enum ResearchPolicyStatus {
+  ACTIVE
+  PAUSED
+  REVOKED
+}
+
+model User {
+  id                 String             @id @default(uuid()) @db.Uuid
+  email              String             @unique(map: "users_email_key")
+  createdAt          DateTime           @default(now()) @map("created_at")
+  updatedAt          DateTime           @updatedAt @map("updated_at")
+  memberships        Membership[]
+  invitationsSent    Invitation[]       @relation("InvitationCreator")
+  invitationsUsed    Invitation[]       @relation("InvitationAcceptor")
+  auditEvents        AuditEvent[]
+  approvals          ContentApproval[]
+  externalIdentities ExternalIdentity[]
+  sessions           Session[]
+  researchSnapshots  ResearchSnapshot[]
+  videoStoryboards   VideoStoryboard[]
+
+  @@map("users")
+}
+
+model PreAuthorizedEmail {
+  email     String   @id
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("pre_authorized_emails")
+}
+
+model ExternalIdentity {
+  id        String   @id @default(uuid()) @db.Uuid
+  issuer    String
+  subject   String
+  userId    String   @map("user_id") @db.Uuid
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade, map: "external_identities_user_id_fkey")
+
+  @@unique([issuer, subject], map: "external_identities_issuer_subject_key")
+  @@index([userId], map: "external_identities_user_id_idx")
+  @@map("external_identities")
+}
+
+model Session {
+  id        String    @id @default(uuid()) @db.Uuid
+  tokenHash String    @unique(map: "sessions_token_hash_key") @map("token_hash")
+  userId    String    @map("user_id") @db.Uuid
+  expiresAt DateTime  @map("expires_at")
+  createdAt DateTime  @default(now()) @map("created_at")
+  revokedAt DateTime? @map("revoked_at")
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade, map: "sessions_user_id_fkey")
+
+  @@index([userId, expiresAt], map: "sessions_user_id_expires_at_idx")
+  @@map("sessions")
+}
+
+model Workspace {
+  id                  String               @id @default(uuid()) @db.Uuid
+  name                String
+  context             Json?
+  createdAt           DateTime             @default(now()) @map("created_at")
+  updatedAt           DateTime             @updatedAt @map("updated_at")
+  memberships         Membership[]
+  invitations         Invitation[]
+  auditEvents         AuditEvent[]
+  jobs                Job[]
+  providerConnections ProviderConnection[]
+  secretRecords       SecretRecord[]
+  offers              Offer[]
+  commercialSnapshots CommercialSnapshot[]
+  niches              Niche[]
+  channels            Channel[]
+  assets              Asset[]
+  contentItems        ContentItem[]
+  contentVariants     ContentVariant[]
+  approvals           ContentApproval[]
+  publicationPolicy   PublicationPolicy?
+  publicationAttempts PublicationAttempt[]
+  webhookInboxes      WebhookInbox[]
+  researchSnapshots   ResearchSnapshot[]
+  costEvents          CostEvent[]
+  generationSettings  GenerationSettings?
+  generationRoutes    GenerationRoute[]
+  generationRuns      GenerationRun[]
+  researchPolicies    ResearchPolicy[]
+  productCandidates   ProductCandidate[]
+  trackedLinks        TrackedLink[]
+  clickEvents         ClickEvent[]
+  contentPerformance  ContentPerformance[]
+  reelRenders         ReelRender[]
+  usageEvents         UsageEvent[]
+  videoStoryboards    VideoStoryboard[]
+  longFormRenders     LongFormRender[]
+  continuityFacts     ContinuityFact[]
+  episodeIdeas        EpisodeIdea[]
+  homeWorkerTokens    HomeWorkerToken[]
+
+  @@map("workspaces")
+}
+
+model ResearchSnapshot {
+  id           String                @id
+  workspaceId  String                @map("workspace_id") @db.Uuid
+  nicheId      String?               @map("niche_id")
+  provider     ResearchProvider
+  query        String
+  locale       String
+  observedAt   DateTime              @map("observed_at")
+  expiresAt    DateTime              @map("expires_at")
+  contentHash  String                @map("content_hash")
+  actorId      String                @map("actor_id") @db.Uuid
+  createdAt    DateTime              @default(now()) @map("created_at")
+  workspace    Workspace             @relation(fields: [workspaceId], references: [id], onDelete: Cascade, map: "research_snapshots_workspace_id_fkey")
+  niche        Niche?                @relation(fields: [nicheId], references: [id], onDelete: SetNull, map: "research_snapshots_niche_id_fkey")
+  actor        User                  @relation(fields: [actorId], references: [id], onDelete: Restrict, map: "research_snapshots_actor_id_fkey")
+  observations ResearchObservation[]
+
+  @@unique([workspaceId, contentHash], map: "research_snapshots_workspace_hash_key")
+  @@index([workspaceId, observedAt], map: "research_snapshots_workspace_observed_idx")
+  @@index([workspaceId, nicheId], map: "research_snapshots_workspace_niche_idx")
+  @@map("research_snapshots")
+}
+
+model ResearchObservation {
+  id         String           @id @default(uuid()) @db.Uuid
+  snapshotId String           @map("snapshot_id")
+  key        String
+  value      String
+  sourceUrl  String           @map("source_url")
+  snapshot   ResearchSnapshot @relation(fields: [snapshotId], references: [id], onDelete: Cascade, map: "research_observations_snapshot_id_fkey")
+
+  @@unique([snapshotId, key, sourceUrl], map: "research_observations_snapshot_key_url_key")
+  @@index([snapshotId], map: "research_observations_snapshot_idx")
+  @@map("research_observations")
+}
+
+model CostEvent {
+  id             String    @id
+  workspaceId    String    @map("workspace_id") @db.Uuid
+  provider       String
+  operation      String
+  estimatedMinor Int       @map("estimated_minor")
+  actualMinor    Int?      @map("actual_minor")
+  currency       String
+  status         String
+  createdAt      DateTime  @default(now()) @map("created_at")
+  /// Paid-generation budget period; NULL for legacy cost events, which never count toward it.
+  budgetKey      String?   @map("budget_key")
+  operationKey   String?   @map("operation_key")
+  expiresAt      DateTime? @map("expires_at")
+  receipt        String?
+  quote          Json?
+  workspace      Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade, map: "cost_events_workspace_id_fkey")
+
+  @@unique([workspaceId, operationKey], map: "cost_events_workspace_operation_key")
+  @@index([workspaceId, budgetKey], map: "cost_events_workspace_budget_idx")
+  @@index([workspaceId, createdAt], map: "cost_events_workspace_created_idx")
+  @@map("cost_events")
+}
+
+/// Owner money settings for AI generation (spec 2026-10-14): paid cap per São Paulo month and
+/// each cloud provider's free credit. No row means the defaults (R$100, no free credit).
+model GenerationSettings {
+  workspaceId     String    @id @map("workspace_id") @db.Uuid
+  monthlyCapMinor Int       @map("monthly_cap_minor")
+  freeCredits     Json      @default("{}") @map("free_credits")
+  updatedAt       DateTime  @updatedAt @map("updated_at")
+  workspace       Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade, map: "generation_settings_workspace_id_fkey")
+
+  @@map("generation_settings")
+}
+
+/// Generation routes (spec 2026-10-14): task × model × executor, with the owner's rank and state.
+model GenerationRoute {
+  workspaceId      String    @map("workspace_id") @db.Uuid
+  id               String
+  task             String
+  model            String
+  executor         String
+  cost             String
+  provider         String?
+  state            String
+  ownerRank        Int?      @map("owner_rank")
+  costPerUnitMinor Int?      @map("cost_per_unit_minor")
+  updatedAt        DateTime  @updatedAt @map("updated_at")
+  workspace        Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade, map: "generation_routes_workspace_id_fkey")
+
+  @@id([workspaceId, id], map: "generation_routes_pkey")
+  @@map("generation_routes")
+}
+
+/// One execution on a route; feeds route health, pass rates and quota pauses.
+model GenerationRun {
+  id          String    @id @default(uuid()) @db.Uuid
+  workspaceId String    @map("workspace_id") @db.Uuid
+  routeId     String    @map("route_id")
+  task        String
+  outcome     String
+  retryAfter  DateTime? @map("retry_after")
+  durationMs  Int?      @map("duration_ms")
+  detail      String?
+  createdAt   DateTime  @default(now()) @map("created_at")
+  workspace   Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade, map: "generation_runs_workspace_id_fkey")
+
+  @@index([workspaceId, routeId, createdAt], map: "generation_runs_route_idx")
+  @@map("generation_runs")
+}
+
+model ProviderConnection {
+  id                     String                     @id @default(uuid()) @db.Uuid
+  workspaceId            String                     @map("workspace_id") @db.Uuid
+  provider               ProviderConnectionProvider
+  mode                   ProviderConnectionMode
+  status                 ProviderConnectionStatus   @default(ACTIVE)
+  secretReference        String                     @map("secret_reference")
+  accountId              String                     @map("account_id")
+  displayName            String?                    @map("display_name")
+  // ponytail: unused since platform accounts are resolved at publish time; drop in a later migration.
+  platform               String?                    @map("platform")
+  accountMetadata        Json?                      @map("account_metadata")
+  webhookId              String?                    @map("webhook_id")
+  webhookSecretReference String?                    @map("webhook_secret_reference")
+  expiresAt              DateTime?                  @map("expires_at")
+  createdAt              DateTime                   @default(now()) @map("created_at")
+  updatedAt              DateTime                   @updatedAt @map("updated_at")
+  workspace              Workspace                  @relation(fields: [workspaceId], references: [id], onDelete: Cascade, map: "provider_connections_workspace_id_fkey")
+  channels               Channel[]
+  publicationAttempts    PublicationAttempt[]
+  webhookInboxes         WebhookInbox[]
+
+  @@unique([workspaceId, provider, accountId], map: "provider_connections_workspace_provider_account_key")
+  @@index([workspaceId, status], map: "provider_connections_workspace_status_idx")
+  @@map("provider_connections")
+}
+
+model SecretRecord {
+  reference   String    @id
+  ciphertext  String
+  createdAt   DateTime  @default(now()) @map("created_at")
+  updatedAt   DateTime  @updatedAt @map("updated_at")
+  workspaceId String    @map("workspace_id") @db.Uuid
+  workspace   Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade, map: "secret_records_workspace_id_fkey")
+
+  @@index([workspaceId], map: "secret_records_workspace_idx")
+  @@map("secret_records")
+}
+
+model Offer {
+  id                   String               @id
+  workspaceId          String               @map("workspace_id") @db.Uuid
+  marketplace          OfferMarketplace
+  listingUrl           String               @map("listing_url")
+  affiliateUrl         String?              @map("affiliate_url")
+  // TikTok Shop's provider product id. Nullable for Mercado Livre offers. A partial unique index
+  // (workspace_id, marketplace, external_product_id) WHERE external_product_id IS NOT NULL is
+  // SQL-only (see the migration); Prisma cannot express a partial index in the schema.
+  externalProductId    String?              @map("external_product_id")
+  title                String
+  listPriceMinor       Int?                 @map("list_price_minor")
+  listPriceCurrency    String?              @map("list_price_currency")
+  currentPriceMinor    Int?                 @map("current_price_minor")
+  currentPriceCurrency String?              @map("current_price_currency")
+  discountMinor        Int?                 @map("discount_minor")
+  discountCurrency     String?              @map("discount_currency")
+  shippingMinor        Int?                 @map("shipping_minor")
+  shippingCurrency     String?              @map("shipping_currency")
+  commissionMinor      Int?                 @map("commission_minor")
+  commissionCurrency   String?              @map("commission_currency")
+  feesMinor            Int?                 @map("fees_minor")
+  feesCurrency         String?              @map("fees_currency")
+  revenueMinor         Int?                 @map("revenue_minor")
+  revenueCurrency      String?              @map("revenue_currency")
+  state                OfferState           @default(DRAFT)
+  activeSnapshotId     String?              @map("active_snapshot_id")
+  rejectionReason      String?              @map("rejection_reason")
+  createdAt            DateTime             @default(now()) @map("created_at")
+  updatedAt            DateTime             @updatedAt @map("updated_at")
+  workspace            Workspace            @relation(fields: [workspaceId], references: [id], onDelete: Cascade, map: "offers_workspace_id_fkey")
+  snapshots            CommercialSnapshot[]
+  contentItems         ContentItem[]
+  productCandidates    ProductCandidate[]
+
+  @@index([workspaceId, state], map: "offers_workspace_state_idx")
+  @@map("offers")
+}
+
+model CommercialSnapshot {
+  id              String            @id
+  offerId         String            @map("offer_id")
+  workspaceId     String            @map("workspace_id") @db.Uuid
+  verifiedAt      DateTime          @map("verified_at")
+  createdAt       DateTime          @default(now()) @map("created_at")
+  offer           Offer             @relation(fields: [offerId], references: [id], onDelete: Cascade, map: "commercial_snapshots_offer_id_fkey")
+  workspace       Workspace         @relation(fields: [workspaceId], references: [id], onDelete: Cascade, map: "commercial_snapshots_workspace_id_fkey")
+  facts           CommercialFact[]
+  contentItems    ContentItem[]     @relation("ContentItemSnapshot")
+  contentVariants ContentVariant[]  @relation("ContentVariantSnapshot")
+  approvals       ContentApproval[]
+
+  @@unique([offerId, id], map: "commercial_snapshots_offer_id_id_key")
+  @@index([workspaceId, verifiedAt], map: "commercial_snapshots_workspace_verified_at_idx")
+  @@map("commercial_snapshots")
+}
+
+model CommercialFact {
+  id         String             @id
+  snapshotId String             @map("snapshot_id")
+  key        String
+  value      Json
+  sourceUrl  String             @map("source_url")
+  verified   Boolean
+  snapshot   CommercialSnapshot @relation(fields: [snapshotId], references: [id], onDelete: Cascade, map: "commercial_facts_snapshot_id_fkey")
+
+  @@unique([snapshotId, key], map: "commercial_facts_snapshot_id_key_key")
+  @@map("commercial_facts")
+}
+
+model Niche {
+  id                     String             @id
+  workspaceId            String             @map("workspace_id") @db.Uuid
+  name                   String
+  audience               String
+  problem                String
+  editorialVoice         String             @map("editorial_voice")
+  languages              String[]
+  monetizationHypothesis String             @map("monetization_hypothesis")
+  state                  NicheState         @default(DRAFT)
+  kind                   NicheKind          @default(AFFILIATE)
+  context                Json?
+  // Public, url-safe handle for the niche bio link /go/n/<slug>; unique across workspaces.
+  slug                   String?            @unique(map: "niches_slug_key")
+  createdAt              DateTime           @default(now()) @map("created_at")
+  updatedAt              DateTime           @updatedAt @map("updated_at")
+  workspace              Workspace          @relation(fields: [workspaceId], references: [id], onDelete: Cascade, map: "niches_workspace_id_fkey")
+  contentItems           ContentItem[]
+  channels               Channel[]
+  researchSnapshots      ResearchSnapshot[]
+  researchPolicies       ResearchPolicy[]
+  productCandidates      ProductCandidate[]
+  episodeIdeas           EpisodeIdea[]
+
+  @@index([workspaceId, state], map: "niches_workspace_state_idx")
+  @@map("niches")
+}
+
+model ResearchPolicy {
+  id                  String                  @id
+  workspaceId         String                  @map("workspace_id") @db.Uuid
+  nicheId             String                  @map("niche_id")
+  frequency           ResearchPolicyFrequency
+  maxCandidatesPerRun Int                     @map("max_candidates_per_run")
+  priceMinMinor       Int?                    @map("price_min_minor")
+  priceMaxMinor       Int?                    @map("price_max_minor")
+  currency            String?
+  explicitQueries     String[]                @map("explicit_queries")
+  targetPendingLinks  Int                     @default(5) @map("target_pending_links")
+  status              ResearchPolicyStatus    @default(ACTIVE)
+  lastRunAt           DateTime?               @map("last_run_at")
+  lastError           String?                 @map("last_error")
+  version             Int                     @default(1)
+  createdAt           DateTime                @default(now()) @map("created_at")
+  updatedAt           DateTime                @updatedAt @map("updated_at")
+  workspace           Workspace               @relation(fields: [workspaceId], references: [id], onDelete: Cascade, map: "research_policies_workspace_id_fkey")
+  niche               Niche                   @relation(fields: [nicheId], references: [id], onDelete: Cascade, map: "research_policies_niche_id_fkey")
+  candidates          ProductCandidate[]
+
+  @@unique([workspaceId, nicheId], map: "research_policies_workspace_niche_key")
+  @@index([status, frequency], map: "research_policies_status_frequency_idx")
+  @@map("research_policies")
+}
+
+model ProductCandidate {
+  id           String         @id
+  workspaceId  String         @map("workspace_id") @db.Uuid
+  nicheId      String         @map("niche_id")
+  policyId     String         @map("policy_id")
+  providerId   String         @map("provider_id")
+  title        String
+  listingUrl   String         @map("listing_url")
+  seller       String
+  availability String
+  priceMinor   Int            @map("price_minor")
+  currency     String
+  rank         Int
+  /// Mercado Livre best-seller position in the product's category at discovery.
+  bestSellerRank Int?        @map("best_seller_rank")
+  discoveredAt DateTime       @map("discovered_at")
+  // Lifecycle (TEXT + CHECK in SQL). A partial unique index on (workspace_id, provider_id) for the
+  // open states is SQL-only; Prisma cannot express it.
+  state         String         @default("discovered")
+  offerId       String?        @map("offer_id")
+  qualifiedAt   DateTime?      @map("qualified_at")
+  linkedAt      DateTime?      @map("linked_at")
+  qualification Json?
+  offer         Offer?         @relation(fields: [offerId], references: [id], onDelete: SetNull, map: "product_candidates_offer_id_fkey")
+  workspace    Workspace      @relation(fields: [workspaceId], references: [id], onDelete: Cascade, map: "product_candidates_workspace_id_fkey")
+  niche        Niche          @relation(fields: [nicheId], references: [id], onDelete: Cascade, map: "product_candidates_niche_id_fkey")
+  policy       ResearchPolicy @relation(fields: [policyId], references: [id], onDelete: Cascade, map: "product_candidates_policy_id_fkey")
+
+  @@index([workspaceId, nicheId, discoveredAt], map: "product_candidates_workspace_niche_discovered_idx")
+  @@index([workspaceId, state], map: "product_candidates_workspace_state_idx")
+  @@map("product_candidates")
+}
+
+model Channel {
+  id                  String               @id
+  workspaceId         String               @map("workspace_id") @db.Uuid
+  connectionId        String               @map("connection_id") @db.Uuid
+  /// The niche profile this channel publishes for (automatic packages use only their niche's).
+  nicheId             String?              @map("niche_id")
+  kind                ChannelKind
+  label               String
+  status              ChannelStatus        @default(ACTIVE)
+  capabilities        Json
+  context             Json?
+  createdAt           DateTime             @default(now()) @map("created_at")
+  updatedAt           DateTime             @updatedAt @map("updated_at")
+  workspace           Workspace            @relation(fields: [workspaceId], references: [id], onDelete: Cascade, map: "channels_workspace_id_fkey")
+  connection          ProviderConnection   @relation(fields: [connectionId], references: [id], onDelete: Restrict, map: "channels_connection_id_fkey")
+  niche               Niche?               @relation(fields: [nicheId], references: [id], onDelete: SetNull, map: "channels_niche_id_fkey")
+  contentVariants     ContentVariant[]
+  publicationAttempts PublicationAttempt[]
+
+  @@unique([workspaceId, connectionId, kind], map: "channels_workspace_connection_kind_key")
+  @@index([workspaceId, status], map: "channels_workspace_status_idx")
+  @@map("channels")
+}
+
+model ReelRender {
+  id              String           @id
+  workspaceId     String           @map("workspace_id") @db.Uuid
+  sourceVariantId String           @map("source_variant_id")
+  status          ReelRenderStatus @default(PENDING)
+  assetId         String?          @map("asset_id")
+  reason          String?
+  musicTrackId    String?          @map("music_track_id")
+  voiceMode       ReelVoiceMode    @default(SCRIPT) @map("voice_mode")
+  voiceId         String?          @map("voice_id")
+  durationMs      Int?             @map("duration_ms")
+  // Post-render quality gate report (render-quality.ts); null before the gate existed.
+  qualityReport   Json?            @map("quality_report")
+  attempt         Int              @default(1)
+  createdAt       DateTime         @default(now()) @map("created_at")
+  updatedAt       DateTime         @updatedAt @map("updated_at")
+  workspace       Workspace        @relation(fields: [workspaceId], references: [id], onDelete: Cascade, map: "reel_renders_workspace_id_fkey")
+  sourceVariant   ContentVariant   @relation(fields: [sourceVariantId], references: [id], onDelete: Restrict, map: "reel_renders_source_variant_id_fkey")
+
+  @@unique([workspaceId, sourceVariantId], map: "reel_renders_workspace_source_variant_key")
+  @@map("reel_renders")
+}
+
+model UsageEvent {
+  id            String    @id @default(uuid()) @db.Uuid
+  workspaceId   String    @map("workspace_id") @db.Uuid
+  provider      String
+  unit          String
+  quantity      Int
+  operation     String
+  correlationId String?   @map("correlation_id")
+  createdAt     DateTime  @default(now()) @map("created_at")
+  workspace     Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade, map: "usage_events_workspace_id_fkey")
+
+  @@index([workspaceId, provider, unit, createdAt], map: "usage_events_window_idx")
+  @@map("usage_events")
+}
+
+model Asset {
+  id            String     @id
+  workspaceId   String     @map("workspace_id") @db.Uuid
+  objectKey     String     @map("object_key")
+  checksum      String
+  mimeType      String     @map("mime_type")
+  width         Int
+  height        Int
+  durationMs    Int?       @map("duration_ms")
+  byteSize      Int?       @map("byte_size")
+  provenance    String
+  license       String
+  commercialUse Boolean?   @map("commercial_use")
+  sourceUrl     String?    @map("source_url")
+  creator       String?
+  metadata      Json?
+  state         AssetState @default(PENDING)
+  createdAt     DateTime   @default(now()) @map("created_at")
+  updatedAt     DateTime   @updatedAt @map("updated_at")
+  workspace     Workspace  @relation(fields: [workspaceId], references: [id], onDelete: Cascade, map: "assets_workspace_id_fkey")
+
+  @@index([workspaceId, state], map: "assets_workspace_state_idx")
+  @@map("assets")
+}
+
+model ContentScript {
+  id               String            @id
+  workspaceId      String            @map("workspace_id") @db.Uuid
+  contentItemId    String            @map("content_item_id")
+  version          Int
+  status           String            @default("DRAFT")
+  body             String
+  language         String
+  claims           Json
+  beats            Json
+  episodePlan      Json?             @map("episode_plan")
+  checksum         String
+  actorId          String            @map("actor_id") @db.Uuid
+  approvedBy       String?           @map("approved_by") @db.Uuid
+  approvedAt       DateTime?         @map("approved_at")
+  approvedChecksum String?           @map("approved_checksum")
+  createdAt        DateTime          @default(now()) @map("created_at")
+  videoStoryboards VideoStoryboard[]
+
+  @@unique([workspaceId, contentItemId, version], map: "content_scripts_workspace_item_version_key")
+  @@index([workspaceId, contentItemId, version], map: "content_scripts_workspace_item_idx")
+  @@map("content_scripts")
+}
+
+// Append-only story continuity per series (Stickman v2 slice 31): rows are never updated or deleted.
+model ContinuityFact {
+  workspaceId    String    @map("workspace_id") @db.Uuid
+  seriesId       String    @map("series_id")
+  factId         String    @map("fact_id")
+  episodeId      String    @map("episode_id")
+  kind           String
+  subject        String
+  predicate      String
+  object         String?
+  salience       Int
+  supersedes     String?
+  expiresEpisode Int?      @map("expires_episode")
+  createdAt      DateTime  @default(now()) @map("created_at")
+  workspace      Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade, map: "continuity_facts_workspace_id_fkey")
+
+  @@id([workspaceId, seriesId, factId], map: "continuity_facts_pkey")
+  @@index([workspaceId, seriesId, createdAt], map: "continuity_facts_workspace_series_idx")
+  @@map("continuity_facts")
+}
+
+// Candidate videos of a media channel with scored packaging variants and the approved hook
+// contract (Cost Curious phase 2). Status moves are enforced in core (episode-idea.ts).
+model EpisodeIdea {
+  id                String   @id
+  workspaceId       String   @map("workspace_id") @db.Uuid
+  nicheId           String   @map("niche_id")
+  workingTitle      String   @map("working_title")
+  status            String
+  score             Json
+  packaging         Json?
+  packagingChecks   Json?    @map("packaging_checks")
+  selectedVariantId String?  @map("selected_variant_id")
+  hookContract      Json?    @map("hook_contract")
+  decisionNote      String?  @map("decision_note")
+  contentItemId     String?  @map("content_item_id")
+  createdAt         DateTime @default(now()) @map("created_at")
+  updatedAt         DateTime @default(now()) @map("updated_at")
+  workspace         Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade, map: "episode_ideas_workspace_id_fkey")
+  niche             Niche     @relation(fields: [nicheId], references: [id], onDelete: Restrict, map: "episode_ideas_niche_id_fkey")
+
+  @@index([workspaceId, nicheId, status, createdAt], map: "episode_ideas_workspace_niche_status_idx")
+  @@map("episode_ideas")
+}
+
+model VideoStoryboard {
+  id            String           @id
+  workspaceId   String           @map("workspace_id") @db.Uuid
+  contentItemId String           @map("content_item_id")
+  scriptId      String           @map("script_id")
+  version       Int
+  scenes        Json
+  voiceId       String           @map("voice_id")
+  musicTrackId  String?          @map("music_track_id")
+  canvas        String
+  // Text + CHECK like canvas: slideshow (image scenes), stickman_still or stickman_motion
+  // (SceneSpec scenes), ai_clips (one generated clip per scene).
+  renderer      String           @default("slideshow")
+  // ai_clips generation progress per scene index; scenes stay immutable and checksummed.
+  clipState     Json             @default("{}") @map("clip_state")
+  checksum      String
+  actorId       String           @map("actor_id") @db.Uuid
+  createdAt     DateTime         @default(now()) @map("created_at")
+  workspace     Workspace        @relation(fields: [workspaceId], references: [id], onDelete: Cascade, map: "video_storyboards_workspace_id_fkey")
+  contentItem   ContentItem      @relation(fields: [contentItemId], references: [id], onDelete: Cascade, map: "video_storyboards_content_item_id_fkey")
+  script        ContentScript    @relation(fields: [scriptId], references: [id], onDelete: Restrict, map: "video_storyboards_script_id_fkey")
+  actor         User             @relation(fields: [actorId], references: [id], onDelete: Restrict, map: "video_storyboards_actor_id_fkey")
+  renders       LongFormRender[]
+
+  @@unique([workspaceId, scriptId, version], map: "video_storyboards_workspace_script_version_key")
+  @@index([workspaceId, scriptId, version], map: "video_storyboards_workspace_script_idx")
+  @@map("video_storyboards")
+}
+
+model LongFormRender {
+  id              String           @id
+  workspaceId     String           @map("workspace_id") @db.Uuid
+  storyboardId    String           @map("storyboard_id")
+  attempt         Int              @default(1)
+  status          ReelRenderStatus @default(PENDING)
+  reason          String?
+  assetId         String?          @map("asset_id")
+  durationMs      Int?             @map("duration_ms")
+  wallTimeMs      Int?             @map("wall_time_ms")
+  timingManifest  Json?            @map("timing_manifest")
+  // Post-render quality gate report (render-quality.ts); null before the gate existed.
+  qualityReport   Json?            @map("quality_report")
+  rendererVersion Int              @map("renderer_version")
+  createdAt       DateTime         @default(now()) @map("created_at")
+  updatedAt       DateTime         @updatedAt @map("updated_at")
+  workspace       Workspace        @relation(fields: [workspaceId], references: [id], onDelete: Cascade, map: "long_form_renders_workspace_id_fkey")
+  storyboard      VideoStoryboard  @relation(fields: [storyboardId], references: [id], onDelete: Restrict, map: "long_form_renders_storyboard_id_fkey")
+
+  @@unique([workspaceId, storyboardId, attempt], map: "long_form_renders_workspace_storyboard_attempt_key")
+  @@index([workspaceId, status], map: "long_form_renders_workspace_status_idx")
+  @@map("long_form_renders")
+}
+
+model ContentEditorialReview {
+  id                     String   @id
+  workspaceId            String   @map("workspace_id") @db.Uuid
+  variantId              String   @map("variant_id")
+  publicationFingerprint String   @map("publication_fingerprint")
+  rightsFingerprint      String   @map("rights_fingerprint")
+  reviewPolicyVersion    Int      @map("review_policy_version")
+  checklist              Json
+  verdict                String
+  notes                  String
+  reviewerId             String   @map("reviewer_id") @db.Uuid
+  decidedAt              DateTime @map("decided_at")
+  createdAt              DateTime @default(now()) @map("created_at")
+
+  @@index([workspaceId, variantId, decidedAt], map: "content_editorial_reviews_variant_idx")
+  @@map("content_editorial_reviews")
+}
+
+model ContentItem {
+  id                    String              @id
+  workspaceId           String              @map("workspace_id") @db.Uuid
+  nicheId               String              @map("niche_id")
+  sourceContentItemId   String?             @map("source_content_item_id")
+  offerId               String?             @map("offer_id")
+  offerSnapshotId       String?             @map("offer_snapshot_id")
+  title                 String
+  sourceFactKeys        String[]            @map("source_fact_keys")
+  sourcePictureAssetIds String[]            @default([]) @map("source_picture_asset_ids")
+  creativeSlides        Json?               @map("creative_slides")
+  creativeOpinion       String              @map("creative_opinion")
+  state                 ContentItemState    @default(DRAFT)
+  createdAt             DateTime            @default(now()) @map("created_at")
+  updatedAt             DateTime            @updatedAt @map("updated_at")
+  workspace             Workspace           @relation(fields: [workspaceId], references: [id], onDelete: Cascade, map: "content_items_workspace_id_fkey")
+  niche                 Niche               @relation(fields: [nicheId], references: [id], onDelete: Restrict, map: "content_items_niche_id_fkey")
+  offer                 Offer?              @relation(fields: [offerId], references: [id], onDelete: Restrict, map: "content_items_offer_id_fkey")
+  offerSnapshot         CommercialSnapshot? @relation("ContentItemSnapshot", fields: [offerSnapshotId], references: [id], onDelete: Restrict, map: "content_items_offer_snapshot_id_fkey")
+  variants              ContentVariant[]
+  videoStoryboards      VideoStoryboard[]
+  sourceContentItem     ContentItem?        @relation("ContentLineage", fields: [workspaceId, sourceContentItemId], references: [workspaceId, id], onDelete: Restrict)
+  derivedContentItems   ContentItem[]       @relation("ContentLineage")
+
+  @@unique([workspaceId, id], map: "content_items_workspace_id_id_key")
+  @@index([workspaceId, state], map: "content_items_workspace_state_idx")
+  @@index([workspaceId, sourceContentItemId], map: "content_items_workspace_source_idx")
+  @@map("content_items")
+}
+
+model ContentVariant {
+  id                  String               @id
+  workspaceId         String               @map("workspace_id") @db.Uuid
+  contentItemId       String               @map("content_item_id")
+  channelId           String               @map("channel_id")
+  offerSnapshotId     String?              @map("offer_snapshot_id")
+  assetIds            String[]             @map("asset_ids")
+  caption             String
+  language            String
+  state               ContentVariantState  @default(DRAFT)
+  rejectionReason     String?              @map("rejection_reason")
+  canvaDesignId       String?              @map("canva_design_id")
+  canvaPages          Int[]                @default([]) @map("canva_pages")
+  canvaWidth          Int?                 @map("canva_width")
+  canvaHeight         Int?                 @map("canva_height")
+  creativeFeatures    Json?                @map("creative_features")
+  creativeRender      Json?                @map("creative_render")
+  voiceScript         String[]             @default([]) @map("voice_script")
+  publishSpec         Json?                @map("publish_spec")
+  createdAt           DateTime             @default(now()) @map("created_at")
+  updatedAt           DateTime             @updatedAt @map("updated_at")
+  workspace           Workspace            @relation(fields: [workspaceId], references: [id], onDelete: Cascade, map: "content_variants_workspace_id_fkey")
+  contentItem         ContentItem          @relation(fields: [contentItemId], references: [id], onDelete: Cascade, map: "content_variants_content_item_id_fkey")
+  channel             Channel              @relation(fields: [channelId], references: [id], onDelete: Restrict, map: "content_variants_channel_id_fkey")
+  offerSnapshot       CommercialSnapshot?  @relation("ContentVariantSnapshot", fields: [offerSnapshotId], references: [id], onDelete: Restrict, map: "content_variants_offer_snapshot_id_fkey")
+  approvals           ContentApproval[]
+  publicationAttempts PublicationAttempt[]
+  reelRenders         ReelRender[]
+
+  @@index([workspaceId, state], map: "content_variants_workspace_state_idx")
+  @@map("content_variants")
+}
+
+model ContentApproval {
+  id                     String              @id
+  workspaceId            String              @map("workspace_id") @db.Uuid
+  variantId              String              @map("variant_id")
+  actorId                String              @map("actor_id") @db.Uuid
+  assetChecksums         String[]            @map("asset_checksums")
+  offerSnapshotId        String?             @map("offer_snapshot_id")
+  publicationFingerprint String?             @map("publication_fingerprint")
+  policyVersion          Int                 @map("policy_version")
+  decidedAt              DateTime            @map("decided_at")
+  createdAt              DateTime            @default(now()) @map("created_at")
+  workspace              Workspace           @relation(fields: [workspaceId], references: [id], onDelete: Cascade, map: "content_approvals_workspace_id_fkey")
+  variant                ContentVariant      @relation(fields: [variantId], references: [id], onDelete: Cascade, map: "content_approvals_variant_id_fkey")
+  actor                  User                @relation(fields: [actorId], references: [id], onDelete: Restrict, map: "content_approvals_actor_id_fkey")
+  offerSnapshot          CommercialSnapshot? @relation(fields: [offerSnapshotId], references: [id], onDelete: Restrict, map: "content_approvals_offer_snapshot_id_fkey")
+
+  @@index([workspaceId, variantId, decidedAt], map: "content_approvals_workspace_variant_decided_idx")
+  @@map("content_approvals")
+}
+
+model PublicationPolicy {
+  workspaceId              String                @id @map("workspace_id") @db.Uuid
+  mode                     PublicationPolicyMode @default(MANUAL)
+  version                  Int                   @default(1)
+  maxPublicationsPerPeriod Int?                  @map("max_publications_per_period")
+  maxCostMinorPerItem      Int?                  @map("max_cost_minor_per_item")
+  maxCostMinorPerPeriod    Int?                  @map("max_cost_minor_per_period")
+  periodHours              Int?                  @map("period_hours")
+  allowLists               Json?                 @map("allow_lists")
+  createdAt                DateTime              @default(now()) @map("created_at")
+  updatedAt                DateTime              @updatedAt @map("updated_at")
+  workspace                Workspace             @relation(fields: [workspaceId], references: [id], onDelete: Cascade, map: "publication_policies_workspace_id_fkey")
+
+  @@map("publication_policies")
+}
+
+model PublicationAttempt {
+  id                 String             @id
+  workspaceId        String             @map("workspace_id") @db.Uuid
+  contentVariantId   String             @map("content_variant_id")
+  channelId          String             @map("channel_id")
+  connectionId       String             @map("connection_id") @db.Uuid
+  idempotencyKey     String             @map("idempotency_key")
+  requestFingerprint String             @map("request_fingerprint")
+  status             PublicationStatus  @default(QUEUED)
+  externalId         String?            @map("external_id")
+  attemptCount       Int                @default(0) @map("attempt_count")
+  correlationId      String             @map("correlation_id")
+  terminalReason     String?            @map("terminal_reason")
+  scheduledAt        DateTime?          @map("scheduled_at")
+  // Set when the provider confirms the post; "newest post" orders by it.
+  publishedAt        DateTime?          @map("published_at")
+  createdAt          DateTime           @default(now()) @map("created_at")
+  updatedAt          DateTime           @updatedAt @map("updated_at")
+  workspace          Workspace          @relation(fields: [workspaceId], references: [id], onDelete: Cascade, map: "publication_attempts_workspace_id_fkey")
+  contentVariant     ContentVariant     @relation(fields: [contentVariantId], references: [id], onDelete: Restrict, map: "publication_attempts_content_variant_id_fkey")
+  channel            Channel            @relation(fields: [channelId], references: [id], onDelete: Restrict, map: "publication_attempts_channel_id_fkey")
+  connection         ProviderConnection @relation(fields: [connectionId], references: [id], onDelete: Restrict, map: "publication_attempts_connection_id_fkey")
+
+  @@unique([workspaceId, idempotencyKey], map: "publication_attempts_workspace_id_idempotency_key")
+  @@index([workspaceId, status], map: "publication_attempts_workspace_status_idx")
+  @@map("publication_attempts")
+}
+
+model WebhookInbox {
+  id                 String             @id @default(uuid()) @db.Uuid
+  deliveryKey        String             @unique(map: "webhook_inboxes_delivery_key_key") @map("delivery_key")
+  workspaceId        String             @map("workspace_id") @db.Uuid
+  connectionId       String             @map("connection_id") @db.Uuid
+  eventType          String             @map("event_type")
+  providerResourceId String             @map("provider_resource_id")
+  createdAt          DateTime           @default(now()) @map("created_at")
+  workspace          Workspace          @relation(fields: [workspaceId], references: [id], onDelete: Cascade, map: "webhook_inboxes_workspace_id_fkey")
+  connection         ProviderConnection @relation(fields: [connectionId], references: [id], onDelete: Cascade, map: "webhook_inboxes_connection_id_fkey")
+
+  @@index([workspaceId, connectionId, createdAt], map: "webhook_inboxes_workspace_connection_created_at_idx")
+  @@map("webhook_inboxes")
+}
+
+model Job {
+  id             String    @id @default(uuid()) @db.Uuid
+  workspaceId    String    @map("workspace_id") @db.Uuid
+  name           String
+  payload        Json
+  idempotencyKey String    @map("idempotency_key")
+  status         JobStatus @default(PENDING)
+  attemptCount   Int       @default(0) @map("attempt_count")
+  maxAttempts    Int       @map("max_attempts")
+  availableAt    DateTime  @default(now()) @map("available_at")
+  leaseToken     String?   @map("lease_token")
+  leaseExpiresAt DateTime? @map("lease_expires_at")
+  terminalReason String?   @map("terminal_reason")
+  createdAt      DateTime  @default(now()) @map("created_at")
+  updatedAt      DateTime  @updatedAt @map("updated_at")
+  workspace      Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade, map: "jobs_workspace_id_fkey")
+
+  @@unique([workspaceId, idempotencyKey], map: "jobs_workspace_id_idempotency_key")
+  @@index([status, availableAt, createdAt], map: "jobs_claim_idx")
+  @@map("jobs")
+}
+
+model Membership {
+  workspaceId String           @map("workspace_id") @db.Uuid
+  userId      String           @map("user_id") @db.Uuid
+  role        MembershipRole
+  status      MembershipStatus @default(ACTIVE)
+  createdAt   DateTime         @default(now()) @map("created_at")
+  updatedAt   DateTime         @updatedAt @map("updated_at")
+  workspace   Workspace        @relation(fields: [workspaceId], references: [id], onDelete: Cascade, map: "memberships_workspace_id_fkey")
+  user        User             @relation(fields: [userId], references: [id], onDelete: Cascade, map: "memberships_user_id_fkey")
+
+  @@id([workspaceId, userId], map: "memberships_pkey")
+  @@index([userId, status], map: "memberships_user_id_status_idx")
+  @@map("memberships")
+}
+
+model Invitation {
+  id           String           @id @default(uuid()) @db.Uuid
+  workspaceId  String           @map("workspace_id") @db.Uuid
+  email        String
+  role         MembershipRole
+  tokenHash    String           @unique(map: "invitations_token_hash_key") @map("token_hash")
+  status       InvitationStatus @default(PENDING)
+  expiresAt    DateTime         @map("expires_at")
+  createdById  String           @map("created_by_id") @db.Uuid
+  acceptedById String?          @map("accepted_by_id") @db.Uuid
+  acceptedAt   DateTime?        @map("accepted_at")
+  createdAt    DateTime         @default(now()) @map("created_at")
+  updatedAt    DateTime         @updatedAt @map("updated_at")
+  workspace    Workspace        @relation(fields: [workspaceId], references: [id], onDelete: Cascade, map: "invitations_workspace_id_fkey")
+  createdBy    User             @relation("InvitationCreator", fields: [createdById], references: [id], onDelete: Restrict, map: "invitations_created_by_id_fkey")
+  acceptedBy   User?            @relation("InvitationAcceptor", fields: [acceptedById], references: [id], onDelete: SetNull, map: "invitations_accepted_by_id_fkey")
+
+  @@index([workspaceId, email, status], map: "invitations_workspace_email_status_idx")
+  @@map("invitations")
+}
+
+model AuditEvent {
+  id          String    @id @default(uuid()) @db.Uuid
+  workspaceId String    @map("workspace_id") @db.Uuid
+  actorUserId String?   @map("actor_user_id") @db.Uuid
+  action      String
+  targetType  String    @map("target_type")
+  targetId    String?   @map("target_id")
+  metadata    Json?
+  createdAt   DateTime  @default(now()) @map("created_at")
+  workspace   Workspace @relation(fields: [workspaceId], references: [id], onDelete: Restrict, map: "audit_events_workspace_id_fkey")
+  actorUser   User?     @relation(fields: [actorUserId], references: [id], onDelete: SetNull, map: "audit_events_actor_user_id_fkey")
+
+  @@index([workspaceId, createdAt], map: "audit_events_workspace_created_at_idx")
+  @@map("audit_events")
+}
+
+// One tracked, attributable redirect to an offer's affiliate URL, usually one per content variant.
+model TrackedLink {
+  slug                   String    @id
+  workspaceId            String    @map("workspace_id") @db.Uuid
+  contentVariantId       String?   @map("content_variant_id")
+  publicationAttemptId   String?   @map("publication_attempt_id")
+  offerId                String?   @map("offer_id")
+  marketplaceLabel       String?   @map("marketplace_label")
+  destination            String
+  destinationFingerprint String    @map("destination_fingerprint")
+  fallbackUrl            String?   @map("fallback_url")
+  expiresAt              DateTime  @map("expires_at")
+  createdAt              DateTime  @default(now()) @map("created_at")
+  workspace              Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade, map: "tracked_links_workspace_id_fkey")
+
+  @@index([workspaceId, contentVariantId], map: "tracked_links_workspace_variant_idx")
+  @@unique([workspaceId, publicationAttemptId], map: "tracked_links_workspace_publication_key")
+  @@map("tracked_links")
+}
+
+// Append-only click; visitorHash rotates daily so it counts unique visitors without tracking them.
+model ClickEvent {
+  id               String    @id @default(uuid()) @db.Uuid
+  workspaceId      String    @map("workspace_id") @db.Uuid
+  slug             String?
+  contentVariantId String?   @map("content_variant_id")
+  publicationAttemptId String? @map("publication_attempt_id")
+  via              String
+  expired          Boolean   @default(false)
+  visitorHash      String    @map("visitor_hash")
+  referrerHost     String?   @map("referrer_host")
+  occurredAt       DateTime  @default(now()) @map("occurred_at")
+  workspace        Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade, map: "click_events_workspace_id_fkey")
+
+  @@index([workspaceId, occurredAt], map: "click_events_workspace_occurred_idx")
+  @@index([workspaceId, contentVariantId], map: "click_events_workspace_variant_idx")
+  @@index([workspaceId, publicationAttemptId], map: "click_events_workspace_publication_idx")
+  @@map("click_events")
+}
+
+// Append-only metrics reading of one published post (lifetime counts at observedAt).
+model ContentPerformance {
+  id                         String    @id @default(uuid()) @db.Uuid
+  workspaceId                String    @map("workspace_id") @db.Uuid
+  contentVariantId           String    @map("content_variant_id")
+  publicationAttemptId       String    @map("publication_attempt_id")
+  observedAt                 DateTime  @map("observed_at")
+  views                      Int?
+  reach                      Int?
+  likes                      Int?
+  comments                   Int?
+  shares                     Int?
+  saves                      Int?
+  profileVisits              Int?      @map("profile_visits")
+  estimatedMinutesWatched    Int?      @map("estimated_minutes_watched")
+  averageViewDurationSeconds Int?      @map("average_view_duration_seconds")
+  averageViewPercentage      Decimal?  @map("average_view_percentage") @db.Decimal(6, 2)
+  subscribersGained          Int?      @map("subscribers_gained")
+  subscribersLost            Int?      @map("subscribers_lost")
+  engagedViews               Int?      @map("engaged_views")
+  platformUrl                String?   @map("platform_url")
+  workspace                  Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade, map: "content_performance_workspace_id_fkey")
+
+  @@index([workspaceId, contentVariantId, observedAt], map: "content_performance_workspace_variant_observed_idx")
+  @@index([publicationAttemptId], map: "content_performance_attempt_idx")
+  @@map("content_performance")
+}
+
+/// Home machine credentials for the task API (ADR 0012): only a SHA-256 hash is stored; the
+/// plain token is shown once. Scoped to one workspace and a list of capabilities; revocable.
+model HomeWorkerToken {
+  id           String    @id @default(uuid()) @db.Uuid
+  workspaceId  String    @map("workspace_id") @db.Uuid
+  name         String
+  tokenHash    String    @unique(map: "home_worker_tokens_token_hash_key") @map("token_hash")
+  prefix       String
+  capabilities String[]
+  createdById  String    @map("created_by_id") @db.Uuid
+  createdAt    DateTime  @default(now()) @map("created_at")
+  lastUsedAt   DateTime? @map("last_used_at")
+  revokedAt    DateTime? @map("revoked_at")
+  heartbeat    Json?
+  heartbeatAt  DateTime? @map("heartbeat_at")
+  workspace    Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade, map: "home_worker_tokens_workspace_id_fkey")
+
+  @@index([workspaceId], map: "home_worker_tokens_workspace_id_idx")
+  @@map("home_worker_tokens")
+}

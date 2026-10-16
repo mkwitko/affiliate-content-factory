@@ -1,0 +1,71 @@
+{
+  "workspaceId": "7fb9427e-8d67-49aa-80f6-ec915bea7206",
+  "generatedAt": "2026-10-02T01:48:51.083Z",
+  "requestedLimit": 20,
+  "candidateCount": 10,
+  "exportedCount": 10,
+  "exported": [
+    {
+      "scriptId": "9fd27bb6-1b83-469f-83bb-c12ffd4a1e04",
+      "contentItemId": "59fd37d0-c2ce-4b88-8fa3-f8655ddae068",
+      "version": 1,
+      "nicheId": "704a89ff-218e-4eaa-8d8e-df05960d4dbc"
+    },
+    {
+      "scriptId": "dd38bfe1-29dd-429d-80d7-d37b53cdc254",
+      "contentItemId": "92e1da63-5ac1-4bd1-8053-fa2ea473922a",
+      "version": 1,
+      "nicheId": "704a89ff-218e-4eaa-8d8e-df05960d4dbc"
+    },
+    {
+      "scriptId": "88ae8cd5-2548-48f4-8e21-9d316bd930a7",
+      "contentItemId": "c15708ce-addd-461a-873d-f66eb8e0894b",
+      "version": 1,
+      "nicheId": "704a89ff-218e-4eaa-8d8e-df05960d4dbc"
+    },
+    {
+      "scriptId": "fbc361b8-7862-433e-8831-aac1ed1cbbd6",
+      "contentItemId": "a21c652c-478f-41f5-88c3-9552f35c2acd",
+      "version": 1,
+      "nicheId": "704a89ff-218e-4eaa-8d8e-df05960d4dbc"
+    },
+    {
+      "scriptId": "a8ba06d0-8c3d-4e43-8b45-168d29a1c4c4",
+      "contentItemId": "d946665b-dba9-42b0-859d-38ecc1277cf9",
+      "version": 1,
+      "nicheId": "704a89ff-218e-4eaa-8d8e-df05960d4dbc"
+    },
+    {
+      "scriptId": "6e10b968-9b98-492d-8fca-f18ba0805f38",
+      "contentItemId": "61f9dbe9-9c00-4e3d-8339-6a74764b9073",
+      "version": 1,
+      "nicheId": "704a89ff-218e-4eaa-8d8e-df05960d4dbc"
+    },
+    {
+      "scriptId": "a410febb-4d44-45ca-8334-17a6887a9359",
+      "contentItemId": "ef789199-4c2b-4834-8a42-95a7936b29a3",
+      "version": 1,
+      "nicheId": "704a89ff-218e-4eaa-8d8e-df05960d4dbc"
+    },
+    {
+      "scriptId": "6fb29f76-01dc-4808-88ec-21ba9b5e6d7e",
+      "contentItemId": "b8752b6e-e99b-4d79-8200-8c3211b5d5ff",
+      "version": 1,
+      "nicheId": "704a89ff-218e-4eaa-8d8e-df05960d4dbc"
+    },
+    {
+      "scriptId": "e204107b-0b4e-488a-8fe7-3e1d2fb6d169",
+      "contentItemId": "3f65c1a9-7d0d-488e-8ca2-ae1e97ab9fbf",
+      "version": 1,
+      "nicheId": "704a89ff-218e-4eaa-8d8e-df05960d4dbc"
+    },
+    {
+      "scriptId": "bbe9fa7d-edc6-404c-8723-1cd53e4e1d73",
+      "contentItemId": "e0dd43df-7f35-497b-82e3-146a2a03c251",
+      "version": 1,
+      "nicheId": "704a89ff-218e-4eaa-8d8e-df05960d4dbc"
+    }
+  ],
+  "skipped": [],
+  "selection": "latest approved version per content item; niches taken round-robin in niche id order, each niche newest approval first (ties by script id); no other classification is inferred"
+}

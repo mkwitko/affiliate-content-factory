@@ -1,0 +1,1173 @@
+{
+  "split": "holdout",
+  "characters": [],
+  "fixtures": [
+    {
+      "id": "9fd27bb6-1b83-469f-83bb-c12ffd4a1e04",
+      "case": "approved",
+      "source": "production:9fd27bb6-1b83-469f-83bb-c12ffd4a1e04",
+      "language": "pt-BR",
+      "body": "Mesmo celular, mesma tomada, e um carregador enche a bateria muito mais rápido que o outro. A diferença está numa conversa que você não vê. Potência é tensão vezes corrente. Para mandar mais energia, o carregador precisa subir a tensão, a corrente, ou as duas. Mas ele não pode empurrar isso no escuro: carregador, cabo e celular combinam antes quanto cada um aguenta. Um dos acordos mais usados se chama USB Power Delivery. Segundo o USB-IF, que cuida do padrão, antes da versão de dois mil e vinte e um o limite era cem watts, com vinte volts e cabos de cinco amperes. A versão três ponto um subiu para até duzentos e quarenta watts. Então o carregador rápido só é rápido se os três concordarem. O elo mais fraco define a velocidade.",
+      "claims": [
+        {
+          "text": "O USB PD Revision 3.1 (2021) permite até 240 W por cabo e conector USB Type-C completos.",
+          "kind": "verified_fact",
+          "evidence": [
+            {
+              "kind": "research_observation",
+              "observationId": "143edde5-305b-4e59-87fd-b120061f350d"
+            }
+          ]
+        },
+        {
+          "text": "Antes do USB PD 3.1, o limite era 100 W, usando 20 V com cabos de 5 A.",
+          "kind": "verified_fact",
+          "evidence": [
+            {
+              "kind": "research_observation",
+              "observationId": "143edde5-305b-4e59-87fd-b120061f350d"
+            }
+          ]
+        },
+        {
+          "text": "Potência é tensão vezes corrente.",
+          "kind": "reasonable_simplification",
+          "note": "P = V × I; perdas, eficiência e limites térmicos ficam de fora.",
+          "evidence": []
+        },
+        {
+          "text": "Carregador, cabo e celular combinam antes quanto cada um aguenta.",
+          "kind": "reasonable_simplification",
+          "note": "A negociação PD ocorre entre fonte e aparelho; cabos de 5 A informam sua capacidade por um chip e-marker.",
+          "evidence": []
+        },
+        {
+          "text": "O elo mais fraco define a velocidade de carga.",
+          "kind": "reasonable_simplification",
+          "note": "A bateria e a temperatura também limitam a potência aceita pelo celular.",
+          "evidence": []
+        }
+      ],
+      "beats": [
+        {
+          "kind": "hook",
+          "label": "hidden_reason",
+          "atChar": 0
+        },
+        {
+          "kind": "payoff",
+          "atChar": 636
+        }
+      ],
+      "cast": ["alex", "bia"],
+      "expected": {
+        "validator": "pass"
+      },
+      "characters": [
+        {
+          "key": "alex",
+          "name": "Alex",
+          "role": "main",
+          "rigId": "stick-v1",
+          "rigVersion": 1,
+          "palette": {
+            "line": "#161616",
+            "fill": "#FFFFFF",
+            "accent": "#FF5A36"
+          },
+          "accessory": "cap",
+          "wardrobe": {
+            "hair": {
+              "style": "short",
+              "colour": "#2B1D14"
+            },
+            "top": {
+              "style": "hoodie",
+              "colour": "#FF5A36"
+            },
+            "bottoms": {
+              "style": "pants",
+              "colour": "#2F3B52"
+            }
+          },
+          "voiceId": "pm_alex"
+        },
+        {
+          "key": "bia",
+          "name": "Bia",
+          "role": "secondary",
+          "rigId": "stick-v1",
+          "rigVersion": 1,
+          "palette": {
+            "line": "#161616",
+            "fill": "#FFFFFF",
+            "accent": "#2E86DE"
+          },
+          "accessory": "glasses",
+          "wardrobe": {
+            "hair": {
+              "style": "bun",
+              "colour": "#1A1A1A"
+            },
+            "top": {
+              "style": "shirt",
+              "colour": "#2E86DE"
+            },
+            "bottoms": {
+              "style": "skirt",
+              "colour": "#3D3D3D"
+            }
+          },
+          "voiceId": "pf_dora"
+        }
+      ]
+    },
+    {
+      "id": "dd38bfe1-29dd-429d-80d7-d37b53cdc254",
+      "case": "approved",
+      "source": "production:dd38bfe1-29dd-429d-80d7-d37b53cdc254",
+      "language": "pt-BR",
+      "body": "Você apagou a foto, esvaziou a lixeira, e ela ainda pode estar lá. Num disco tradicional, apagar quase nunca significa destruir. O sistema risca o endereço do arquivo no índice e marca aquele espaço como livre. Os dados continuam no lugar até algo novo ser gravado em cima. É como arrancar a linha do sumário de um livro, mas deixar o capítulo inteiro. Por isso programas de recuperação às vezes trazem arquivos de volta. Nos SSDs a história muda: segundo a Microsoft, o sistema envia um aviso chamado TRIM, que informa ao disco quais blocos foram liberados pela exclusão, e o disco pode limpar esses blocos depois. Então, se for vender o computador, lixeira vazia não basta: use a opção de apagar tudo e restaurar com limpeza do disco.",
+      "claims": [
+        {
+          "text": "A notificação de exclusão (TRIM/unmap) avisa o dispositivo de armazenamento sobre os clusters liberados por uma exclusão.",
+          "kind": "verified_fact",
+          "evidence": [
+            {
+              "kind": "research_observation",
+              "observationId": "d9d254d3-3347-41b2-88d4-f4621d94efb6"
+            }
+          ]
+        },
+        {
+          "text": "Num disco tradicional, apagar risca o endereço no índice e os dados ficam até serem sobrescritos.",
+          "kind": "reasonable_simplification",
+          "note": "Detalhes variam por sistema de arquivos; a recuperação não é garantida.",
+          "evidence": []
+        },
+        {
+          "text": "Depois do TRIM, o SSD pode limpar os blocos liberados.",
+          "kind": "reasonable_simplification",
+          "note": "Quando e como o SSD limpa depende do firmware.",
+          "evidence": []
+        },
+        {
+          "text": "Para vender o computador, use apagar tudo com limpeza do disco.",
+          "kind": "reasonable_simplification",
+          "note": "Para descarte seguro, siga a orientação de sanitização do fabricante (por exemplo NIST SP 800-88).",
+          "evidence": []
+        },
+        {
+          "text": "Apagar como arrancar a linha do sumário e deixar o capítulo.",
+          "kind": "analogy",
+          "evidence": []
+        }
+      ],
+      "beats": [
+        {
+          "kind": "hook",
+          "label": "secret_system",
+          "atChar": 0
+        },
+        {
+          "kind": "payoff",
+          "atChar": 616
+        }
+      ],
+      "cast": ["alex", "bia"],
+      "expected": {
+        "validator": "pass"
+      },
+      "characters": [
+        {
+          "key": "alex",
+          "name": "Alex",
+          "role": "main",
+          "rigId": "stick-v1",
+          "rigVersion": 1,
+          "palette": {
+            "line": "#161616",
+            "fill": "#FFFFFF",
+            "accent": "#FF5A36"
+          },
+          "accessory": "cap",
+          "wardrobe": {
+            "hair": {
+              "style": "short",
+              "colour": "#2B1D14"
+            },
+            "top": {
+              "style": "hoodie",
+              "colour": "#FF5A36"
+            },
+            "bottoms": {
+              "style": "pants",
+              "colour": "#2F3B52"
+            }
+          },
+          "voiceId": "pm_alex"
+        },
+        {
+          "key": "bia",
+          "name": "Bia",
+          "role": "secondary",
+          "rigId": "stick-v1",
+          "rigVersion": 1,
+          "palette": {
+            "line": "#161616",
+            "fill": "#FFFFFF",
+            "accent": "#2E86DE"
+          },
+          "accessory": "glasses",
+          "wardrobe": {
+            "hair": {
+              "style": "bun",
+              "colour": "#1A1A1A"
+            },
+            "top": {
+              "style": "shirt",
+              "colour": "#2E86DE"
+            },
+            "bottoms": {
+              "style": "skirt",
+              "colour": "#3D3D3D"
+            }
+          },
+          "voiceId": "pf_dora"
+        }
+      ]
+    },
+    {
+      "id": "88ae8cd5-2548-48f4-8e21-9d316bd930a7",
+      "case": "approved",
+      "source": "production:88ae8cd5-2548-48f4-8e21-9d316bd930a7",
+      "language": "pt-BR",
+      "body": "A borda da lasanha queima a língua e o meio continua gelado. O micro-ondas não esquentou a comida inteira de uma vez. Lá dentro, uma peça chamada magnetron gera micro-ondas que batem nas paredes de metal e são absorvidas pelo alimento. Segundo a FDA, elas fazem as moléculas de água vibrarem, e essa vibração vira calor. Por isso comida com mais água esquenta mais rápido. Só que a energia não chega igual em todo lugar: as bordas recebem por mais lados, e o meio de um bloco grosso fica para depois. E se tiver metal no prato, as ondas refletem e o cozimento fica desigual. A regra prática: espalha a comida em anel, com o meio vazio, mexe na metade do tempo e espera um pouco antes de comer.",
+      "claims": [
+        {
+          "text": "O magnetron gera micro-ondas que refletem no interior metálico e fazem as moléculas de água vibrarem, gerando calor.",
+          "kind": "verified_fact",
+          "evidence": [
+            {
+              "kind": "research_observation",
+              "observationId": "07062f51-8e4e-4de2-8e56-92dcbcc06a01"
+            }
+          ]
+        },
+        {
+          "text": "Alimentos com muita água cozinham mais rápido no micro-ondas.",
+          "kind": "verified_fact",
+          "evidence": [
+            {
+              "kind": "research_observation",
+              "observationId": "07062f51-8e4e-4de2-8e56-92dcbcc06a01"
+            }
+          ]
+        },
+        {
+          "text": "Metal reflete as micro-ondas e pode fazer o alimento cozinhar de forma desigual.",
+          "kind": "verified_fact",
+          "evidence": [
+            {
+              "kind": "research_observation",
+              "observationId": "07062f51-8e4e-4de2-8e56-92dcbcc06a01"
+            }
+          ]
+        },
+        {
+          "text": "As bordas recebem energia por mais lados e o meio de um bloco grosso esquenta depois.",
+          "kind": "reasonable_simplification",
+          "note": "O padrão real depende do formato, da quantidade de água e das ondas estacionárias do forno.",
+          "evidence": []
+        },
+        {
+          "text": "Espalhar em anel, mexer na metade e esperar um pouco deixa o calor mais uniforme.",
+          "kind": "reasonable_simplification",
+          "note": "Recomendação prática comum de segurança alimentar; não consta da fonte FDA persistida.",
+          "evidence": []
+        }
+      ],
+      "beats": [
+        {
+          "kind": "hook",
+          "label": "curiosity_gap",
+          "atChar": 0
+        },
+        {
+          "kind": "payoff",
+          "atChar": 575
+        }
+      ],
+      "cast": ["alex", "bia"],
+      "expected": {
+        "validator": "pass"
+      },
+      "characters": [
+        {
+          "key": "alex",
+          "name": "Alex",
+          "role": "main",
+          "rigId": "stick-v1",
+          "rigVersion": 1,
+          "palette": {
+            "line": "#161616",
+            "fill": "#FFFFFF",
+            "accent": "#FF5A36"
+          },
+          "accessory": "cap",
+          "wardrobe": {
+            "hair": {
+              "style": "short",
+              "colour": "#2B1D14"
+            },
+            "top": {
+              "style": "hoodie",
+              "colour": "#FF5A36"
+            },
+            "bottoms": {
+              "style": "pants",
+              "colour": "#2F3B52"
+            }
+          },
+          "voiceId": "pm_alex"
+        },
+        {
+          "key": "bia",
+          "name": "Bia",
+          "role": "secondary",
+          "rigId": "stick-v1",
+          "rigVersion": 1,
+          "palette": {
+            "line": "#161616",
+            "fill": "#FFFFFF",
+            "accent": "#2E86DE"
+          },
+          "accessory": "glasses",
+          "wardrobe": {
+            "hair": {
+              "style": "bun",
+              "colour": "#1A1A1A"
+            },
+            "top": {
+              "style": "shirt",
+              "colour": "#2E86DE"
+            },
+            "bottoms": {
+              "style": "skirt",
+              "colour": "#3D3D3D"
+            }
+          },
+          "voiceId": "pf_dora"
+        }
+      ]
+    },
+    {
+      "id": "fbc361b8-7862-433e-8831-aac1ed1cbbd6",
+      "case": "approved",
+      "source": "production:fbc361b8-7862-433e-8831-aac1ed1cbbd6",
+      "language": "pt-BR",
+      "body": "No trânsito parado, a faixa ao lado sempre parece mais rápida. Muitas vezes ela não é. Em mil novecentos e noventa e nove, dois pesquisadores publicaram na revista Nature uma explicação: motoristas superestimam a velocidade da faixa vizinha mesmo quando as duas andam, na média, igual. O truque está no tempo. Quando um carro te ultrapassa devagar, a cena dura. Quando você ultrapassa alguém, a cena acaba logo e você nem guarda. Você passa mais tempo sendo ultrapassado do que ultrapassando, e é isso que fica na memória. Resultado: trocar de faixa por impulso é arriscar uma manobra para ganhar quase nada. E na fila do mercado vale a mesma desconfiança.",
+      "claims": [
+        {
+          "text": "Redelmeier e Tibshirani (Nature, 1999): motoristas superestimam a velocidade da faixa ao lado mesmo com a mesma velocidade média.",
+          "kind": "verified_fact",
+          "evidence": [
+            {
+              "kind": "research_observation",
+              "observationId": "261799aa-1ed5-4fed-8219-7acfb380ffef"
+            }
+          ]
+        },
+        {
+          "text": "Em geral se passa mais tempo sendo ultrapassado do que ultrapassando.",
+          "kind": "verified_fact",
+          "evidence": [
+            {
+              "kind": "research_observation",
+              "observationId": "261799aa-1ed5-4fed-8219-7acfb380ffef"
+            }
+          ]
+        },
+        {
+          "text": "Trocar de faixa por impulso arrisca uma manobra para ganhar quase nada.",
+          "kind": "reasonable_simplification",
+          "note": "O estudo modela faixas com a mesma velocidade média; no trânsito real uma faixa pode, sim, estar mais rápida.",
+          "evidence": []
+        },
+        {
+          "text": "A fila do mercado como caso parecido com a faixa ao lado.",
+          "kind": "analogy",
+          "evidence": []
+        }
+      ],
+      "beats": [
+        {
+          "kind": "hook",
+          "label": "contrarian",
+          "atChar": 0
+        },
+        {
+          "kind": "payoff",
+          "atChar": 430
+        }
+      ],
+      "cast": ["alex", "bia"],
+      "expected": {
+        "validator": "pass"
+      },
+      "characters": [
+        {
+          "key": "alex",
+          "name": "Alex",
+          "role": "main",
+          "rigId": "stick-v1",
+          "rigVersion": 1,
+          "palette": {
+            "line": "#161616",
+            "fill": "#FFFFFF",
+            "accent": "#FF5A36"
+          },
+          "accessory": "cap",
+          "wardrobe": {
+            "hair": {
+              "style": "short",
+              "colour": "#2B1D14"
+            },
+            "top": {
+              "style": "hoodie",
+              "colour": "#FF5A36"
+            },
+            "bottoms": {
+              "style": "pants",
+              "colour": "#2F3B52"
+            }
+          },
+          "voiceId": "pm_alex"
+        },
+        {
+          "key": "bia",
+          "name": "Bia",
+          "role": "secondary",
+          "rigId": "stick-v1",
+          "rigVersion": 1,
+          "palette": {
+            "line": "#161616",
+            "fill": "#FFFFFF",
+            "accent": "#2E86DE"
+          },
+          "accessory": "glasses",
+          "wardrobe": {
+            "hair": {
+              "style": "bun",
+              "colour": "#1A1A1A"
+            },
+            "top": {
+              "style": "shirt",
+              "colour": "#2E86DE"
+            },
+            "bottoms": {
+              "style": "skirt",
+              "colour": "#3D3D3D"
+            }
+          },
+          "voiceId": "pf_dora"
+        }
+      ]
+    },
+    {
+      "id": "a8ba06d0-8c3d-4e43-8b45-168d29a1c4c4",
+      "case": "approved",
+      "source": "production:a8ba06d0-8c3d-4e43-8b45-168d29a1c4c4",
+      "language": "pt-BR",
+      "body": "Por que tanta coisa custa dezenove e noventa e nove em vez de vinte? Um centavo não muda sua vida, mas pode mudar sua leitura. A gente lê o preço da esquerda para a direita, e o primeiro número pesa mais: dezenove parece da faixa do dez, vinte parece da faixa do vinte. E isso não fica só na teoria. Em dois mil e três, os pesquisadores Anderson e Simester mexeram no final dos preços em três experimentos reais, com clientes de verdade. Nos três, terminar o preço em nove aumentou a procura. E o efeito foi maior em produtos novos, que o cliente ainda não conhecia. Então o nove funciona melhor justamente quando você não sabe quanto aquilo deveria custar. Na dúvida, arredonda para cima antes de decidir.",
+      "claims": [
+        {
+          "text": "Em três experimentos de campo de 2003, terminar o preço em 9 aumentou a demanda.",
+          "kind": "verified_fact",
+          "evidence": [
+            {
+              "kind": "research_observation",
+              "observationId": "23c50fe1-2dbe-4e6c-8a9d-e8027bd76003"
+            }
+          ]
+        },
+        {
+          "text": "O aumento foi maior para itens novos do que para itens já vendidos em anos anteriores.",
+          "kind": "verified_fact",
+          "evidence": [
+            {
+              "kind": "research_observation",
+              "observationId": "23c50fe1-2dbe-4e6c-8a9d-e8027bd76003"
+            }
+          ]
+        },
+        {
+          "text": "Lemos o preço da esquerda para a direita e o primeiro dígito pesa mais.",
+          "kind": "reasonable_simplification",
+          "note": "O efeito do dígito da esquerda é uma das explicações propostas; o estudo de 2003 mede o efeito do 9, não o mecanismo.",
+          "evidence": []
+        },
+        {
+          "text": "O 9 funciona melhor quando o cliente não sabe o preço de referência.",
+          "kind": "reasonable_simplification",
+          "note": "Interpretação dos autores para o efeito maior em itens novos (informação limitada); não foi medida diretamente.",
+          "evidence": []
+        },
+        {
+          "text": "Preço de R$ 19,99 contra R$ 20 como exemplo.",
+          "kind": "fictional_example",
+          "evidence": []
+        }
+      ],
+      "beats": [
+        {
+          "kind": "hook",
+          "label": "money_question",
+          "atChar": 0
+        },
+        {
+          "kind": "payoff",
+          "atChar": 567
+        }
+      ],
+      "cast": ["alex", "bia"],
+      "expected": {
+        "validator": "pass"
+      },
+      "characters": [
+        {
+          "key": "alex",
+          "name": "Alex",
+          "role": "main",
+          "rigId": "stick-v1",
+          "rigVersion": 1,
+          "palette": {
+            "line": "#161616",
+            "fill": "#FFFFFF",
+            "accent": "#FF5A36"
+          },
+          "accessory": "cap",
+          "wardrobe": {
+            "hair": {
+              "style": "short",
+              "colour": "#2B1D14"
+            },
+            "top": {
+              "style": "hoodie",
+              "colour": "#FF5A36"
+            },
+            "bottoms": {
+              "style": "pants",
+              "colour": "#2F3B52"
+            }
+          },
+          "voiceId": "pm_alex"
+        },
+        {
+          "key": "bia",
+          "name": "Bia",
+          "role": "secondary",
+          "rigId": "stick-v1",
+          "rigVersion": 1,
+          "palette": {
+            "line": "#161616",
+            "fill": "#FFFFFF",
+            "accent": "#2E86DE"
+          },
+          "accessory": "glasses",
+          "wardrobe": {
+            "hair": {
+              "style": "bun",
+              "colour": "#1A1A1A"
+            },
+            "top": {
+              "style": "shirt",
+              "colour": "#2E86DE"
+            },
+            "bottoms": {
+              "style": "skirt",
+              "colour": "#3D3D3D"
+            }
+          },
+          "voiceId": "pf_dora"
+        }
+      ]
+    },
+    {
+      "id": "6e10b968-9b98-492d-8fca-f18ba0805f38",
+      "case": "approved",
+      "source": "production:6e10b968-9b98-492d-8fca-f18ba0805f38",
+      "language": "pt-BR",
+      "body": "Não mexer no celular parece suficiente para focar. Um estudo diz que não. Num experimento publicado em dois mil e quinze, pesquisadores deram às pessoas uma tarefa que exigia atenção e mandaram notificações para o celular delas no meio do teste. Ninguém pegou o aparelho. Mesmo assim, o desempenho caiu de forma significativa. E o tamanho da distração foi parecido com o de quem estava de fato ligando ou trocando mensagem. A explicação mais provável: o aviso não rouba só um segundo. Ele puxa o pensamento para fora da tarefa, e voltar custa. Então a notificação já é a interrupção, mesmo sem você responder. Se o foco importa, o melhor é a notificação nem chegar até você.",
+      "claims": [
+        {
+          "text": "Em 2015, só receber notificações prejudicou significativamente uma tarefa de atenção, mesmo sem a pessoa mexer no celular.",
+          "kind": "verified_fact",
+          "evidence": [
+            {
+              "kind": "research_observation",
+              "observationId": "ab362747-2e1e-4835-8871-2066f723d785"
+            }
+          ]
+        },
+        {
+          "text": "A distração foi comparável à de quem usava o celular para ligação ou mensagem.",
+          "kind": "verified_fact",
+          "evidence": [
+            {
+              "kind": "research_observation",
+              "observationId": "ab362747-2e1e-4835-8871-2066f723d785"
+            }
+          ]
+        },
+        {
+          "text": "A notificação puxa o pensamento para fora da tarefa.",
+          "kind": "reasonable_simplification",
+          "note": "Os autores propõem divagação mental como mecanismo; o estudo mede o efeito, não prova o mecanismo.",
+          "evidence": []
+        },
+        {
+          "text": "Bloquear a notificação antes de chegar ajuda mais o foco.",
+          "kind": "hypothesis",
+          "evidence": []
+        }
+      ],
+      "beats": [
+        {
+          "kind": "hook",
+          "label": "myth_bust",
+          "atChar": 0
+        },
+        {
+          "kind": "payoff",
+          "atChar": 544
+        }
+      ],
+      "cast": ["alex", "bia"],
+      "expected": {
+        "validator": "pass"
+      },
+      "characters": [
+        {
+          "key": "alex",
+          "name": "Alex",
+          "role": "main",
+          "rigId": "stick-v1",
+          "rigVersion": 1,
+          "palette": {
+            "line": "#161616",
+            "fill": "#FFFFFF",
+            "accent": "#FF5A36"
+          },
+          "accessory": "cap",
+          "wardrobe": {
+            "hair": {
+              "style": "short",
+              "colour": "#2B1D14"
+            },
+            "top": {
+              "style": "hoodie",
+              "colour": "#FF5A36"
+            },
+            "bottoms": {
+              "style": "pants",
+              "colour": "#2F3B52"
+            }
+          },
+          "voiceId": "pm_alex"
+        },
+        {
+          "key": "bia",
+          "name": "Bia",
+          "role": "secondary",
+          "rigId": "stick-v1",
+          "rigVersion": 1,
+          "palette": {
+            "line": "#161616",
+            "fill": "#FFFFFF",
+            "accent": "#2E86DE"
+          },
+          "accessory": "glasses",
+          "wardrobe": {
+            "hair": {
+              "style": "bun",
+              "colour": "#1A1A1A"
+            },
+            "top": {
+              "style": "shirt",
+              "colour": "#2E86DE"
+            },
+            "bottoms": {
+              "style": "skirt",
+              "colour": "#3D3D3D"
+            }
+          },
+          "voiceId": "pf_dora"
+        }
+      ]
+    },
+    {
+      "id": "a410febb-4d44-45ca-8334-17a6887a9359",
+      "case": "approved",
+      "source": "production:a410febb-4d44-45ca-8334-17a6887a9359",
+      "language": "pt-BR",
+      "body": "Você levanta do sofá para pegar uma coisa na cozinha, passa pela porta e esquece o quê. A culpa pode ser da porta. Na Universidade de Notre Dame, o psicólogo Gabriel Radvansky testou isso: quem atravessava uma porta esquecia mais do que quem andava a mesma distância dentro de uma sala só. A explicação dele: a porta funciona como uma fronteira de evento. O cérebro fecha o episódio da sala e arquiva o que estava nele. E tem um detalhe pior. Num estudo de dois mil e onze, voltar para a sala original não melhorou a memória. Então o truque de voltar para lembrar não é garantido. Uma saída é levar a intenção com você: fala em voz alta o que vai buscar antes de cruzar a porta.",
+      "claims": [
+        {
+          "text": "Nos testes de Radvansky, as pessoas esqueceram mais depois de atravessar uma porta do que andando a mesma distância numa sala.",
+          "kind": "verified_fact",
+          "evidence": [
+            {
+              "kind": "research_observation",
+              "observationId": "3e0d3079-6664-4bff-87c1-2f64a37fa547"
+            }
+          ]
+        },
+        {
+          "text": "Radvansky explica que a porta funciona como uma fronteira de evento que separa e arquiva episódios.",
+          "kind": "verified_fact",
+          "evidence": [
+            {
+              "kind": "research_observation",
+              "observationId": "3e0d3079-6664-4bff-87c1-2f64a37fa547"
+            }
+          ]
+        },
+        {
+          "text": "No estudo de 2011, voltar à sala original não melhorou a memória.",
+          "kind": "verified_fact",
+          "evidence": [
+            {
+              "kind": "research_observation",
+              "observationId": "e93d06ee-f28d-45d9-8ae9-2c4eccb4c303"
+            }
+          ]
+        },
+        {
+          "text": "Falar em voz alta o que vai buscar ajuda a não esquecer ao cruzar a porta.",
+          "kind": "hypothesis",
+          "evidence": []
+        }
+      ],
+      "beats": [
+        {
+          "kind": "hook",
+          "label": "everyday_mystery",
+          "atChar": 0
+        },
+        {
+          "kind": "payoff",
+          "atChar": 526
+        }
+      ],
+      "cast": ["alex", "bia"],
+      "expected": {
+        "validator": "pass"
+      },
+      "characters": [
+        {
+          "key": "alex",
+          "name": "Alex",
+          "role": "main",
+          "rigId": "stick-v1",
+          "rigVersion": 1,
+          "palette": {
+            "line": "#161616",
+            "fill": "#FFFFFF",
+            "accent": "#FF5A36"
+          },
+          "accessory": "cap",
+          "wardrobe": {
+            "hair": {
+              "style": "short",
+              "colour": "#2B1D14"
+            },
+            "top": {
+              "style": "hoodie",
+              "colour": "#FF5A36"
+            },
+            "bottoms": {
+              "style": "pants",
+              "colour": "#2F3B52"
+            }
+          },
+          "voiceId": "pm_alex"
+        },
+        {
+          "key": "bia",
+          "name": "Bia",
+          "role": "secondary",
+          "rigId": "stick-v1",
+          "rigVersion": 1,
+          "palette": {
+            "line": "#161616",
+            "fill": "#FFFFFF",
+            "accent": "#2E86DE"
+          },
+          "accessory": "glasses",
+          "wardrobe": {
+            "hair": {
+              "style": "bun",
+              "colour": "#1A1A1A"
+            },
+            "top": {
+              "style": "shirt",
+              "colour": "#2E86DE"
+            },
+            "bottoms": {
+              "style": "skirt",
+              "colour": "#3D3D3D"
+            }
+          },
+          "voiceId": "pf_dora"
+        }
+      ]
+    },
+    {
+      "id": "6fb29f76-01dc-4808-88ec-21ba9b5e6d7e",
+      "case": "approved",
+      "source": "production:6fb29f76-01dc-4808-88ec-21ba9b5e6d7e",
+      "language": "pt-BR",
+      "body": "Seu celular de dois anos não está mentindo na porcentagem. A bateria encolheu. Uma bateria de íon de lítio guarda energia num vai e vem químico entre os dois lados dela. Com o tempo, esse mecanismo envelhece, e a quantidade de carga que ela consegue guardar diminui. A Apple informa que as baterias do iPhone catorze e anteriores foram projetadas para manter oitenta por cento da capacidade original depois de quinhentos ciclos completos de carga. As do iPhone quinze, depois de mil ciclos. E isso em condições ideais. Calor piora a conta: usar o celular em calor intenso pode encurtar a vida da bateria de forma permanente. Então o cem por cento de hoje é um cem por cento menor que o do primeiro dia. O número na tela é a porcentagem de um tanque que diminuiu.",
+      "claims": [
+        {
+          "text": "Conforme baterias de íon de lítio envelhecem quimicamente, a carga que conseguem guardar diminui.",
+          "kind": "verified_fact",
+          "evidence": [
+            {
+              "kind": "research_observation",
+              "observationId": "5f5ffbb8-a558-43b8-88c0-da87f4f9f466"
+            }
+          ]
+        },
+        {
+          "text": "Baterias do iPhone 14 e anteriores retêm 80% da capacidade em 500 ciclos completos; as do iPhone 15, em 1000 ciclos, em condições ideais.",
+          "kind": "verified_fact",
+          "evidence": [
+            {
+              "kind": "research_observation",
+              "observationId": "bd65f949-b121-4e2a-8ad6-9578707d5c40"
+            }
+          ]
+        },
+        {
+          "text": "Usar o aparelho em calor intenso pode encurtar a vida da bateria de forma permanente.",
+          "kind": "verified_fact",
+          "evidence": [
+            {
+              "kind": "research_observation",
+              "observationId": "daf26110-8a12-4d2e-830d-363f1351035a"
+            }
+          ]
+        },
+        {
+          "text": "A bateria guarda energia num vai e vem químico entre os dois lados dela.",
+          "kind": "reasonable_simplification",
+          "note": "Íons de lítio se movem entre os eletrodos; o envelhecimento envolve várias reações laterais não descritas.",
+          "evidence": []
+        },
+        {
+          "text": "Um celular de dois anos como exemplo.",
+          "kind": "fictional_example",
+          "evidence": []
+        },
+        {
+          "text": "A bateria como um tanque que diminui.",
+          "kind": "analogy",
+          "evidence": []
+        }
+      ],
+      "beats": [
+        {
+          "kind": "hook",
+          "label": "number_proof",
+          "atChar": 0
+        },
+        {
+          "kind": "payoff",
+          "atChar": 625
+        }
+      ],
+      "cast": ["alex", "bia"],
+      "expected": {
+        "validator": "pass"
+      },
+      "characters": [
+        {
+          "key": "alex",
+          "name": "Alex",
+          "role": "main",
+          "rigId": "stick-v1",
+          "rigVersion": 1,
+          "palette": {
+            "line": "#161616",
+            "fill": "#FFFFFF",
+            "accent": "#FF5A36"
+          },
+          "accessory": "cap",
+          "wardrobe": {
+            "hair": {
+              "style": "short",
+              "colour": "#2B1D14"
+            },
+            "top": {
+              "style": "hoodie",
+              "colour": "#FF5A36"
+            },
+            "bottoms": {
+              "style": "pants",
+              "colour": "#2F3B52"
+            }
+          },
+          "voiceId": "pm_alex"
+        },
+        {
+          "key": "bia",
+          "name": "Bia",
+          "role": "secondary",
+          "rigId": "stick-v1",
+          "rigVersion": 1,
+          "palette": {
+            "line": "#161616",
+            "fill": "#FFFFFF",
+            "accent": "#2E86DE"
+          },
+          "accessory": "glasses",
+          "wardrobe": {
+            "hair": {
+              "style": "bun",
+              "colour": "#1A1A1A"
+            },
+            "top": {
+              "style": "shirt",
+              "colour": "#2E86DE"
+            },
+            "bottoms": {
+              "style": "skirt",
+              "colour": "#3D3D3D"
+            }
+          },
+          "voiceId": "pf_dora"
+        }
+      ]
+    },
+    {
+      "id": "e204107b-0b4e-488a-8fe7-3e1d2fb6d169",
+      "case": "approved",
+      "source": "production:e204107b-0b4e-488a-8fe7-3e1d2fb6d169",
+      "language": "pt-BR",
+      "body": "Seu celular esquentou no bolso e a tela ficou mais escura sozinha. Não é defeito. É defesa. Todo chip que trabalha gera calor, e o celular não tem ventilador: o calor precisa escapar pela carcaça. Jogo pesado, câmera ligada por muito tempo, GPS no sol do painel do carro: tudo isso aumenta o trabalho e o calor. A Apple diz que o iPhone foi feito para funcionar com o ambiente entre zero e trinta e cinco graus. Quando a temperatura interna passa do normal, ele se protege: a carga fica mais lenta ou para, a tela escurece e o desempenho cai. Ou seja, o celular prefere ficar lento a ficar quente. Se ele começou a travar no calor, a primeira coisa é tirar do sol, não ficar insistindo no jogo.",
+      "claims": [
+        {
+          "text": "O iPhone é projetado para uso com temperatura ambiente entre 0 °C e 35 °C.",
+          "kind": "verified_fact",
+          "evidence": [
+            {
+              "kind": "research_observation",
+              "observationId": "daf26110-8a12-4d2e-830d-363f1351035a"
+            }
+          ]
+        },
+        {
+          "text": "Acima da faixa normal de temperatura interna, o iPhone desacelera ou para a carga, escurece a tela e reduz o desempenho.",
+          "kind": "verified_fact",
+          "evidence": [
+            {
+              "kind": "research_observation",
+              "observationId": "c01ff279-0fd2-441b-8050-f005b55e3602"
+            }
+          ]
+        },
+        {
+          "text": "O celular não tem ventilador e o calor sai pela carcaça.",
+          "kind": "reasonable_simplification",
+          "note": "A maioria dos celulares dissipa calor de forma passiva; alguns modelos gamer têm ventoinha.",
+          "evidence": []
+        },
+        {
+          "text": "Jogo pesado, câmera longa e GPS no sol aumentam o calor.",
+          "kind": "reasonable_simplification",
+          "note": "A intensidade varia por modelo e por uso; a lista é ilustrativa.",
+          "evidence": []
+        }
+      ],
+      "beats": [
+        {
+          "kind": "hook",
+          "label": "cause_effect",
+          "atChar": 0
+        },
+        {
+          "kind": "payoff",
+          "atChar": 543
+        }
+      ],
+      "cast": ["alex", "bia"],
+      "expected": {
+        "validator": "pass"
+      },
+      "characters": [
+        {
+          "key": "alex",
+          "name": "Alex",
+          "role": "main",
+          "rigId": "stick-v1",
+          "rigVersion": 1,
+          "palette": {
+            "line": "#161616",
+            "fill": "#FFFFFF",
+            "accent": "#FF5A36"
+          },
+          "accessory": "cap",
+          "wardrobe": {
+            "hair": {
+              "style": "short",
+              "colour": "#2B1D14"
+            },
+            "top": {
+              "style": "hoodie",
+              "colour": "#FF5A36"
+            },
+            "bottoms": {
+              "style": "pants",
+              "colour": "#2F3B52"
+            }
+          },
+          "voiceId": "pm_alex"
+        },
+        {
+          "key": "bia",
+          "name": "Bia",
+          "role": "secondary",
+          "rigId": "stick-v1",
+          "rigVersion": 1,
+          "palette": {
+            "line": "#161616",
+            "fill": "#FFFFFF",
+            "accent": "#2E86DE"
+          },
+          "accessory": "glasses",
+          "wardrobe": {
+            "hair": {
+              "style": "bun",
+              "colour": "#1A1A1A"
+            },
+            "top": {
+              "style": "shirt",
+              "colour": "#2E86DE"
+            },
+            "bottoms": {
+              "style": "skirt",
+              "colour": "#3D3D3D"
+            }
+          },
+          "voiceId": "pf_dora"
+        }
+      ]
+    },
+    {
+      "id": "bbe9fa7d-edc6-404c-8723-1cd53e4e1d73",
+      "case": "approved",
+      "source": "production:bbe9fa7d-edc6-404c-8723-1cd53e4e1d73",
+      "language": "pt-BR",
+      "body": "O Wi-Fi tem cinco barrinhas na sala e some quando você entra no quarto. O roteador não mudou. O que mudou foi o caminho. O sinal é uma onda de rádio, e cada coisa no meio do trajeto rouba um pouco dela. A Apple separa os materiais pelo quanto atrapalham: madeira e vidro, pouco. Tijolo e água, médio. Gesso e concreto, muito. Metal, mais que tudo. Agora olha o trajeto até o quarto: uma parede de tijolo, o espelho do armário, a geladeira cheia de água e metal. Cada obstáculo soma. Por isso a solução raramente é um roteador mais forte. É um roteador mais alto, mais no meio da casa, com menos coisa no caminho. Antes de trocar o aparelho, troca ele de lugar.",
+      "claims": [
+        {
+          "text": "A Apple classifica madeira e vidro como baixa interferência, tijolo e água como média, gesso e concreto como alta e metal como muito alta.",
+          "kind": "verified_fact",
+          "evidence": [
+            {
+              "kind": "research_observation",
+              "observationId": "8f7ef867-a681-46f3-8596-18d147c493aa"
+            }
+          ]
+        },
+        {
+          "text": "Cada obstáculo no caminho rouba um pouco do sinal e os obstáculos se somam.",
+          "kind": "reasonable_simplification",
+          "note": "A atenuação também depende de frequência, distância, ângulo e interferência; a soma não é exata.",
+          "evidence": []
+        },
+        {
+          "text": "Mudar o roteador de lugar costuma resolver mais que trocar por um mais forte.",
+          "kind": "reasonable_simplification",
+          "note": "Vale para a maioria das casas; casas grandes ou com muitas lajes podem precisar de repetidor ou rede mesh.",
+          "evidence": []
+        }
+      ],
+      "beats": [
+        {
+          "kind": "hook",
+          "label": "mistake",
+          "atChar": 0
+        },
+        {
+          "kind": "payoff",
+          "atChar": 483
+        }
+      ],
+      "cast": ["alex", "bia"],
+      "expected": {
+        "validator": "pass"
+      },
+      "characters": [
+        {
+          "key": "alex",
+          "name": "Alex",
+          "role": "main",
+          "rigId": "stick-v1",
+          "rigVersion": 1,
+          "palette": {
+            "line": "#161616",
+            "fill": "#FFFFFF",
+            "accent": "#FF5A36"
+          },
+          "accessory": "cap",
+          "wardrobe": {
+            "hair": {
+              "style": "short",
+              "colour": "#2B1D14"
+            },
+            "top": {
+              "style": "hoodie",
+              "colour": "#FF5A36"
+            },
+            "bottoms": {
+              "style": "pants",
+              "colour": "#2F3B52"
+            }
+          },
+          "voiceId": "pm_alex"
+        },
+        {
+          "key": "bia",
+          "name": "Bia",
+          "role": "secondary",
+          "rigId": "stick-v1",
+          "rigVersion": 1,
+          "palette": {
+            "line": "#161616",
+            "fill": "#FFFFFF",
+            "accent": "#2E86DE"
+          },
+          "accessory": "glasses",
+          "wardrobe": {
+            "hair": {
+              "style": "bun",
+              "colour": "#1A1A1A"
+            },
+            "top": {
+              "style": "shirt",
+              "colour": "#2E86DE"
+            },
+            "bottoms": {
+              "style": "skirt",
+              "colour": "#3D3D3D"
+            }
+          },
+          "voiceId": "pf_dora"
+        }
+      ]
+    }
+  ]
+}

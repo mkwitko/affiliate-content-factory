@@ -1,0 +1,1 @@
+ALTER TABLE "publication_policies" ADD COLUMN "max_publications_per_period" INTEGER, ADD COLUMN "max_cost_minor_per_item" INTEGER, ADD COLUMN "max_cost_minor_per_period" INTEGER, ADD COLUMN "period_hours" INTEGER;

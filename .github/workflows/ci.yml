@@ -1,0 +1,73 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+concurrency:
+  group: money-maker-ci-test-database
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    # A throwaway Postgres per run: integration tests (including the budget ledger's concurrency
+    # tests) run on every CI job, never against a shared or production database.
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: mm_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    env:
+      DATABASE_URL: postgresql://postgres:postgres@localhost:5432/mm_test
+      DIRECT_URL: postgresql://postgres:postgres@localhost:5432/mm_test
+      TEST_DATABASE_URL: postgresql://postgres:postgres@localhost:5432/mm_test
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      - name: Install media tools
+        # Same packages as the Dockerfile: real-ffmpeg and text-fit tests need them.
+        run: sudo apt-get update && sudo apt-get install --no-install-recommends --yes ffmpeg fontconfig fonts-inter
+
+      - name: Install caption fonts
+        # Same files as the Dockerfile (deploy/fonts, SIL OFL 1.1).
+        run: sudo mkdir -p /usr/local/share/fonts/money-maker && sudo cp deploy/fonts/*.ttf /usr/local/share/fonts/money-maker/ && sudo fc-cache -f
+
+      - name: Enable Corepack
+        run: corepack enable
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Deploy Prisma migrations
+        run: pnpm --filter @money-maker/providers exec prisma migrate deploy --config prisma7.config.ts
+
+      - name: Run quality gate
+        run: pnpm check
+
+      - name: Run cloud GPU job tests (Python, no Modal, no GPU)
+        run: python3 -I -m unittest discover -s scripts/cloud-gpu/modal
+
+      - name: Run MCP contract tests
+        run: pnpm --filter @money-maker/api test -- mcp chat-only-parity skills preview-content assets

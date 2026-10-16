@@ -1,0 +1,52 @@
+{
+  "name": "money-maker-mcp",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Invite-only platform for measurable content revenue workflows.",
+  "license": "UNLICENSED",
+  "packageManager": "pnpm@11.19.0",
+  "engines": {
+    "node": ">=24 <25",
+    "pnpm": ">=11 <12"
+  },
+  "scripts": {
+    "build": "pnpm -r --if-present build",
+    "db:migrate": "pnpm --filter @money-maker/providers exec prisma migrate deploy --config prisma7.config.ts",
+    "db:migrate:status": "pnpm --filter @money-maker/providers exec prisma migrate status --config prisma7.config.ts",
+    "check": "pnpm format:check && pnpm lint && pnpm typecheck && pnpm test && pnpm build",
+    "format": "biome format --write .",
+    "format:check": "biome format .",
+    "env:validate": "node scripts/validate-env.mjs",
+    "post-preview": "pnpm --filter @money-maker/worker... build && node apps/worker/dist/commands/post-preview.js",
+    "reel-preview": "pnpm --filter @money-maker/worker... build && node apps/worker/dist/commands/reel-preview.js",
+    "fidelity-bench": "pnpm --filter @money-maker/worker... build && node apps/worker/dist/commands/fidelity-bench.js",
+    "edit-bench": "pnpm --filter @money-maker/worker... build && node apps/worker/dist/commands/edit-bench.js",
+    "motion-bench": "pnpm --filter @money-maker/worker... build && node apps/worker/dist/commands/motion-bench.js",
+    "image-bench": "pnpm --filter @money-maker/worker... build && node apps/worker/dist/commands/image-bench.js",
+    "copy-bench": "pnpm --filter @money-maker/worker... build && node apps/worker/dist/commands/copy-bench.js",
+    "voice-bench": "pnpm --filter @money-maker/worker... build && node apps/worker/dist/commands/voice-bench.js",
+    "video-bench": "pnpm --filter @money-maker/worker... build && node apps/worker/dist/commands/video-bench.js",
+    "render:compare-hyperframes": "pnpm --filter @money-maker/worker... build && node apps/worker/dist/commands/render-compare-hyperframes.js",
+    "render-bench:long": "pnpm --filter @money-maker/worker... build && node apps/worker/dist/commands/render-bench-long.js",
+    "director:export-production": "node --env-file-if-exists=.env apps/worker/dist/commands/director-export-production.js",
+    "director:bench-production": "node apps/worker/dist/commands/director-bench.js holdout packages/core/src/explainer/fixtures/scene-director-production director-bench-production",
+    "director:review-init": "node apps/worker/dist/commands/director-review-init.js",
+    "director:review-pack": "node apps/worker/dist/commands/director-review-pack.js",
+    "lint": "biome lint .",
+    "postinstall": "pnpm -r --if-present generate",
+    "test": "pnpm -r --if-present test",
+    "typecheck": "pnpm -r --if-present typecheck",
+    "money-maker:doctor": "pnpm --filter @money-maker/worker... build && node --env-file-if-exists=.env apps/worker/dist/commands/doctor.js",
+    "autonomy:burn-in": "pnpm --filter @money-maker/worker... build && node --env-file-if-exists=.env apps/worker/dist/commands/autonomy-burn-in.js",
+    "vlm-bench": "pnpm --filter @money-maker/worker... build && node apps/worker/dist/commands/vlm-bench.js",
+    "ai:arena": "pnpm --filter @money-maker/worker... build && node apps/worker/dist/commands/arena.js",
+    "ai:arena:run": "pnpm --filter @money-maker/worker... build && node apps/worker/dist/commands/arena-run.js",
+    "operator:hermes-config": "pnpm --filter @money-maker/api... build && node scripts/operator-hermes-config.mjs"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.5.14",
+    "@types/node": "24.10.4",
+    "typescript": "7.0.2",
+    "vitest": "5.0.1"
+  }
+}

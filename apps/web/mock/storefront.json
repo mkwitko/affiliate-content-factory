@@ -1,0 +1,46 @@
+{
+  "nicheName": "Example Shop Home",
+  "instagramHandle": "exampleshop.home",
+  "cards": [
+    {
+      "offerId": "o1",
+      "offerTitle": "Organizador de gavetas em bambu ajustável com 6 divisórias",
+      "imageUrl": "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=1000&q=75",
+      "href": "https://mercadolivre.com/sec/abc",
+      "price": { "amountMinor": 8990, "currency": "BRL" },
+      "listPrice": { "amountMinor": 11900, "currency": "BRL" },
+      "priceVerifiedAt": "2026-09-28T17:30:00.000Z"
+    },
+    {
+      "offerId": "o4",
+      "offerTitle": "Cesto de roupa dobrável com alças",
+      "imageUrl": "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=600&q=70",
+      "href": "https://mercadolivre.com/sec/g",
+      "price": { "amountMinor": 4590, "currency": "BRL" },
+      "priceVerifiedAt": "2026-09-28T15:00:00.000Z"
+    },
+    {
+      "offerId": "o5",
+      "offerTitle": "Kit 10 potes herméticos de vidro com tampa de bambu",
+      "imageUrl": "https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=600&q=70",
+      "href": "https://mercadolivre.com/sec/h",
+      "price": { "amountMinor": 12990, "currency": "BRL" },
+      "listPrice": { "amountMinor": 15900, "currency": "BRL" },
+      "priceVerifiedAt": "2026-09-28T14:10:00.000Z"
+    },
+    {
+      "offerId": "o6",
+      "offerTitle": "Luminária de mesa LED articulada com USB",
+      "imageUrl": "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=600&q=70",
+      "href": "https://mercadolivre.com/sec/i"
+    },
+    {
+      "offerId": "o7",
+      "offerTitle": "Tapete de banheiro antiderrapante 60x40",
+      "imageUrl": "https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?w=600&q=70",
+      "href": "https://mercadolivre.com/sec/j",
+      "price": { "amountMinor": 2990, "currency": "BRL" },
+      "priceVerifiedAt": "2026-09-28T13:00:00.000Z"
+    }
+  ]
+}

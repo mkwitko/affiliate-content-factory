@@ -1,0 +1,1186 @@
+{
+  "name": "@money-maker/core",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./capabilities/capability-health": {
+      "types": "./src/capabilities/capability-health.ts",
+      "development": "./src/capabilities/capability-health.ts",
+      "default": "./dist/capabilities/capability-health.js"
+    },
+    "./arena/ranking": {
+      "types": "./src/arena/ranking.ts",
+      "development": "./src/arena/ranking.ts",
+      "default": "./dist/arena/ranking.js"
+    },
+    "./arena/promotion": {
+      "types": "./src/arena/promotion.ts",
+      "development": "./src/arena/promotion.ts",
+      "default": "./dist/arena/promotion.js"
+    },
+    "./arena/pairwise-judge": {
+      "types": "./src/arena/pairwise-judge.ts",
+      "development": "./src/arena/pairwise-judge.ts",
+      "default": "./dist/arena/pairwise-judge.js"
+    },
+    "./arena/report": {
+      "types": "./src/arena/report.ts",
+      "development": "./src/arena/report.ts",
+      "default": "./dist/arena/report.js"
+    },
+    "./arena/catalog": {
+      "types": "./src/arena/catalog.ts",
+      "development": "./src/arena/catalog.ts",
+      "default": "./dist/arena/catalog.js"
+    },
+    "./arena/leaderboard": {
+      "types": "./src/arena/leaderboard.ts",
+      "development": "./src/arena/leaderboard.ts",
+      "default": "./dist/arena/leaderboard.js"
+    },
+    "./arena/text-metrics": {
+      "types": "./src/arena/text-metrics.ts",
+      "development": "./src/arena/text-metrics.ts",
+      "default": "./dist/arena/text-metrics.js"
+    },
+    "./arena/plate-check": {
+      "types": "./src/arena/plate-check.ts",
+      "development": "./src/arena/plate-check.ts",
+      "default": "./dist/arena/plate-check.js"
+    },
+    "./creatives/scene-direction": {
+      "types": "./src/creatives/scene-direction.ts",
+      "development": "./src/creatives/scene-direction.ts",
+      "default": "./dist/creatives/scene-direction.js"
+    },
+    "./arena/package-cost": {
+      "types": "./src/arena/package-cost.ts",
+      "development": "./src/arena/package-cost.ts",
+      "default": "./dist/arena/package-cost.js"
+    },
+    "./arena/real-dataset": {
+      "types": "./src/arena/real-dataset.ts",
+      "development": "./src/arena/real-dataset.ts",
+      "default": "./dist/arena/real-dataset.js"
+    },
+    "./arena/fixtures/real-products": {
+      "types": "./src/arena/fixtures/real-products.ts",
+      "development": "./src/arena/fixtures/real-products.ts",
+      "default": "./dist/arena/fixtures/real-products.js"
+    },
+    "./analytics/conversion-evidence": {
+      "types": "./src/analytics/conversion-evidence.ts",
+      "development": "./src/analytics/conversion-evidence.ts",
+      "default": "./dist/analytics/conversion-evidence.js"
+    },
+    "./analytics/attribution": {
+      "types": "./src/analytics/attribution.ts",
+      "development": "./src/analytics/attribution.ts",
+      "default": "./dist/analytics/attribution.js"
+    },
+    "./analytics/attribution-repository": {
+      "types": "./src/analytics/attribution-repository.ts",
+      "development": "./src/analytics/attribution-repository.ts",
+      "default": "./dist/analytics/attribution-repository.js"
+    },
+    "./analytics/bio-storefront": {
+      "types": "./src/analytics/bio-storefront.ts",
+      "development": "./src/analytics/bio-storefront.ts",
+      "default": "./dist/analytics/bio-storefront.js"
+    },
+    "./analytics/performance": {
+      "types": "./src/analytics/performance.ts",
+      "development": "./src/analytics/performance.ts",
+      "default": "./dist/analytics/performance.js"
+    },
+    "./analytics/creative-intelligence": {
+      "types": "./src/analytics/creative-intelligence.ts",
+      "development": "./src/analytics/creative-intelligence.ts",
+      "default": "./dist/analytics/creative-intelligence.js"
+    },
+    "./assets/asset": {
+      "types": "./src/assets/asset.ts",
+      "development": "./src/assets/asset.ts",
+      "default": "./dist/assets/asset.js"
+    },
+    "./assets/generation-policy": {
+      "types": "./src/assets/generation-policy.ts",
+      "development": "./src/assets/generation-policy.ts",
+      "default": "./dist/assets/generation-policy.js"
+    },
+    "./assets/local-clip-profile": {
+      "types": "./src/assets/local-clip-profile.ts",
+      "development": "./src/assets/local-clip-profile.ts",
+      "default": "./dist/assets/local-clip-profile.js"
+    },
+    "./assets/model-policy": {
+      "types": "./src/assets/model-policy.ts",
+      "development": "./src/assets/model-policy.ts",
+      "default": "./dist/assets/model-policy.js"
+    },
+    "./assets/wav-analysis": {
+      "types": "./src/assets/wav-analysis.ts",
+      "development": "./src/assets/wav-analysis.ts",
+      "default": "./dist/assets/wav-analysis.js"
+    },
+    "./decisions/hook-pick": {
+      "types": "./src/decisions/hook-pick.ts",
+      "development": "./src/decisions/hook-pick.ts",
+      "default": "./dist/decisions/hook-pick.js"
+    },
+    "./decisions/shadow-metrics": {
+      "types": "./src/decisions/shadow-metrics.ts",
+      "development": "./src/decisions/shadow-metrics.ts",
+      "default": "./dist/decisions/shadow-metrics.js"
+    },
+    "./decisions/jev-shadow": {
+      "types": "./src/decisions/jev-shadow.ts",
+      "development": "./src/decisions/jev-shadow.ts",
+      "default": "./dist/decisions/jev-shadow.js"
+    },
+    "./assets/asset-repository": {
+      "types": "./src/assets/asset-repository.ts",
+      "development": "./src/assets/asset-repository.ts",
+      "default": "./dist/assets/asset-repository.js"
+    },
+    "./assets/asset-rights": {
+      "types": "./src/assets/asset-rights.ts",
+      "development": "./src/assets/asset-rights.ts",
+      "default": "./dist/assets/asset-rights.js"
+    },
+    "./assets/asset-store": {
+      "types": "./src/assets/asset-store.ts",
+      "development": "./src/assets/asset-store.ts",
+      "default": "./dist/assets/asset-store.js"
+    },
+    "./assets/clip-renderer": {
+      "types": "./src/assets/clip-renderer.ts",
+      "development": "./src/assets/clip-renderer.ts",
+      "default": "./dist/assets/clip-renderer.js"
+    },
+    "./assets/design-exporter": {
+      "types": "./src/assets/design-exporter.ts",
+      "development": "./src/assets/design-exporter.ts",
+      "default": "./dist/assets/design-exporter.js"
+    },
+    "./assets/reel-music": {
+      "types": "./src/assets/reel-music.ts",
+      "development": "./src/assets/reel-music.ts",
+      "default": "./dist/assets/reel-music.js"
+    },
+    "./assets/reel-renderer": {
+      "types": "./src/assets/reel-renderer.ts",
+      "development": "./src/assets/reel-renderer.ts",
+      "default": "./dist/assets/reel-renderer.js"
+    },
+    "./assets/reel-timeline": {
+      "types": "./src/assets/reel-timeline.ts",
+      "development": "./src/assets/reel-timeline.ts",
+      "default": "./dist/assets/reel-timeline.js"
+    },
+    "./assets/speech-synthesizer": {
+      "types": "./src/assets/speech-synthesizer.ts",
+      "development": "./src/assets/speech-synthesizer.ts",
+      "default": "./dist/assets/speech-synthesizer.js"
+    },
+    "./assets/story-image-composer": {
+      "types": "./src/assets/story-image-composer.ts",
+      "development": "./src/assets/story-image-composer.ts",
+      "default": "./dist/assets/story-image-composer.js"
+    },
+    "./assets/spoken-text": {
+      "types": "./src/assets/spoken-text.ts",
+      "development": "./src/assets/spoken-text.ts",
+      "default": "./dist/assets/spoken-text.js"
+    },
+    "./assets/spoken-text-en": {
+      "types": "./src/assets/spoken-text-en.ts",
+      "development": "./src/assets/spoken-text-en.ts",
+      "default": "./dist/assets/spoken-text-en.js"
+    },
+    "./assets/stage-cache": {
+      "types": "./src/assets/stage-cache.ts",
+      "development": "./src/assets/stage-cache.ts",
+      "default": "./dist/assets/stage-cache.js"
+    },
+    "./assets/cached-speech-synthesizer": {
+      "types": "./src/assets/cached-speech-synthesizer.ts",
+      "development": "./src/assets/cached-speech-synthesizer.ts",
+      "default": "./dist/assets/cached-speech-synthesizer.js"
+    },
+    "./assets/wav-duration": {
+      "types": "./src/assets/wav-duration.ts",
+      "development": "./src/assets/wav-duration.ts",
+      "default": "./dist/assets/wav-duration.js"
+    },
+    "./audit/audit-port": {
+      "types": "./src/audit/audit-port.ts",
+      "development": "./src/audit/audit-port.ts",
+      "default": "./dist/audit/audit-port.js"
+    },
+    "./brand/video-mark": {
+      "types": "./src/brand/video-mark.ts",
+      "development": "./src/brand/video-mark.ts",
+      "default": "./dist/brand/video-mark.js"
+    },
+    "./brand/caption-style": {
+      "types": "./src/brand/caption-style.ts",
+      "development": "./src/brand/caption-style.ts",
+      "default": "./dist/brand/caption-style.js"
+    },
+    "./brand/brand-kit": {
+      "types": "./src/brand/brand-kit.ts",
+      "development": "./src/brand/brand-kit.ts",
+      "default": "./dist/brand/brand-kit.js"
+    },
+    "./channels/channel": {
+      "types": "./src/channels/channel.ts",
+      "development": "./src/channels/channel.ts",
+      "default": "./dist/channels/channel.js"
+    },
+    "./channels/channel-repository": {
+      "types": "./src/channels/channel-repository.ts",
+      "development": "./src/channels/channel-repository.ts",
+      "default": "./dist/channels/channel-repository.js"
+    },
+    "./channels/commerce-destination": {
+      "types": "./src/channels/commerce-destination.ts",
+      "development": "./src/channels/commerce-destination.ts",
+      "default": "./dist/channels/commerce-destination.js"
+    },
+    "./channels/tiktok-shop-status": {
+      "types": "./src/channels/tiktok-shop-status.ts",
+      "development": "./src/channels/tiktok-shop-status.ts",
+      "default": "./dist/channels/tiktok-shop-status.js"
+    },
+    "./channels/youtube-publish-spec": {
+      "types": "./src/channels/youtube-publish-spec.ts",
+      "development": "./src/channels/youtube-publish-spec.ts",
+      "default": "./dist/channels/youtube-publish-spec.js"
+    },
+    "./content/approval": {
+      "types": "./src/content/approval.ts",
+      "development": "./src/content/approval.ts",
+      "default": "./dist/content/approval.js"
+    },
+    "./content/content": {
+      "types": "./src/content/content.ts",
+      "development": "./src/content/content.ts",
+      "default": "./dist/content/content.js"
+    },
+    "./content/content-repository": {
+      "types": "./src/content/content-repository.ts",
+      "development": "./src/content/content-repository.ts",
+      "default": "./dist/content/content-repository.js"
+    },
+    "./content/direction-input": {
+      "types": "./src/content/direction-input.ts",
+      "development": "./src/content/direction-input.ts",
+      "default": "./dist/content/direction-input.js"
+    },
+    "./content/editorial": {
+      "types": "./src/content/editorial.ts",
+      "development": "./src/content/editorial.ts",
+      "default": "./dist/content/editorial.js"
+    },
+    "./content/editorial-repository": {
+      "types": "./src/content/editorial-repository.ts",
+      "development": "./src/content/editorial-repository.ts",
+      "default": "./dist/content/editorial-repository.js"
+    },
+    "./content/pending": {
+      "types": "./src/content/pending.ts",
+      "development": "./src/content/pending.ts",
+      "default": "./dist/content/pending.js"
+    },
+    "./content/preview-content": {
+      "types": "./src/content/preview-content.ts",
+      "development": "./src/content/preview-content.ts",
+      "default": "./dist/content/preview-content.js"
+    },
+    "./content/publication-fingerprint": {
+      "types": "./src/content/publication-fingerprint.ts",
+      "development": "./src/content/publication-fingerprint.ts",
+      "default": "./dist/content/publication-fingerprint.js"
+    },
+    "./content/storyboard": {
+      "types": "./src/content/storyboard.ts",
+      "development": "./src/content/storyboard.ts",
+      "default": "./dist/content/storyboard.js"
+    },
+    "./content/storyboard-repository": {
+      "types": "./src/content/storyboard-repository.ts",
+      "development": "./src/content/storyboard-repository.ts",
+      "default": "./dist/content/storyboard-repository.js"
+    },
+    "./content/director-plan": {
+      "types": "./src/content/director-plan.ts",
+      "development": "./src/content/director-plan.ts",
+      "default": "./dist/content/director-plan.js"
+    },
+    "./content/direct-scenes": {
+      "types": "./src/content/direct-scenes.ts",
+      "development": "./src/content/direct-scenes.ts",
+      "default": "./dist/content/direct-scenes.js"
+    },
+    "./content/long-form-direction": {
+      "types": "./src/content/long-form-direction.ts",
+      "development": "./src/content/long-form-direction.ts",
+      "default": "./dist/content/long-form-direction.js"
+    },
+    "./context/merge-editorial-context": {
+      "types": "./src/context/merge-editorial-context.ts",
+      "development": "./src/context/merge-editorial-context.ts",
+      "default": "./dist/context/merge-editorial-context.js"
+    },
+    "./costs/generation-budget": {
+      "types": "./src/costs/generation-budget.ts",
+      "development": "./src/costs/generation-budget.ts",
+      "default": "./dist/costs/generation-budget.js"
+    },
+    "./costs/generation-settings": {
+      "types": "./src/costs/generation-settings.ts",
+      "development": "./src/costs/generation-settings.ts",
+      "default": "./dist/costs/generation-settings.js"
+    },
+    "./generation/routing": {
+      "types": "./src/generation/routing.ts",
+      "development": "./src/generation/routing.ts",
+      "default": "./dist/generation/routing.js"
+    },
+    "./generation/home-routes": {
+      "types": "./src/generation/home-routes.ts",
+      "development": "./src/generation/home-routes.ts",
+      "default": "./dist/generation/home-routes.js"
+    },
+    "./generation/route-repository": {
+      "types": "./src/generation/route-repository.ts",
+      "development": "./src/generation/route-repository.ts",
+      "default": "./dist/generation/route-repository.js"
+    },
+    "./cloud-gpu/modal-quote": {
+      "types": "./src/cloud-gpu/modal-quote.ts",
+      "development": "./src/cloud-gpu/modal-quote.ts",
+      "default": "./dist/cloud-gpu/modal-quote.js"
+    },
+    "./cloud-gpu/clip-comparison": {
+      "types": "./src/cloud-gpu/clip-comparison.ts",
+      "development": "./src/cloud-gpu/clip-comparison.ts",
+      "default": "./dist/cloud-gpu/clip-comparison.js"
+    },
+    "./costs/cost-event": {
+      "types": "./src/costs/cost-event.ts",
+      "development": "./src/costs/cost-event.ts",
+      "default": "./dist/costs/cost-event.js"
+    },
+    "./costs/cost-repository": {
+      "types": "./src/costs/cost-repository.ts",
+      "development": "./src/costs/cost-repository.ts",
+      "default": "./dist/costs/cost-repository.js"
+    },
+    "./creatives/affiliate-character-bible": {
+      "types": "./src/creatives/affiliate-character-bible.ts",
+      "development": "./src/creatives/affiliate-character-bible.ts",
+      "default": "./dist/creatives/affiliate-character-bible.js"
+    },
+    "./creatives/canonical-product": {
+      "types": "./src/creatives/canonical-product.ts",
+      "development": "./src/creatives/canonical-product.ts",
+      "default": "./dist/creatives/canonical-product.js"
+    },
+    "./creatives/slide-quality": {
+      "types": "./src/creatives/slide-quality.ts",
+      "development": "./src/creatives/slide-quality.ts",
+      "default": "./dist/creatives/slide-quality.js"
+    },
+    "./creatives/creative-renderer": {
+      "types": "./src/creatives/creative-renderer.ts",
+      "development": "./src/creatives/creative-renderer.ts",
+      "default": "./dist/creatives/creative-renderer.js"
+    },
+    "./creatives/cutout-qa": {
+      "types": "./src/creatives/cutout-qa.ts",
+      "development": "./src/creatives/cutout-qa.ts",
+      "default": "./dist/creatives/cutout-qa.js"
+    },
+    "./creatives/disclosure": {
+      "types": "./src/creatives/disclosure.ts",
+      "development": "./src/creatives/disclosure.ts",
+      "default": "./dist/creatives/disclosure.js"
+    },
+    "./creatives/layout": {
+      "types": "./src/creatives/layout.ts",
+      "development": "./src/creatives/layout.ts",
+      "default": "./dist/creatives/layout.js"
+    },
+    "./creatives/in-scene-fidelity": {
+      "types": "./src/creatives/in-scene-fidelity.ts",
+      "development": "./src/creatives/in-scene-fidelity.ts",
+      "default": "./dist/creatives/in-scene-fidelity.js"
+    },
+    "./creatives/reference-pick": {
+      "types": "./src/creatives/reference-pick.ts",
+      "development": "./src/creatives/reference-pick.ts",
+      "default": "./dist/creatives/reference-pick.js"
+    },
+    "./creatives/subject-layout": {
+      "types": "./src/creatives/subject-layout.ts",
+      "development": "./src/creatives/subject-layout.ts",
+      "default": "./dist/creatives/subject-layout.js"
+    },
+    "./creatives/product-fidelity": {
+      "types": "./src/creatives/product-fidelity.ts",
+      "development": "./src/creatives/product-fidelity.ts",
+      "default": "./dist/creatives/product-fidelity.js"
+    },
+    "./creatives/render-creatives": {
+      "types": "./src/creatives/render-creatives.ts",
+      "development": "./src/creatives/render-creatives.ts",
+      "default": "./dist/creatives/render-creatives.js"
+    },
+    "./creatives/scene-bank": {
+      "types": "./src/creatives/scene-bank.ts",
+      "development": "./src/creatives/scene-bank.ts",
+      "default": "./dist/creatives/scene-bank.js"
+    },
+    "./creatives/scene-plan": {
+      "types": "./src/creatives/scene-plan.ts",
+      "development": "./src/creatives/scene-plan.ts",
+      "default": "./dist/creatives/scene-plan.js"
+    },
+    "./creatives/creative-brief": {
+      "types": "./src/creatives/creative-brief.ts",
+      "development": "./src/creatives/creative-brief.ts",
+      "default": "./dist/creatives/creative-brief.js"
+    },
+    "./creatives/slide-spec": {
+      "types": "./src/creatives/slide-spec.ts",
+      "development": "./src/creatives/slide-spec.ts",
+      "default": "./dist/creatives/slide-spec.js"
+    },
+    "./creatives/reject-scene": {
+      "types": "./src/creatives/reject-scene.ts",
+      "development": "./src/creatives/reject-scene.ts",
+      "default": "./dist/creatives/reject-scene.js"
+    },
+    "./creatives/quality-director": {
+      "types": "./src/creatives/quality-director.ts",
+      "development": "./src/creatives/quality-director.ts",
+      "default": "./dist/creatives/quality-director.js"
+    },
+    "./creatives/templates": {
+      "types": "./src/creatives/templates.ts",
+      "development": "./src/creatives/templates.ts",
+      "default": "./dist/creatives/templates.js"
+    },
+    "./explainer/motion/chunks": {
+      "types": "./src/explainer/motion/chunks.ts",
+      "development": "./src/explainer/motion/chunks.ts",
+      "default": "./dist/explainer/motion/chunks.js"
+    },
+    "./explainer/motion/easing": {
+      "types": "./src/explainer/motion/easing.ts",
+      "development": "./src/explainer/motion/easing.ts",
+      "default": "./dist/explainer/motion/easing.js"
+    },
+    "./explainer/motion/frame": {
+      "types": "./src/explainer/motion/frame.ts",
+      "development": "./src/explainer/motion/frame.ts",
+      "default": "./dist/explainer/motion/frame.js"
+    },
+    "./explainer/motion/plan": {
+      "types": "./src/explainer/motion/plan.ts",
+      "development": "./src/explainer/motion/plan.ts",
+      "default": "./dist/explainer/motion/plan.js"
+    },
+    "./explainer/voice": {
+      "types": "./src/explainer/voice.ts",
+      "development": "./src/explainer/voice.ts",
+      "default": "./dist/explainer/voice.js"
+    },
+    "./identity/accept-invitation": {
+      "types": "./src/identity/accept-invitation.ts",
+      "development": "./src/identity/accept-invitation.ts",
+      "default": "./dist/identity/accept-invitation.js"
+    },
+    "./identity/authenticated-identity": {
+      "types": "./src/identity/authenticated-identity.ts",
+      "development": "./src/identity/authenticated-identity.ts",
+      "default": "./dist/identity/authenticated-identity.js"
+    },
+    "./identity/authentication-repository": {
+      "types": "./src/identity/authentication-repository.ts",
+      "development": "./src/identity/authentication-repository.ts",
+      "default": "./dist/identity/authentication-repository.js"
+    },
+    "./identity/authorization": {
+      "types": "./src/identity/authorization.ts",
+      "development": "./src/identity/authorization.ts",
+      "default": "./dist/identity/authorization.js"
+    },
+    "./identity/create-invitation": {
+      "types": "./src/identity/create-invitation.ts",
+      "development": "./src/identity/create-invitation.ts",
+      "default": "./dist/identity/create-invitation.js"
+    },
+    "./identity/invitation-repository": {
+      "types": "./src/identity/invitation-repository.ts",
+      "development": "./src/identity/invitation-repository.ts",
+      "default": "./dist/identity/invitation-repository.js"
+    },
+    "./identity/resolve-authenticated-user": {
+      "types": "./src/identity/resolve-authenticated-user.ts",
+      "development": "./src/identity/resolve-authenticated-user.ts",
+      "default": "./dist/identity/resolve-authenticated-user.js"
+    },
+    "./jobs/job": {
+      "types": "./src/jobs/job.ts",
+      "development": "./src/jobs/job.ts",
+      "default": "./dist/jobs/job.js"
+    },
+    "./jobs/retry-failed-job": {
+      "types": "./src/jobs/retry-failed-job.ts",
+      "development": "./src/jobs/retry-failed-job.ts",
+      "default": "./dist/jobs/retry-failed-job.js"
+    },
+    "./niches/niche": {
+      "types": "./src/niches/niche.ts",
+      "development": "./src/niches/niche.ts",
+      "default": "./dist/niches/niche.js"
+    },
+    "./niches/niche-repository": {
+      "types": "./src/niches/niche-repository.ts",
+      "development": "./src/niches/niche-repository.ts",
+      "default": "./dist/niches/niche-repository.js"
+    },
+    "./offers/commercial-facts": {
+      "types": "./src/offers/commercial-facts.ts",
+      "development": "./src/offers/commercial-facts.ts",
+      "default": "./dist/offers/commercial-facts.js"
+    },
+    "./offers/import-marketplace-offer": {
+      "types": "./src/offers/import-marketplace-offer.ts",
+      "development": "./src/offers/import-marketplace-offer.ts",
+      "default": "./dist/offers/import-marketplace-offer.js"
+    },
+    "./offers/create-offer": {
+      "types": "./src/offers/create-offer.ts",
+      "development": "./src/offers/create-offer.ts",
+      "default": "./dist/offers/create-offer.js"
+    },
+    "./offers/marketplace-catalog": {
+      "types": "./src/offers/marketplace-catalog.ts",
+      "development": "./src/offers/marketplace-catalog.ts",
+      "default": "./dist/offers/marketplace-catalog.js"
+    },
+    "./offers/buyer-voice": {
+      "types": "./src/offers/buyer-voice.ts",
+      "development": "./src/offers/buyer-voice.ts",
+      "default": "./dist/offers/buyer-voice.js"
+    },
+    "./offers/offer": {
+      "types": "./src/offers/offer.ts",
+      "development": "./src/offers/offer.ts",
+      "default": "./dist/offers/offer.js"
+    },
+    "./offers/offer-repository": {
+      "types": "./src/offers/offer-repository.ts",
+      "development": "./src/offers/offer-repository.ts",
+      "default": "./dist/offers/offer-repository.js"
+    },
+    "./offers/price-intelligence": {
+      "types": "./src/offers/price-intelligence.ts",
+      "development": "./src/offers/price-intelligence.ts",
+      "default": "./dist/offers/price-intelligence.js"
+    },
+    "./offers/product-posting-history": {
+      "types": "./src/offers/product-posting-history.ts",
+      "development": "./src/offers/product-posting-history.ts",
+      "default": "./dist/offers/product-posting-history.js"
+    },
+    "./offers/publish-freshness": {
+      "types": "./src/offers/publish-freshness.ts",
+      "development": "./src/offers/publish-freshness.ts",
+      "default": "./dist/offers/publish-freshness.js"
+    },
+    "./offers/refresh-offers": {
+      "types": "./src/offers/refresh-offers.ts",
+      "development": "./src/offers/refresh-offers.ts",
+      "default": "./dist/offers/refresh-offers.js"
+    },
+    "./offers/review-offer": {
+      "types": "./src/offers/review-offer.ts",
+      "development": "./src/offers/review-offer.ts",
+      "default": "./dist/offers/review-offer.js"
+    },
+    "./providers/provider-connection": {
+      "types": "./src/providers/provider-connection.ts",
+      "development": "./src/providers/provider-connection.ts",
+      "default": "./dist/providers/provider-connection.js"
+    },
+    "./providers/provider-connection-repository": {
+      "types": "./src/providers/provider-connection-repository.ts",
+      "development": "./src/providers/provider-connection-repository.ts",
+      "default": "./dist/providers/provider-connection-repository.js"
+    },
+    "./providers/secret-store": {
+      "types": "./src/providers/secret-store.ts",
+      "development": "./src/providers/secret-store.ts",
+      "default": "./dist/providers/secret-store.js"
+    },
+    "./providers/webhook-inbox-repository": {
+      "types": "./src/providers/webhook-inbox-repository.ts",
+      "development": "./src/providers/webhook-inbox-repository.ts",
+      "default": "./dist/providers/webhook-inbox-repository.js"
+    },
+    "./creatives/edit-creative-copy": {
+      "types": "./src/creatives/edit-creative-copy.ts",
+      "development": "./src/creatives/edit-creative-copy.ts",
+      "default": "./dist/creatives/edit-creative-copy.js"
+    },
+    "./publishing/auto-reels": {
+      "types": "./src/publishing/auto-reels.ts",
+      "development": "./src/publishing/auto-reels.ts",
+      "default": "./dist/publishing/auto-reels.js"
+    },
+    "./publishing/long-form-render": {
+      "types": "./src/publishing/long-form-render.ts",
+      "development": "./src/publishing/long-form-render.ts",
+      "default": "./dist/publishing/long-form-render.js"
+    },
+    "./publishing/owned-clip-captions": {
+      "types": "./src/publishing/owned-clip-captions.ts",
+      "development": "./src/publishing/owned-clip-captions.ts",
+      "default": "./dist/publishing/owned-clip-captions.js"
+    },
+    "./publishing/narration-check": {
+      "types": "./src/publishing/narration-check.ts",
+      "development": "./src/publishing/narration-check.ts",
+      "default": "./dist/publishing/narration-check.js"
+    },
+    "./publishing/render-quality": {
+      "types": "./src/publishing/render-quality.ts",
+      "development": "./src/publishing/render-quality.ts",
+      "default": "./dist/publishing/render-quality.js"
+    },
+    "./publishing/render-timing-manifest": {
+      "types": "./src/publishing/render-timing-manifest.ts",
+      "development": "./src/publishing/render-timing-manifest.ts",
+      "default": "./dist/publishing/render-timing-manifest.js"
+    },
+    "./publishing/owned-clip-candidates": {
+      "types": "./src/publishing/owned-clip-candidates.ts",
+      "development": "./src/publishing/owned-clip-candidates.ts",
+      "default": "./dist/publishing/owned-clip-candidates.js"
+    },
+    "./explainer/focus-track": {
+      "types": "./src/explainer/focus-track.ts",
+      "development": "./src/explainer/focus-track.ts",
+      "default": "./dist/explainer/focus-track.js"
+    },
+    "./publishing/owned-clip-boundaries": {
+      "types": "./src/publishing/owned-clip-boundaries.ts",
+      "development": "./src/publishing/owned-clip-boundaries.ts",
+      "default": "./dist/publishing/owned-clip-boundaries.js"
+    },
+    "./publishing/manual-publication": {
+      "types": "./src/publishing/manual-publication.ts",
+      "development": "./src/publishing/manual-publication.ts",
+      "default": "./dist/publishing/manual-publication.js"
+    },
+    "./publishing/publication": {
+      "types": "./src/publishing/publication.ts",
+      "development": "./src/publishing/publication.ts",
+      "default": "./dist/publishing/publication.js"
+    },
+    "./publishing/reel-render": {
+      "types": "./src/publishing/reel-render.ts",
+      "development": "./src/publishing/reel-render.ts",
+      "default": "./dist/publishing/reel-render.js"
+    },
+    "./publishing/request-publication": {
+      "types": "./src/publishing/request-publication.ts",
+      "development": "./src/publishing/request-publication.ts",
+      "default": "./dist/publishing/request-publication.js"
+    },
+    "./publishing/social-publisher": {
+      "types": "./src/publishing/social-publisher.ts",
+      "development": "./src/publishing/social-publisher.ts",
+      "default": "./dist/publishing/social-publisher.js"
+    },
+    "./research/candidate-qualification": {
+      "types": "./src/research/candidate-qualification.ts",
+      "development": "./src/research/candidate-qualification.ts",
+      "default": "./dist/research/candidate-qualification.js"
+    },
+    "./research/niche-context": {
+      "types": "./src/research/niche-context.ts",
+      "development": "./src/research/niche-context.ts",
+      "default": "./dist/research/niche-context.js"
+    },
+    "./research/product-candidate": {
+      "types": "./src/research/product-candidate.ts",
+      "development": "./src/research/product-candidate.ts",
+      "default": "./dist/research/product-candidate.js"
+    },
+    "./research/product-candidate-repository": {
+      "types": "./src/research/product-candidate-repository.ts",
+      "development": "./src/research/product-candidate-repository.ts",
+      "default": "./dist/research/product-candidate-repository.js"
+    },
+    "./research/research-policy": {
+      "types": "./src/research/research-policy.ts",
+      "development": "./src/research/research-policy.ts",
+      "default": "./dist/research/research-policy.js"
+    },
+    "./research/research-policy-repository": {
+      "types": "./src/research/research-policy-repository.ts",
+      "development": "./src/research/research-policy-repository.ts",
+      "default": "./dist/research/research-policy-repository.js"
+    },
+    "./research/research-repository": {
+      "types": "./src/research/research-repository.ts",
+      "development": "./src/research/research-repository.ts",
+      "default": "./dist/research/research-repository.js"
+    },
+    "./research/market-radar": {
+      "types": "./src/research/market-radar.ts",
+      "development": "./src/research/market-radar.ts",
+      "default": "./dist/research/market-radar.js"
+    },
+    "./research/opportunity-brief": {
+      "types": "./src/research/opportunity-brief.ts",
+      "development": "./src/research/opportunity-brief.ts",
+      "default": "./dist/research/opportunity-brief.js"
+    },
+    "./research/source-transcript": {
+      "types": "./src/research/source-transcript.ts",
+      "development": "./src/research/source-transcript.ts",
+      "default": "./dist/research/source-transcript.js"
+    },
+    "./research/youtube-discovery": {
+      "types": "./src/research/youtube-discovery.ts",
+      "development": "./src/research/youtube-discovery.ts",
+      "default": "./dist/research/youtube-discovery.js"
+    },
+    "./research/research-snapshot": {
+      "types": "./src/research/research-snapshot.ts",
+      "development": "./src/research/research-snapshot.ts",
+      "default": "./dist/research/research-snapshot.js"
+    },
+    "./research/run-research-policies": {
+      "types": "./src/research/run-research-policies.ts",
+      "development": "./src/research/run-research-policies.ts",
+      "default": "./dist/research/run-research-policies.js"
+    },
+    "./setup/setup-status": {
+      "types": "./src/setup/setup-status.ts",
+      "development": "./src/setup/setup-status.ts",
+      "default": "./dist/setup/setup-status.js"
+    },
+    "./usage/generation-budget": {
+      "types": "./src/usage/generation-budget.ts",
+      "development": "./src/usage/generation-budget.ts",
+      "default": "./dist/usage/generation-budget.js"
+    },
+    "./usage/usage-event": {
+      "types": "./src/usage/usage-event.ts",
+      "development": "./src/usage/usage-event.ts",
+      "default": "./dist/usage/usage-event.js"
+    },
+    "./usage/usage-repository": {
+      "types": "./src/usage/usage-repository.ts",
+      "development": "./src/usage/usage-repository.ts",
+      "default": "./dist/usage/usage-repository.js"
+    },
+    "./workspaces/publication-policy": {
+      "types": "./src/workspaces/publication-policy.ts",
+      "development": "./src/workspaces/publication-policy.ts",
+      "default": "./dist/workspaces/publication-policy.js"
+    },
+    "./workspaces/publication-policy-repository": {
+      "types": "./src/workspaces/publication-policy-repository.ts",
+      "development": "./src/workspaces/publication-policy-repository.ts",
+      "default": "./dist/workspaces/publication-policy-repository.js"
+    },
+    "./workspaces/workspace-repository": {
+      "types": "./src/workspaces/workspace-repository.ts",
+      "development": "./src/workspaces/workspace-repository.ts",
+      "default": "./dist/workspaces/workspace-repository.js"
+    },
+    "./explainer/explainer-context": {
+      "types": "./src/explainer/explainer-context.ts",
+      "development": "./src/explainer/explainer-context.ts",
+      "default": "./dist/explainer/explainer-context.js"
+    },
+    "./explainer/hook-library": {
+      "types": "./src/explainer/hook-library.ts",
+      "development": "./src/explainer/hook-library.ts",
+      "default": "./dist/explainer/hook-library.js"
+    },
+    "./explainer/script-guards": {
+      "types": "./src/explainer/script-guards.ts",
+      "development": "./src/explainer/script-guards.ts",
+      "default": "./dist/explainer/script-guards.js"
+    },
+    "./explainer/layout": {
+      "types": "./src/explainer/layout.ts",
+      "development": "./src/explainer/layout.ts",
+      "default": "./dist/explainer/layout.js"
+    },
+    "./explainer/rigs/stick-v1": {
+      "types": "./src/explainer/rigs/stick-v1.ts",
+      "development": "./src/explainer/rigs/stick-v1.ts",
+      "default": "./dist/explainer/rigs/stick-v1.js"
+    },
+    "./explainer/backgrounds": {
+      "types": "./src/explainer/backgrounds.ts",
+      "development": "./src/explainer/backgrounds.ts",
+      "default": "./dist/explainer/backgrounds.js"
+    },
+    "./home-worker/tokens": {
+      "types": "./src/home-worker/tokens.ts",
+      "development": "./src/home-worker/tokens.ts",
+      "default": "./dist/home-worker/tokens.js"
+    },
+    "./home-worker/model-streak": {
+      "types": "./src/home-worker/model-streak.ts",
+      "development": "./src/home-worker/model-streak.ts",
+      "default": "./dist/home-worker/model-streak.js"
+    },
+    "./home-worker/tasks": {
+      "types": "./src/home-worker/tasks.ts",
+      "development": "./src/home-worker/tasks.ts",
+      "default": "./dist/home-worker/tasks.js"
+    },
+    "./creatives/fill-scene-bank": {
+      "types": "./src/creatives/fill-scene-bank.ts",
+      "development": "./src/creatives/fill-scene-bank.ts",
+      "default": "./dist/creatives/fill-scene-bank.js"
+    },
+    "./explainer/dialogue": {
+      "types": "./src/explainer/dialogue.ts",
+      "development": "./src/explainer/dialogue.ts",
+      "default": "./dist/explainer/dialogue.js"
+    },
+    "./explainer/locations": {
+      "types": "./src/explainer/locations.ts",
+      "development": "./src/explainer/locations.ts",
+      "default": "./dist/explainer/locations.js"
+    },
+    "./explainer/layouts": {
+      "types": "./src/explainer/layouts.ts",
+      "development": "./src/explainer/layouts.ts",
+      "default": "./dist/explainer/layouts.js"
+    },
+    "./explainer/shots": {
+      "types": "./src/explainer/shots.ts",
+      "development": "./src/explainer/shots.ts",
+      "default": "./dist/explainer/shots.js"
+    },
+    "./explainer/acting": {
+      "types": "./src/explainer/acting.ts",
+      "development": "./src/explainer/acting.ts",
+      "default": "./dist/explainer/acting.js"
+    },
+    "./explainer/character-bible": {
+      "types": "./src/explainer/character-bible.ts",
+      "development": "./src/explainer/character-bible.ts",
+      "default": "./dist/explainer/character-bible.js"
+    },
+    "./explainer/silhouette": {
+      "types": "./src/explainer/silhouette.ts",
+      "development": "./src/explainer/silhouette.ts",
+      "default": "./dist/explainer/silhouette.js"
+    },
+    "./explainer/visual-language": {
+      "types": "./src/explainer/visual-language.ts",
+      "development": "./src/explainer/visual-language.ts",
+      "default": "./dist/explainer/visual-language.js"
+    },
+    "./explainer/motion-budget": {
+      "types": "./src/explainer/motion-budget.ts",
+      "development": "./src/explainer/motion-budget.ts",
+      "default": "./dist/explainer/motion-budget.js"
+    },
+    "./explainer/visual-qa/scene-graph": {
+      "types": "./src/explainer/visual-qa/scene-graph.ts",
+      "development": "./src/explainer/visual-qa/scene-graph.ts",
+      "default": "./dist/explainer/visual-qa/scene-graph.js"
+    },
+    "./explainer/visual-qa/frame-findings": {
+      "types": "./src/explainer/visual-qa/frame-findings.ts",
+      "development": "./src/explainer/visual-qa/frame-findings.ts",
+      "default": "./dist/explainer/visual-qa/frame-findings.js"
+    },
+    "./explainer/visual-qa/vlm-review": {
+      "types": "./src/explainer/visual-qa/vlm-review.ts",
+      "development": "./src/explainer/visual-qa/vlm-review.ts",
+      "default": "./dist/explainer/visual-qa/vlm-review.js"
+    },
+    "./explainer/visual-qa/tunables": {
+      "types": "./src/explainer/visual-qa/tunables.ts",
+      "development": "./src/explainer/visual-qa/tunables.ts",
+      "default": "./dist/explainer/visual-qa/tunables.js"
+    },
+    "./explainer/compositing": {
+      "types": "./src/explainer/compositing.ts",
+      "development": "./src/explainer/compositing.ts",
+      "default": "./dist/explainer/compositing.js"
+    },
+    "./explainer/background-art": {
+      "types": "./src/explainer/background-art.ts",
+      "development": "./src/explainer/background-art.ts",
+      "default": "./dist/explainer/background-art.js"
+    },
+    "./explainer/props": {
+      "types": "./src/explainer/props.ts",
+      "development": "./src/explainer/props.ts",
+      "default": "./dist/explainer/props.js"
+    },
+    "./explainer/diagrams": {
+      "types": "./src/explainer/diagrams.ts",
+      "development": "./src/explainer/diagrams.ts",
+      "default": "./dist/explainer/diagrams.js"
+    },
+    "./explainer/scene-spec": {
+      "types": "./src/explainer/scene-spec.ts",
+      "development": "./src/explainer/scene-spec.ts",
+      "default": "./dist/explainer/scene-spec.js"
+    },
+    "./shared/canonical-json": {
+      "types": "./src/shared/canonical-json.ts",
+      "development": "./src/shared/canonical-json.ts",
+      "default": "./dist/shared/canonical-json.js"
+    },
+    "./explainer/compose-scene": {
+      "types": "./src/explainer/compose-scene.ts",
+      "development": "./src/explainer/compose-scene.ts",
+      "default": "./dist/explainer/compose-scene.js"
+    },
+    "./explainer/scene-director": {
+      "types": "./src/explainer/scene-director.ts",
+      "development": "./src/explainer/scene-director.ts",
+      "default": "./dist/explainer/scene-director.js"
+    },
+    "./assets/fixtures/voice-bench-corpus": {
+      "types": "./src/assets/fixtures/voice-bench-corpus.ts",
+      "development": "./src/assets/fixtures/voice-bench-corpus.ts",
+      "default": "./dist/assets/fixtures/voice-bench-corpus.js"
+    },
+    "./creatives/fixtures/edit-bench-corpus": {
+      "types": "./src/creatives/fixtures/edit-bench-corpus.ts",
+      "development": "./src/creatives/fixtures/edit-bench-corpus.ts",
+      "default": "./dist/creatives/fixtures/edit-bench-corpus.js"
+    },
+    "./explainer/fixtures/image-bench-corpus": {
+      "types": "./src/explainer/fixtures/image-bench-corpus.ts",
+      "development": "./src/explainer/fixtures/image-bench-corpus.ts",
+      "default": "./dist/explainer/fixtures/image-bench-corpus.js"
+    },
+    "./explainer/fixtures/scene-director/fixtures": {
+      "types": "./src/explainer/fixtures/scene-director/fixtures.ts",
+      "development": "./src/explainer/fixtures/scene-director/fixtures.ts",
+      "default": "./dist/explainer/fixtures/scene-director/fixtures.js"
+    },
+    "./explainer/fixtures/scene-director/production-export": {
+      "types": "./src/explainer/fixtures/scene-director/production-export.ts",
+      "development": "./src/explainer/fixtures/scene-director/production-export.ts",
+      "default": "./dist/explainer/fixtures/scene-director/production-export.js"
+    },
+    "./explainer/fixtures/visual-language/gouache-v1": {
+      "types": "./src/explainer/fixtures/visual-language/gouache-v1.ts",
+      "development": "./src/explainer/fixtures/visual-language/gouache-v1.ts",
+      "default": "./dist/explainer/fixtures/visual-language/gouache-v1.js"
+    },
+    "./explainer/fixtures/cast/location-fixture": {
+      "types": "./src/explainer/fixtures/cast/location-fixture.ts",
+      "development": "./src/explainer/fixtures/cast/location-fixture.ts",
+      "default": "./dist/explainer/fixtures/cast/location-fixture.js"
+    },
+    "./explainer/fixtures/cast/cost-curious-cast": {
+      "types": "./src/explainer/fixtures/cast/cost-curious-cast.ts",
+      "development": "./src/explainer/fixtures/cast/cost-curious-cast.ts",
+      "default": "./dist/explainer/fixtures/cast/cost-curious-cast.js"
+    },
+    "./explainer/hyperframes/composition": {
+      "types": "./src/explainer/hyperframes/composition.ts",
+      "development": "./src/explainer/hyperframes/composition.ts",
+      "default": "./dist/explainer/hyperframes/composition.js"
+    },
+    "./explainer/fixtures/cast/bible-cast": {
+      "types": "./src/explainer/fixtures/cast/bible-cast.ts",
+      "development": "./src/explainer/fixtures/cast/bible-cast.ts",
+      "default": "./dist/explainer/fixtures/cast/bible-cast.js"
+    },
+    "./explainer/fixtures/style-frames/candidates": {
+      "types": "./src/explainer/fixtures/style-frames/candidates.ts",
+      "development": "./src/explainer/fixtures/style-frames/candidates.ts",
+      "default": "./dist/explainer/fixtures/style-frames/candidates.js"
+    },
+    "./explainer/fixtures/style-frames/fixtures": {
+      "types": "./src/explainer/fixtures/style-frames/fixtures.ts",
+      "development": "./src/explainer/fixtures/style-frames/fixtures.ts",
+      "default": "./dist/explainer/fixtures/style-frames/fixtures.js"
+    },
+    "./story/continuity": {
+      "types": "./src/story/continuity.ts",
+      "development": "./src/story/continuity.ts",
+      "default": "./dist/story/continuity.js"
+    },
+    "./story/novelty-guard": {
+      "types": "./src/story/novelty-guard.ts",
+      "development": "./src/story/novelty-guard.ts",
+      "default": "./dist/story/novelty-guard.js"
+    },
+    "./story/story": {
+      "types": "./src/story/story.ts",
+      "development": "./src/story/story.ts",
+      "default": "./dist/story/story.js"
+    },
+    "./story/fixtures": {
+      "types": "./src/story/fixtures.ts",
+      "development": "./src/story/fixtures.ts",
+      "default": "./dist/story/fixtures.js"
+    },
+    "./creatives/offer-scenes": {
+      "types": "./src/creatives/offer-scenes.ts",
+      "development": "./src/creatives/offer-scenes.ts",
+      "default": "./dist/creatives/offer-scenes.js"
+    },
+    "./content/claim-verifier": {
+      "types": "./src/content/claim-verifier.ts",
+      "development": "./src/content/claim-verifier.ts",
+      "default": "./dist/content/claim-verifier.js"
+    },
+    "./content/prepublish-score": {
+      "types": "./src/content/prepublish-score.ts",
+      "development": "./src/content/prepublish-score.ts",
+      "default": "./dist/content/prepublish-score.js"
+    },
+    "./analytics/learnings": {
+      "types": "./src/analytics/learnings.ts",
+      "development": "./src/analytics/learnings.ts",
+      "default": "./dist/analytics/learnings.js"
+    },
+    "./content/format-director": {
+      "types": "./src/content/format-director.ts",
+      "development": "./src/content/format-director.ts",
+      "default": "./dist/content/format-director.js"
+    },
+    "./assets/scene-clip-generator": {
+      "types": "./src/assets/scene-clip-generator.ts",
+      "development": "./src/assets/scene-clip-generator.ts",
+      "default": "./dist/assets/scene-clip-generator.js"
+    },
+    "./content/clip-prompt": {
+      "types": "./src/content/clip-prompt.ts",
+      "development": "./src/content/clip-prompt.ts",
+      "default": "./dist/content/clip-prompt.js"
+    },
+    "./content/scene-clip-state": {
+      "types": "./src/content/scene-clip-state.ts",
+      "development": "./src/content/scene-clip-state.ts",
+      "default": "./dist/content/scene-clip-state.js"
+    },
+    "./content/renderer-catalog": {
+      "types": "./src/content/renderer-catalog.ts",
+      "development": "./src/content/renderer-catalog.ts",
+      "default": "./dist/content/renderer-catalog.js"
+    },
+    "./youtube/channel-profile": {
+      "types": "./src/youtube/channel-profile.ts",
+      "development": "./src/youtube/channel-profile.ts",
+      "default": "./dist/youtube/channel-profile.js"
+    },
+    "./youtube/episode-idea": {
+      "types": "./src/youtube/episode-idea.ts",
+      "development": "./src/youtube/episode-idea.ts",
+      "default": "./dist/youtube/episode-idea.js"
+    },
+    "./youtube/episode-idea-repository": {
+      "types": "./src/youtube/episode-idea-repository.ts",
+      "development": "./src/youtube/episode-idea-repository.ts",
+      "default": "./dist/youtube/episode-idea-repository.js"
+    },
+    "./youtube/hook-review": {
+      "types": "./src/youtube/hook-review.ts",
+      "development": "./src/youtube/hook-review.ts",
+      "default": "./dist/youtube/hook-review.js"
+    },
+    "./creatives/build-post-creatives": {
+      "types": "./src/creatives/build-post-creatives.ts",
+      "development": "./src/creatives/build-post-creatives.ts",
+      "default": "./dist/creatives/build-post-creatives.js"
+    },
+    "./content/offer-package": {
+      "types": "./src/content/offer-package.ts",
+      "development": "./src/content/offer-package.ts",
+      "default": "./dist/content/offer-package.js"
+    },
+    "./content/fixtures/copy-bench-corpus": {
+      "types": "./src/content/fixtures/copy-bench-corpus.ts",
+      "development": "./src/content/fixtures/copy-bench-corpus.ts",
+      "default": "./dist/content/fixtures/copy-bench-corpus.js"
+    },
+    "./content/offer-copy": {
+      "types": "./src/content/offer-copy.ts",
+      "development": "./src/content/offer-copy.ts",
+      "default": "./dist/content/offer-copy.js"
+    },
+    "./autonomy/burn-in": {
+      "types": "./src/autonomy/burn-in.ts",
+      "development": "./src/autonomy/burn-in.ts",
+      "default": "./dist/autonomy/burn-in.js"
+    },
+    "./autonomy/cycle": {
+      "types": "./src/autonomy/cycle.ts",
+      "development": "./src/autonomy/cycle.ts",
+      "default": "./dist/autonomy/cycle.js"
+    },
+    "./autonomy/status": {
+      "types": "./src/autonomy/status.ts",
+      "development": "./src/autonomy/status.ts",
+      "default": "./dist/autonomy/status.js"
+    },
+    "./autonomy/human-actions": {
+      "types": "./src/autonomy/human-actions.ts",
+      "development": "./src/autonomy/human-actions.ts",
+      "default": "./dist/autonomy/human-actions.js"
+    },
+    "./autonomy/test-support": {
+      "types": "./src/autonomy/test-support.ts",
+      "development": "./src/autonomy/test-support.ts",
+      "default": "./dist/autonomy/test-support.js"
+    },
+    "./jobs/job-stats": {
+      "types": "./src/jobs/job-stats.ts",
+      "development": "./src/jobs/job-stats.ts",
+      "default": "./dist/jobs/job-stats.js"
+    },
+    "./creatives/platform-presets": {
+      "types": "./src/creatives/platform-presets.ts",
+      "development": "./src/creatives/platform-presets.ts",
+      "default": "./dist/creatives/platform-presets.js"
+    },
+    "./creatives/price-display": {
+      "types": "./src/creatives/price-display.ts",
+      "development": "./src/creatives/price-display.ts",
+      "default": "./dist/creatives/price-display.js"
+    },
+    "./creatives/creative-document": {
+      "types": "./src/creatives/creative-document.ts",
+      "development": "./src/creatives/creative-document.ts",
+      "default": "./dist/creatives/creative-document.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "test": "vitest run",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@money-maker/contracts": "workspace:*"
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "ffmpeg": "ffmpeg version 6.1.1-3ubuntu5 Copyright (c) 2000-2023 the FFmpeg developers",
+  "results": [
+    {
+      "family": "stickman_motion",
+      "width": 1080,
+      "height": 1920,
+      "durationMs": 3800,
+      "verdict": "pass",
+      "checks": {
+        "container": "pass",
+        "dimensions": "pass",
+        "fps": "pass",
+        "duration": "pass",
+        "audio_stream": "pass",
+        "loudness": "pass",
+        "true_peak": "pass",
+        "silence": "pass",
+        "black": "pass",
+        "freeze": "pass",
+        "render_notes": "pass"
+      },
+      "wallMs": 5600
+    },
+    {
+      "family": "affiliate_reel",
+      "width": 1080,
+      "height": 1920,
+      "durationMs": 19500,
+      "verdict": "pass",
+      "checks": {
+        "container": "pass",
+        "dimensions": "pass",
+        "fps": "pass",
+        "duration": "pass",
+        "audio_stream": "pass",
+        "loudness": "pass",
+        "true_peak": "pass",
+        "silence": "pass",
+        "black": "pass",
+        "freeze": "pass",
+        "render_notes": "pass"
+      },
+      "wallMs": 22703
+    },
+    {
+      "family": "owned_clip",
+      "width": 1080,
+      "height": 1920,
+      "durationMs": 3000,
+      "verdict": "warn",
+      "checks": {
+        "container": "pass",
+        "dimensions": "pass",
+        "fps": "pass",
+        "duration": "pass",
+        "audio_stream": "pass",
+        "loudness": "warn",
+        "true_peak": "pass",
+        "silence": "pass",
+        "black": "pass",
+        "freeze": "pass",
+        "render_notes": "pass"
+      },
+      "wallMs": 1311
+    }
+  ]
+}

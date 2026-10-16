@@ -1,0 +1,26 @@
+{
+  "name": "@money-maker/api",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json && node -e \"require(\\\"node:fs\\\").cpSync(\\\"src/mcp/skills\\\", \\\"dist/mcp/skills\\\", { recursive: true, filter: (p) => !p.endsWith(\\\".ts\\\") })\"",
+    "start": "node dist/server.js",
+    "test": "vitest run",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "1.30.0",
+    "@money-maker/config": "workspace:*",
+    "@money-maker/contracts": "workspace:*",
+    "@money-maker/core": "workspace:*",
+    "@money-maker/providers": "workspace:*",
+    "fastify": "5.6.1",
+    "jose": "6.2.12",
+    "openid-client": "6.8.8",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "sharp": "0.35.4"
+  }
+}

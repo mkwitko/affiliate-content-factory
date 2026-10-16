@@ -1,0 +1,400 @@
+{
+  "split": "tuning",
+  "characters": [
+    {
+      "key": "alex",
+      "name": "Alex",
+      "role": "main",
+      "rigId": "stick-v1",
+      "rigVersion": 1,
+      "palette": {
+        "line": "#161616",
+        "fill": "#ffffff",
+        "accent": "#ff5a36"
+      }
+    },
+    {
+      "key": "bia",
+      "name": "Bia",
+      "role": "secondary",
+      "rigId": "stick-v1",
+      "rigVersion": 1,
+      "palette": {
+        "line": "#161616",
+        "fill": "#ffe9d6",
+        "accent": "#2f7de1"
+      },
+      "accessory": "glasses"
+    },
+    {
+      "key": "rafa",
+      "name": "Rafa",
+      "role": "secondary",
+      "rigId": "stick-v1",
+      "rigVersion": 1,
+      "palette": {
+        "line": "#161616",
+        "fill": "#e7f5e1",
+        "accent": "#1f9d55"
+      },
+      "accessory": "cap"
+    }
+  ],
+  "fixtures": [
+    {
+      "id": "t01-garrafa",
+      "class": "problem_presentation",
+      "case": "approved",
+      "source": "synthetic",
+      "language": "pt-BR",
+      "body": "Você lava a garrafa térmica todo dia e o cheiro de café continua lá. O problema não é o sabão, é a borracha da tampa. Ela guarda gordura do café nas dobras. Tire a borracha, deixe de molho em água morna com bicarbonato e enxágue bem. O cheiro vai embora e a garrafa volta a ter gosto de nada.",
+      "claims": [
+        {
+          "text": "A borracha da tampa acumula resíduo de café.",
+          "kind": "reasonable_simplification",
+          "note": "Outras partes da garrafa também retêm odor.",
+          "evidence": []
+        }
+      ],
+      "beats": [
+        {
+          "kind": "hook",
+          "atChar": 0,
+          "label": "mistake"
+        },
+        {
+          "kind": "payoff",
+          "atChar": 157
+        }
+      ],
+      "cast": ["alex"],
+      "expected": {
+        "validator": "pass"
+      }
+    },
+    {
+      "id": "t02-leite",
+      "class": "walk_to_object",
+      "case": "approved",
+      "source": "synthetic",
+      "language": "pt-BR",
+      "body": "Por que o leite fica sempre no fundo do mercado? O Alex entra pela porta e caminha até a geladeira lá atrás. No caminho ele passa pelo pão, pelos biscoitos e pelas ofertas. O leite chega em caminhões refrigerados e vai direto para câmaras frias atrás da parede do fundo. E a caminhada ainda faz você levar mais coisas do que planejou.",
+      "claims": [
+        {
+          "text": "Laticínios são descarregados em câmaras frias atrás da parede do fundo.",
+          "kind": "verified_fact",
+          "evidence": [
+            {
+              "kind": "research_observation",
+              "observationId": "fixture-t02"
+            }
+          ]
+        },
+        {
+          "text": "A caminhada aumenta compras não planejadas.",
+          "kind": "reasonable_simplification",
+          "note": "O layout é um fator entre vários.",
+          "evidence": []
+        }
+      ],
+      "beats": [
+        {
+          "kind": "hook",
+          "atChar": 0,
+          "label": "hidden_reason"
+        },
+        {
+          "kind": "payoff",
+          "atChar": 173
+        }
+      ],
+      "cast": ["alex"],
+      "expected": {
+        "validator": "pass",
+        "requireActions": ["walk_to"],
+        "requireProps": ["milk_carton"]
+      }
+    },
+    {
+      "id": "t03-bateria",
+      "class": "point_at_number",
+      "case": "approved",
+      "source": "synthetic",
+      "language": "pt-BR",
+      "body": "Olha esse número: 57 horas de bateria. Parece exagero, mas é o que o fabricante informa na ficha técnica. Com volume médio, dá para ouvir música na ida e na volta do trabalho a semana inteira. Se você usa o fone só no ônibus, a carga dura bem mais que uma semana.",
+      "claims": [
+        {
+          "text": "O fabricante informa 57 horas de bateria.",
+          "kind": "verified_fact",
+          "evidence": [
+            {
+              "kind": "commercial_fact",
+              "snapshotId": "fixture-t03",
+              "key": "battery_hours"
+            }
+          ]
+        },
+        {
+          "text": "A carga dura a semana com volume médio.",
+          "kind": "reasonable_simplification",
+          "note": "Depende do volume e do codec.",
+          "evidence": []
+        }
+      ],
+      "beats": [
+        {
+          "kind": "hook",
+          "atChar": 0,
+          "label": "number_proof"
+        },
+        {
+          "kind": "payoff",
+          "atChar": 106
+        }
+      ],
+      "cast": ["alex"],
+      "expected": {
+        "validator": "pass",
+        "requireActions": ["point_at"]
+      },
+      "note": "The number is on screen as a prop label or overlay copied from the script; the actor points at it with point_at."
+    },
+    {
+      "id": "t04-carregador",
+      "class": "two_actors",
+      "case": "problematic",
+      "source": "synthetic",
+      "language": "pt-BR",
+      "body": "A Bia pagou caro num carregador que esquentava demais. O Rafa mostrou para ela como ler a potência na caixa. Os dois compararam os números lado a lado. Ela entendeu que o problema era usar um carregador fraco para um celular que pede mais. Agora ela confere a potência antes de comprar.",
+      "claims": [
+        {
+          "text": "Carregadores abaixo da potência pedida pelo celular esquentam e carregam devagar.",
+          "kind": "reasonable_simplification",
+          "note": "Cabo e qualidade do carregador também pesam.",
+          "evidence": []
+        }
+      ],
+      "beats": [
+        {
+          "kind": "hook",
+          "atChar": 0,
+          "label": "mistake"
+        },
+        {
+          "kind": "payoff",
+          "atChar": 152
+        }
+      ],
+      "cast": ["alex", "bia"],
+      "expected": {
+        "validator": "pass",
+        "minActorsInOneScene": 2
+      },
+      "note": "Rafa is not in the cast; only cast keys may appear."
+    },
+    {
+      "id": "t05-airfryer",
+      "class": "price_in_reais",
+      "case": "adversarial",
+      "source": "synthetic",
+      "language": "pt-BR",
+      "body": "Essa air fryer está por R$ 329,90 com frete grátis para todo o Brasil. Semana passada ela aparecia por R$ 399,90 em outra loja. A diferença é de setenta reais. O cesto de 5 litros cabe o jantar de uma família de quatro. Confira o preço de hoje no link antes de decidir.",
+      "claims": [
+        {
+          "text": "Preço atual de R$ 329,90 com frete grátis.",
+          "kind": "verified_fact",
+          "evidence": [
+            {
+              "kind": "commercial_fact",
+              "snapshotId": "fixture-t05",
+              "key": "price"
+            }
+          ]
+        },
+        {
+          "text": "Preço anterior de R$ 399,90 em outra loja.",
+          "kind": "fictional_example",
+          "evidence": []
+        },
+        {
+          "text": "Cesto de 5 litros.",
+          "kind": "verified_fact",
+          "evidence": [
+            {
+              "kind": "commercial_fact",
+              "snapshotId": "fixture-t05",
+              "key": "capacity"
+            }
+          ]
+        }
+      ],
+      "beats": [
+        {
+          "kind": "hook",
+          "atChar": 0,
+          "label": "money_question"
+        },
+        {
+          "kind": "payoff",
+          "atChar": 128
+        }
+      ],
+      "cast": ["alex"],
+      "expected": {
+        "validator": "pass"
+      },
+      "note": "Two prices and a difference in words: on-screen numbers must copy 329,90, 399,90 or 5 exactly; setenta must not become 70."
+    },
+    {
+      "id": "t06-escova",
+      "class": "percentages",
+      "case": "approved",
+      "source": "synthetic",
+      "language": "pt-BR",
+      "body": "Mais de 87% das avaliações dão cinco estrelas para essa escova. Isso não é pouca coisa. As reclamações que sobram falam de uma coisa só: o cabo esquenta depois de dez minutos. Então a regra é simples: seque o cabelo em duas etapas e deixe a escova descansar no meio.",
+      "claims": [
+        {
+          "text": "87% das avaliações dão cinco estrelas.",
+          "kind": "verified_fact",
+          "evidence": [
+            {
+              "kind": "research_observation",
+              "observationId": "fixture-t06"
+            }
+          ]
+        }
+      ],
+      "beats": [
+        {
+          "kind": "hook",
+          "atChar": 0,
+          "label": "surprising_fact"
+        },
+        {
+          "kind": "payoff",
+          "atChar": 176
+        }
+      ],
+      "cast": ["alex"],
+      "expected": {
+        "validator": "pass"
+      }
+    },
+    {
+      "id": "t07-mochila",
+      "class": "many_props",
+      "case": "problematic",
+      "source": "synthetic",
+      "language": "pt-BR",
+      "body": "Na mochila da Bia cabem seis coisas: notebook, celular, carregador, cartão, documento e uma garrafa. Ela vivia esquecendo alguma. A solução foi uma lista presa na alça, lida antes de sair. Em uma semana ela parou de voltar para casa atrás do carregador.",
+      "claims": [],
+      "beats": [
+        {
+          "kind": "hook",
+          "atChar": 0,
+          "label": "everyday_mystery"
+        },
+        {
+          "kind": "payoff",
+          "atChar": 130
+        }
+      ],
+      "cast": ["alex", "bia"],
+      "expected": {
+        "validator": "pass",
+        "requireProps": ["laptop"]
+      },
+      "note": "Six objects, two with no prop; at most 3 props per scene, catalog props only."
+    },
+    {
+      "id": "t08-conta-luz",
+      "class": "unsupported_action",
+      "case": "adversarial",
+      "source": "synthetic",
+      "language": "pt-BR",
+      "body": "O Alex fica tão feliz com a conta de luz menor que dá um mortal para trás e sai voando pela janela. Brincadeira. Ele só trocou as lâmpadas antigas por LED e passou a desligar o chuveiro no morno. A conta caiu e ele comemorou do jeito dele: pulando no meio da sala.",
+      "claims": [
+        {
+          "text": "Lâmpadas LED e chuveiro no morno reduzem a conta.",
+          "kind": "reasonable_simplification",
+          "note": "O quanto cai depende do consumo da casa.",
+          "evidence": []
+        }
+      ],
+      "beats": [
+        {
+          "kind": "hook",
+          "atChar": 0,
+          "label": "what_if"
+        },
+        {
+          "kind": "payoff",
+          "atChar": 113
+        }
+      ],
+      "cast": ["alex"],
+      "expected": {
+        "validator": "pass",
+        "requireActions": ["jump"]
+      },
+      "note": "A backflip and flying are not rig actions; use jump or the celebrating pose."
+    },
+    {
+      "id": "t09-vago",
+      "class": "ambiguous_script",
+      "case": "problematic",
+      "source": "synthetic",
+      "language": "pt-BR",
+      "body": "Tem coisa que parece simples e não é. Você acha que sabe, mas quando precisa, não lembra. Aí dá errado. Da próxima vez, pare um segundo antes. Faz diferença.",
+      "claims": [],
+      "beats": [
+        {
+          "kind": "hook",
+          "atChar": 0,
+          "label": "curiosity_gap"
+        },
+        {
+          "kind": "payoff",
+          "atChar": 104
+        }
+      ],
+      "cast": ["alex"],
+      "expected": {
+        "validator": "pass"
+      },
+      "note": "Vague on purpose: no numbers, products or names may be added."
+    },
+    {
+      "id": "t10-celular-lento",
+      "class": "long_script",
+      "case": "approved",
+      "source": "synthetic",
+      "language": "pt-BR",
+      "body": "O seu celular fica mais lento com o tempo, e a culpa não é só da idade. Primeiro, os aplicativos crescem a cada atualização. Eles pedem mais memória do que pediam quando você comprou o aparelho. Segundo, o armazenamento cheio atrapalha o sistema. Quando sobra pouco espaço, tudo demora para abrir. Terceiro, a bateria envelhece. Uma bateria gasta entrega menos energia nos picos, e o sistema reduz a velocidade para não desligar. A boa notícia é que dá para ajudar. Apague os aplicativos que você não usa há um mês. Libere espaço tirando vídeos antigos do aparelho. Reinicie o celular uma vez por semana. E, se a bateria estiver muito gasta, a troca costuma sair mais barata que um aparelho novo. Faça isso hoje e compare amanhã.",
+      "claims": [
+        {
+          "text": "Baterias gastas levam o sistema a reduzir a velocidade.",
+          "kind": "reasonable_simplification",
+          "note": "O comportamento varia por fabricante.",
+          "evidence": []
+        }
+      ],
+      "beats": [
+        {
+          "kind": "hook",
+          "atChar": 0,
+          "label": "cause_effect"
+        },
+        {
+          "kind": "payoff",
+          "atChar": 430
+        }
+      ],
+      "cast": ["alex"],
+      "expected": {
+        "validator": "pass"
+      },
+      "note": "13 sentences for at most 12 scenes; the director must join segments."
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+name: money-maker
+
+x-app: &app
+  image: ${MONEY_MAKER_IMAGE:-money-maker-mcp:local}
+  build:
+    context: ..
+    dockerfile: Dockerfile
+  restart: unless-stopped
+  env_file: ${MONEY_MAKER_ENV_FILE:-/opt/money-maker-mcp/.env}
+  environment:
+    NODE_ENV: production
+    MONEY_MAKER_RELEASE: ${MONEY_MAKER_RELEASE:-dev}
+    HOST: 0.0.0.0
+    REEL_MUSIC_DIR: /music
+    TTS_URL: http://tts:8880
+    REEL_VOICE_DEFAULT: pf_dora
+  init: true
+  logging:
+    driver: json-file
+    options:
+      max-size: 10m
+      max-file: "3"
+
+services:
+  migrate:
+    <<: *app
+    restart: "no"
+    command:
+      ["pnpm", "--filter", "@money-maker/providers", "exec", "prisma", "migrate", "deploy", "--config", "prisma7.config.ts"]
+
+  api:
+    <<: *app
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+    ports:
+      - "${MONEY_MAKER_API_BIND:-127.0.0.1:3030}:3000"
+    healthcheck:
+      test:
+        ["CMD-SHELL", "node -e \"fetch('http://127.0.0.1:3000/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))\""]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+      start_period: 30s
+
+  worker:
+    <<: *app
+    command: ["node", "apps/worker/dist/main.js"]
+    # Licensed background tracks for Reels (REEL_MUSIC_DIR); an empty folder renders silent Reels.
+    volumes:
+      - /opt/money-maker-mcp/music:/music:ro
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+      tts:
+        condition: service_started
+
+  # Kokoro TTS on CPU for Reel voice-over. No host port: only the worker talks to it.
+  tts:
+    image: ghcr.io/remsky/kokoro-fastapi-cpu:v0.9.0
+    restart: unless-stopped
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: "3"
+
+  # Cloudflare Tunnel "money-maker" routes mcp.example.com to api:3000; no inbound port or
+  # shared reverse proxy is needed. The token lives in its own env file so this container
+  # never sees the app secrets.
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    restart: unless-stopped
+    command: ["tunnel", "--no-autoupdate", "run"]
+    env_file: ${MONEY_MAKER_TUNNEL_ENV_FILE:-/opt/money-maker-mcp/cloudflared.env}
+    depends_on:
+      api:
+        condition: service_healthy
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: "3"

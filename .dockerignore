@@ -1,0 +1,17 @@
+.git
+.github
+.worktrees
+.superpowers
+node_modules
+dist
+coverage
+*.tsbuildinfo
+packages/providers/generated
+.env
+.env.*
+!.env.example
+tmp
+logs
+models
+outputs
+ComfyUI

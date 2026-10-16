@@ -1,0 +1,58 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`legacy output is frozen (INV-B5) > boxed 1`] = `
+"[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 0
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Default,Inter,64,&H00FFFFFF,&H000000FF,&H30161616,&H30161616,-1,0,0,0,100,100,0,0,3,14,0,2,80,80,560,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.00,0:00:00.40,Default,,0,0,0,,{\\c&H00FFFF&\\fscx115\\fscy115\\t(0,150,\\fscx100\\fscy100)}Olá{\\c&HFFFFFF&\\fscx100\\fscy100} mundo
+Dialogue: 0,0:00:00.40,0:00:00.80,Default,,0,0,0,,Olá {\\c&H00FFFF&\\fscx115\\fscy115\\t(0,150,\\fscx100\\fscy100)}mundo{\\c&HFFFFFF&\\fscx100\\fscy100}
+Dialogue: 0,0:00:00.80,0:00:01.20,Default,,0,0,0,,{\\c&H00FFFF&\\fscx115\\fscy115\\t(0,150,\\fscx100\\fscy100)}hoje{\\c&HFFFFFF&\\fscx100\\fscy100} tudo
+Dialogue: 0,0:00:01.20,0:00:02.00,Default,,0,0,0,,hoje {\\c&H00FFFF&\\fscx115\\fscy115\\t(0,150,\\fscx100\\fscy100)}tudo{\\c&HFFFFFF&\\fscx100\\fscy100}"
+`;
+
+exports[`legacy output is frozen (INV-B5) > default 1`] = `
+"[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 0
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Default,Inter,64,&H00FFFFFF,&H000000FF,&H00000000,&H80000000,-1,0,0,0,100,100,0,0,1,4,2,2,80,80,576,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.00,0:00:00.40,Default,,0,0,0,,{\\c&H00FFFF&\\fscx115\\fscy115\\t(0,150,\\fscx100\\fscy100)}Olá{\\c&HFFFFFF&\\fscx100\\fscy100} mundo hoje
+Dialogue: 0,0:00:00.40,0:00:00.80,Default,,0,0,0,,Olá {\\c&H00FFFF&\\fscx115\\fscy115\\t(0,150,\\fscx100\\fscy100)}mundo{\\c&HFFFFFF&\\fscx100\\fscy100} hoje
+Dialogue: 0,0:00:00.80,0:00:01.20,Default,,0,0,0,,Olá mundo {\\c&H00FFFF&\\fscx115\\fscy115\\t(0,150,\\fscx100\\fscy100)}hoje{\\c&HFFFFFF&\\fscx100\\fscy100}
+Dialogue: 0,0:00:01.20,0:00:02.00,Default,,0,0,0,,{\\c&H00FFFF&\\fscx115\\fscy115\\t(0,150,\\fscx100\\fscy100)}tudo{\\c&HFFFFFF&\\fscx100\\fscy100}"
+`;
+
+exports[`legacy output is frozen (INV-B5) > owned clip 1`] = `
+"[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 0
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Default,Inter,56,&H00FFFFFF,&H000000FF,&H00000000,&H80000000,-1,0,0,0,100,100,0,0,1,4,2,2,80,80,300,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.00,0:00:00.40,Default,,0,0,0,,{\\c&H00FFFF&\\fscx115\\fscy115\\t(0,150,\\fscx100\\fscy100)}Olá{\\c&HFFFFFF&\\fscx100\\fscy100} mundo hoje
+Dialogue: 0,0:00:00.40,0:00:00.80,Default,,0,0,0,,Olá {\\c&H00FFFF&\\fscx115\\fscy115\\t(0,150,\\fscx100\\fscy100)}mundo{\\c&HFFFFFF&\\fscx100\\fscy100} hoje
+Dialogue: 0,0:00:00.80,0:00:01.20,Default,,0,0,0,,Olá mundo {\\c&H00FFFF&\\fscx115\\fscy115\\t(0,150,\\fscx100\\fscy100)}hoje{\\c&HFFFFFF&\\fscx100\\fscy100}
+Dialogue: 0,0:00:01.20,0:00:02.00,Default,,0,0,0,,{\\c&H00FFFF&\\fscx115\\fscy115\\t(0,150,\\fscx100\\fscy100)}tudo{\\c&HFFFFFF&\\fscx100\\fscy100}"
+`;

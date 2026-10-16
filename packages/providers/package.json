@@ -1,0 +1,569 @@
+{
+  "name": "@money-maker/providers",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "files": [
+    "dist/**",
+    "assets/fonts/**"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json && node -e \"require('node:fs').cpSync('assets/fonts', 'dist/assets/fonts', { recursive: true })\"",
+    "generate": "prisma generate --config prisma7.config.ts",
+    "test": "vitest run --no-file-parallelism --maxWorkers=1",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "exports": {
+    "./canva/client": {
+      "types": "./src/canva/client.ts",
+      "development": "./src/canva/client.ts",
+      "default": "./dist/src/canva/client.js"
+    },
+    "./canva/design-exporter": {
+      "types": "./src/canva/design-exporter.ts",
+      "development": "./src/canva/design-exporter.ts",
+      "default": "./dist/src/canva/design-exporter.js"
+    },
+    "./canva/oauth-client": {
+      "types": "./src/canva/oauth-client.ts",
+      "development": "./src/canva/oauth-client.ts",
+      "default": "./dist/src/canva/oauth-client.js"
+    },
+    "./canva/workspace-catalog": {
+      "types": "./src/canva/workspace-catalog.ts",
+      "development": "./src/canva/workspace-catalog.ts",
+      "default": "./dist/src/canva/workspace-catalog.js"
+    },
+    "./canva/workspace-client": {
+      "types": "./src/canva/workspace-client.ts",
+      "development": "./src/canva/workspace-client.ts",
+      "default": "./dist/src/canva/workspace-client.js"
+    },
+    "./cloudflare/workers-ai-scene-generator": {
+      "types": "./src/cloudflare/workers-ai-scene-generator.ts",
+      "development": "./src/cloudflare/workers-ai-scene-generator.ts",
+      "default": "./dist/src/cloudflare/workers-ai-scene-generator.js"
+    },
+    "./database/asset-repository": {
+      "types": "./src/database/asset-repository.ts",
+      "development": "./src/database/asset-repository.ts",
+      "default": "./dist/src/database/asset-repository.js"
+    },
+    "./database/attribution-repository": {
+      "types": "./src/database/attribution-repository.ts",
+      "development": "./src/database/attribution-repository.ts",
+      "default": "./dist/src/database/attribution-repository.js"
+    },
+    "./database/authentication-repository": {
+      "types": "./src/database/authentication-repository.ts",
+      "development": "./src/database/authentication-repository.ts",
+      "default": "./dist/src/database/authentication-repository.js"
+    },
+    "./database/channel-repository": {
+      "types": "./src/database/channel-repository.ts",
+      "development": "./src/database/channel-repository.ts",
+      "default": "./dist/src/database/channel-repository.js"
+    },
+    "./database/client": {
+      "types": "./src/database/client.ts",
+      "development": "./src/database/client.ts",
+      "default": "./dist/src/database/client.js"
+    },
+    "./database/content-repository": {
+      "types": "./src/database/content-repository.ts",
+      "development": "./src/database/content-repository.ts",
+      "default": "./dist/src/database/content-repository.js"
+    },
+    "./database/generation-budget-ledger": {
+      "types": "./src/database/generation-budget-ledger.ts",
+      "development": "./src/database/generation-budget-ledger.ts",
+      "default": "./dist/src/database/generation-budget-ledger.js"
+    },
+    "./database/generation-settings-repository": {
+      "types": "./src/database/generation-settings-repository.ts",
+      "development": "./src/database/generation-settings-repository.ts",
+      "default": "./dist/src/database/generation-settings-repository.js"
+    },
+    "./database/generation-route-repository": {
+      "types": "./src/database/generation-route-repository.ts",
+      "development": "./src/database/generation-route-repository.ts",
+      "default": "./dist/src/database/generation-route-repository.js"
+    },
+    "./cloud-gpu/ptax": {
+      "types": "./src/cloud-gpu/ptax.ts",
+      "development": "./src/cloud-gpu/ptax.ts",
+      "default": "./dist/src/cloud-gpu/ptax.js"
+    },
+    "./cloud-gpu/modal-scene-clip-generator": {
+      "types": "./src/cloud-gpu/modal-scene-clip-generator.ts",
+      "development": "./src/cloud-gpu/modal-scene-clip-generator.ts",
+      "default": "./dist/src/cloud-gpu/modal-scene-clip-generator.js"
+    },
+    "./cloud-gpu/ai-gateway": {
+      "types": "./src/cloud-gpu/ai-gateway.ts",
+      "development": "./src/cloud-gpu/ai-gateway.ts",
+      "default": "./dist/src/cloud-gpu/ai-gateway.js"
+    },
+    "./cloudflare/workers-ai-image-editor": {
+      "types": "./src/cloudflare/workers-ai-image-editor.ts",
+      "development": "./src/cloudflare/workers-ai-image-editor.ts",
+      "default": "./dist/src/cloudflare/workers-ai-image-editor.js"
+    },
+    "./database/cost-repository": {
+      "types": "./src/database/cost-repository.ts",
+      "development": "./src/database/cost-repository.ts",
+      "default": "./dist/src/database/cost-repository.js"
+    },
+    "./database/editorial-repository": {
+      "types": "./src/database/editorial-repository.ts",
+      "development": "./src/database/editorial-repository.ts",
+      "default": "./dist/src/database/editorial-repository.js"
+    },
+    "./database/invitation-dependencies": {
+      "types": "./src/database/invitation-dependencies.ts",
+      "development": "./src/database/invitation-dependencies.ts",
+      "default": "./dist/src/database/invitation-dependencies.js"
+    },
+    "./database/long-form-render-repository": {
+      "types": "./src/database/long-form-render-repository.ts",
+      "development": "./src/database/long-form-render-repository.ts",
+      "default": "./dist/src/database/long-form-render-repository.js"
+    },
+    "./database/niche-repository": {
+      "types": "./src/database/niche-repository.ts",
+      "development": "./src/database/niche-repository.ts",
+      "default": "./dist/src/database/niche-repository.js"
+    },
+    "./database/offer-repository": {
+      "types": "./src/database/offer-repository.ts",
+      "development": "./src/database/offer-repository.ts",
+      "default": "./dist/src/database/offer-repository.js"
+    },
+    "./database/performance-repository": {
+      "types": "./src/database/performance-repository.ts",
+      "development": "./src/database/performance-repository.ts",
+      "default": "./dist/src/database/performance-repository.js"
+    },
+    "./database/product-candidate-repository": {
+      "types": "./src/database/product-candidate-repository.ts",
+      "development": "./src/database/product-candidate-repository.ts",
+      "default": "./dist/src/database/product-candidate-repository.js"
+    },
+    "./database/product-posting-history-repository": {
+      "types": "./src/database/product-posting-history-repository.ts",
+      "development": "./src/database/product-posting-history-repository.ts",
+      "default": "./dist/src/database/product-posting-history-repository.js"
+    },
+    "./database/provider-connection-repository": {
+      "types": "./src/database/provider-connection-repository.ts",
+      "development": "./src/database/provider-connection-repository.ts",
+      "default": "./dist/src/database/provider-connection-repository.js"
+    },
+    "./database/publication-policy-repository": {
+      "types": "./src/database/publication-policy-repository.ts",
+      "development": "./src/database/publication-policy-repository.ts",
+      "default": "./dist/src/database/publication-policy-repository.js"
+    },
+    "./database/publication-repository": {
+      "types": "./src/database/publication-repository.ts",
+      "development": "./src/database/publication-repository.ts",
+      "default": "./dist/src/database/publication-repository.js"
+    },
+    "./database/reel-render-repository": {
+      "types": "./src/database/reel-render-repository.ts",
+      "development": "./src/database/reel-render-repository.ts",
+      "default": "./dist/src/database/reel-render-repository.js"
+    },
+    "./database/research-policy-repository": {
+      "types": "./src/database/research-policy-repository.ts",
+      "development": "./src/database/research-policy-repository.ts",
+      "default": "./dist/src/database/research-policy-repository.js"
+    },
+    "./database/research-repository": {
+      "types": "./src/database/research-repository.ts",
+      "development": "./src/database/research-repository.ts",
+      "default": "./dist/src/database/research-repository.js"
+    },
+    "./database/secret-record-repository": {
+      "types": "./src/database/secret-record-repository.ts",
+      "development": "./src/database/secret-record-repository.ts",
+      "default": "./dist/src/database/secret-record-repository.js"
+    },
+    "./database/home-worker-token-repository": {
+      "types": "./src/database/home-worker-token-repository.ts",
+      "development": "./src/database/home-worker-token-repository.ts",
+      "default": "./dist/src/database/home-worker-token-repository.js"
+    },
+    "./database/continuity-repository": {
+      "types": "./src/database/continuity-repository.ts",
+      "development": "./src/database/continuity-repository.ts",
+      "default": "./dist/src/database/continuity-repository.js"
+    },
+    "./database/episode-idea-repository": {
+      "types": "./src/database/episode-idea-repository.ts",
+      "development": "./src/database/episode-idea-repository.ts",
+      "default": "./dist/src/database/episode-idea-repository.js"
+    },
+    "./database/storyboard-repository": {
+      "types": "./src/database/storyboard-repository.ts",
+      "development": "./src/database/storyboard-repository.ts",
+      "default": "./dist/src/database/storyboard-repository.js"
+    },
+    "./database/usage-repository": {
+      "types": "./src/database/usage-repository.ts",
+      "development": "./src/database/usage-repository.ts",
+      "default": "./dist/src/database/usage-repository.js"
+    },
+    "./database/webhook-inbox-repository": {
+      "types": "./src/database/webhook-inbox-repository.ts",
+      "development": "./src/database/webhook-inbox-repository.ts",
+      "default": "./dist/src/database/webhook-inbox-repository.js"
+    },
+    "./database/workspace-repository": {
+      "types": "./src/database/workspace-repository.ts",
+      "development": "./src/database/workspace-repository.ts",
+      "default": "./dist/src/database/workspace-repository.js"
+    },
+    "./http/fit-image": {
+      "types": "./src/http/fit-image.ts",
+      "development": "./src/http/fit-image.ts",
+      "default": "./dist/src/http/fit-image.js"
+    },
+    "./http/safe-media-fetch": {
+      "types": "./src/http/safe-media-fetch.ts",
+      "development": "./src/http/safe-media-fetch.ts",
+      "default": "./dist/src/http/safe-media-fetch.js"
+    },
+    "./llm/llama-server-art-director": {
+      "types": "./src/llm/llama-server-art-director.ts",
+      "development": "./src/llm/llama-server-art-director.ts",
+      "default": "./dist/src/llm/llama-server-art-director.js"
+    },
+    "./llm/llama-server-copywriter": {
+      "types": "./src/llm/llama-server-copywriter.ts",
+      "development": "./src/llm/llama-server-copywriter.ts",
+      "default": "./dist/src/llm/llama-server-copywriter.js"
+    },
+    "./llm/llama-server-scene-director": {
+      "types": "./src/llm/llama-server-scene-director.ts",
+      "development": "./src/llm/llama-server-scene-director.ts",
+      "default": "./dist/src/llm/llama-server-scene-director.js"
+    },
+    "./llm/jev-decision-provider": {
+      "types": "./src/llm/jev-decision-provider.ts",
+      "development": "./src/llm/jev-decision-provider.ts",
+      "default": "./dist/src/llm/jev-decision-provider.js"
+    },
+    "./llm/llama-server-frame-reviewer": {
+      "types": "./src/llm/llama-server-frame-reviewer.ts",
+      "development": "./src/llm/llama-server-frame-reviewer.ts",
+      "default": "./dist/src/llm/llama-server-frame-reviewer.js"
+    },
+    "./llm/llama-server-fidelity-vlm": {
+      "types": "./src/llm/llama-server-fidelity-vlm.ts",
+      "development": "./src/llm/llama-server-fidelity-vlm.ts",
+      "default": "./dist/src/llm/llama-server-fidelity-vlm.js"
+    },
+    "./llm/llama-server-pairwise-judge": {
+      "types": "./src/llm/llama-server-pairwise-judge.ts",
+      "development": "./src/llm/llama-server-pairwise-judge.ts",
+      "default": "./dist/src/llm/llama-server-pairwise-judge.js"
+    },
+    "./llm/llama-server-vision-json": {
+      "types": "./src/llm/llama-server-vision-json.ts",
+      "development": "./src/llm/llama-server-vision-json.ts",
+      "default": "./dist/src/llm/llama-server-vision-json.js"
+    },
+    "./media/audiocpp-client": {
+      "types": "./src/media/audiocpp-client.ts",
+      "development": "./src/media/audiocpp-client.ts",
+      "default": "./dist/src/media/audiocpp-client.js"
+    },
+    "./media/realesrgan-upscaler": {
+      "types": "./src/media/realesrgan-upscaler.ts",
+      "development": "./src/media/realesrgan-upscaler.ts",
+      "default": "./dist/src/media/realesrgan-upscaler.js"
+    },
+    "./media/parallax-clip": {
+      "types": "./src/media/parallax-clip.ts",
+      "development": "./src/media/parallax-clip.ts",
+      "default": "./dist/src/media/parallax-clip.js"
+    },
+    "./media/image-sanity": {
+      "types": "./src/media/image-sanity.ts",
+      "development": "./src/media/image-sanity.ts",
+      "default": "./dist/src/media/image-sanity.js"
+    },
+    "./jobs/postgres-job-queue": {
+      "types": "./src/jobs/postgres-job-queue.ts",
+      "development": "./src/jobs/postgres-job-queue.ts",
+      "default": "./dist/src/jobs/postgres-job-queue.js"
+    },
+    "./media/command-image-segmenter": {
+      "types": "./src/media/command-image-segmenter.ts",
+      "development": "./src/media/command-image-segmenter.ts",
+      "default": "./dist/src/media/command-image-segmenter.js"
+    },
+    "./media/creative-renderer-self-check": {
+      "types": "./src/media/creative-renderer-self-check.ts",
+      "development": "./src/media/creative-renderer-self-check.ts",
+      "default": "./dist/src/media/creative-renderer-self-check.js"
+    },
+    "./media/ffmpeg-reel-renderer": {
+      "types": "./src/media/ffmpeg-reel-renderer.ts",
+      "development": "./src/media/ffmpeg-reel-renderer.ts",
+      "default": "./dist/src/media/ffmpeg-reel-renderer.js"
+    },
+    "./media/ffmpeg-owned-clip-renderer": {
+      "types": "./src/media/ffmpeg-owned-clip-renderer.ts",
+      "development": "./src/media/ffmpeg-owned-clip-renderer.ts",
+      "default": "./dist/src/media/ffmpeg-owned-clip-renderer.js"
+    },
+    "./media/fidelity-alterations": {
+      "types": "./src/media/fidelity-alterations.ts",
+      "development": "./src/media/fidelity-alterations.ts",
+      "default": "./dist/src/media/fidelity-alterations.js"
+    },
+    "./media/folder-music-library": {
+      "types": "./src/media/folder-music-library.ts",
+      "development": "./src/media/folder-music-library.ts",
+      "default": "./dist/src/media/folder-music-library.js"
+    },
+    "./media/fonts": {
+      "types": "./src/media/fonts.ts",
+      "development": "./src/media/fonts.ts",
+      "default": "./dist/src/media/fonts.js"
+    },
+    "./media/openai-speech-bench-client": {
+      "types": "./src/media/openai-speech-bench-client.ts",
+      "development": "./src/media/openai-speech-bench-client.ts",
+      "default": "./dist/src/media/openai-speech-bench-client.js"
+    },
+    "./media/kokoro-speech-synthesizer": {
+      "types": "./src/media/kokoro-speech-synthesizer.ts",
+      "development": "./src/media/kokoro-speech-synthesizer.ts",
+      "default": "./dist/src/media/kokoro-speech-synthesizer.js"
+    },
+    "./media/picture-classifier": {
+      "types": "./src/media/picture-classifier.ts",
+      "development": "./src/media/picture-classifier.ts",
+      "default": "./dist/src/media/picture-classifier.js"
+    },
+    "./media/procedural-scene": {
+      "types": "./src/media/procedural-scene.ts",
+      "development": "./src/media/procedural-scene.ts",
+      "default": "./dist/src/media/procedural-scene.js"
+    },
+    "./media/reel-captions": {
+      "types": "./src/media/reel-captions.ts",
+      "development": "./src/media/reel-captions.ts",
+      "default": "./dist/src/media/reel-captions.js"
+    },
+    "./media/run-process": {
+      "types": "./src/media/run-process.ts",
+      "development": "./src/media/run-process.ts",
+      "default": "./dist/src/media/run-process.js"
+    },
+    "./media/sharp-creative-renderer": {
+      "types": "./src/media/sharp-creative-renderer.ts",
+      "development": "./src/media/sharp-creative-renderer.ts",
+      "default": "./dist/src/media/sharp-creative-renderer.js"
+    },
+    "./media/sharp-story-image-composer": {
+      "types": "./src/media/sharp-story-image-composer.ts",
+      "development": "./src/media/sharp-story-image-composer.ts",
+      "default": "./dist/src/media/sharp-story-image-composer.js"
+    },
+    "./media/composite-product": {
+      "types": "./src/media/composite-product.ts",
+      "development": "./src/media/composite-product.ts",
+      "default": "./dist/src/media/composite-product.js"
+    },
+    "./media/sharp-colour-evidence": {
+      "types": "./src/media/sharp-colour-evidence.ts",
+      "development": "./src/media/sharp-colour-evidence.ts",
+      "default": "./dist/src/media/sharp-colour-evidence.js"
+    },
+    "./media/sharp-reference-evidence": {
+      "types": "./src/media/sharp-reference-evidence.ts",
+      "development": "./src/media/sharp-reference-evidence.ts",
+      "default": "./dist/src/media/sharp-reference-evidence.js"
+    },
+    "./media/sharp-contrast-measurer": {
+      "types": "./src/media/sharp-contrast-measurer.ts",
+      "development": "./src/media/sharp-contrast-measurer.ts",
+      "default": "./dist/src/media/sharp-contrast-measurer.js"
+    },
+    "./media/sharp-fidelity-measurer": {
+      "types": "./src/media/sharp-fidelity-measurer.ts",
+      "development": "./src/media/sharp-fidelity-measurer.ts",
+      "default": "./dist/src/media/sharp-fidelity-measurer.js"
+    },
+    "./media/hyperframes-renderer": {
+      "types": "./src/media/hyperframes-renderer.ts",
+      "development": "./src/media/hyperframes-renderer.ts",
+      "default": "./dist/src/media/hyperframes-renderer.js"
+    },
+    "./media/stickman-motion-renderer": {
+      "types": "./src/media/stickman-motion-renderer.ts",
+      "development": "./src/media/stickman-motion-renderer.ts",
+      "default": "./dist/src/media/stickman-motion-renderer.js"
+    },
+    "./media/video-quality-probe": {
+      "types": "./src/media/video-quality-probe.ts",
+      "development": "./src/media/video-quality-probe.ts",
+      "default": "./dist/src/media/video-quality-probe.js"
+    },
+    "./media/command-scene-generator": {
+      "types": "./src/media/command-scene-generator.ts",
+      "development": "./src/media/command-scene-generator.ts",
+      "default": "./dist/src/media/command-scene-generator.js"
+    },
+    "./media/clip-video": {
+      "types": "./src/media/clip-video.ts",
+      "development": "./src/media/clip-video.ts",
+      "default": "./dist/src/media/clip-video.js"
+    },
+    "./media/sdcpp-video-generator": {
+      "types": "./src/media/sdcpp-video-generator.ts",
+      "development": "./src/media/sdcpp-video-generator.ts",
+      "default": "./dist/src/media/sdcpp-video-generator.js"
+    },
+    "./media/sdcpp-scene-generator": {
+      "types": "./src/media/sdcpp-scene-generator.ts",
+      "development": "./src/media/sdcpp-scene-generator.ts",
+      "default": "./dist/src/media/sdcpp-scene-generator.js"
+    },
+    "./media/ambient-loop": {
+      "types": "./src/media/ambient-loop.ts",
+      "development": "./src/media/ambient-loop.ts",
+      "default": "./dist/src/media/ambient-loop.js"
+    },
+    "./media/white-background-remover": {
+      "types": "./src/media/white-background-remover.ts",
+      "development": "./src/media/white-background-remover.ts",
+      "default": "./dist/src/media/white-background-remover.js"
+    },
+    "./mercado-livre/affiliate-link": {
+      "types": "./src/mercado-livre/affiliate-link.ts",
+      "development": "./src/mercado-livre/affiliate-link.ts",
+      "default": "./dist/src/mercado-livre/affiliate-link.js"
+    },
+    "./mercado-livre/catalog": {
+      "types": "./src/mercado-livre/catalog.ts",
+      "development": "./src/mercado-livre/catalog.ts",
+      "default": "./dist/src/mercado-livre/catalog.js"
+    },
+    "./mercado-livre/client": {
+      "types": "./src/mercado-livre/client.ts",
+      "development": "./src/mercado-livre/client.ts",
+      "default": "./dist/src/mercado-livre/client.js"
+    },
+    "./mercado-livre/oauth-client": {
+      "types": "./src/mercado-livre/oauth-client.ts",
+      "development": "./src/mercado-livre/oauth-client.ts",
+      "default": "./dist/src/mercado-livre/oauth-client.js"
+    },
+    "./mercado-livre/workspace-catalog": {
+      "types": "./src/mercado-livre/workspace-catalog.ts",
+      "development": "./src/mercado-livre/workspace-catalog.ts",
+      "default": "./dist/src/mercado-livre/workspace-catalog.js"
+    },
+    "./mercado-livre/workspace-client": {
+      "types": "./src/mercado-livre/workspace-client.ts",
+      "development": "./src/mercado-livre/workspace-client.ts",
+      "default": "./dist/src/mercado-livre/workspace-client.js"
+    },
+    "./post-for-me/client": {
+      "types": "./src/post-for-me/client.ts",
+      "development": "./src/post-for-me/client.ts",
+      "default": "./dist/src/post-for-me/client.js"
+    },
+    "./post-for-me/social-publisher": {
+      "types": "./src/post-for-me/social-publisher.ts",
+      "development": "./src/post-for-me/social-publisher.ts",
+      "default": "./dist/src/post-for-me/social-publisher.js"
+    },
+    "./secrets/encrypted-secret-store": {
+      "types": "./src/secrets/encrypted-secret-store.ts",
+      "development": "./src/secrets/encrypted-secret-store.ts",
+      "default": "./dist/src/secrets/encrypted-secret-store.js"
+    },
+    "./storage/r2-asset-store": {
+      "types": "./src/storage/r2-asset-store.ts",
+      "development": "./src/storage/r2-asset-store.ts",
+      "default": "./dist/src/storage/r2-asset-store.js"
+    },
+    "./storage/r2-s3-signing-client": {
+      "types": "./src/storage/r2-s3-signing-client.ts",
+      "development": "./src/storage/r2-s3-signing-client.ts",
+      "default": "./dist/src/storage/r2-s3-signing-client.js"
+    },
+    "./youtube/data-api-client": {
+      "types": "./src/youtube/data-api-client.ts",
+      "development": "./src/youtube/data-api-client.ts",
+      "default": "./dist/src/youtube/data-api-client.js"
+    },
+    "./media/frame-metrics": {
+      "types": "./src/media/frame-metrics.ts",
+      "development": "./src/media/frame-metrics.ts",
+      "default": "./dist/src/media/frame-metrics.js"
+    },
+    "./media/extract-key-frames": {
+      "types": "./src/media/extract-key-frames.ts",
+      "development": "./src/media/extract-key-frames.ts",
+      "default": "./dist/src/media/extract-key-frames.js"
+    },
+    "./media/plate-postprocess": {
+      "types": "./src/media/plate-postprocess.ts",
+      "development": "./src/media/plate-postprocess.ts",
+      "default": "./dist/src/media/plate-postprocess.js"
+    },
+    "./media/silhouette-mask": {
+      "types": "./src/media/silhouette-mask.ts",
+      "development": "./src/media/silhouette-mask.ts",
+      "default": "./dist/src/media/silhouette-mask.js"
+    },
+    "./media/style-frame-metrics": {
+      "types": "./src/media/style-frame-metrics.ts",
+      "development": "./src/media/style-frame-metrics.ts",
+      "default": "./dist/src/media/style-frame-metrics.js"
+    },
+    "./media/style-frame-images": {
+      "types": "./src/media/style-frame-images.ts",
+      "development": "./src/media/style-frame-images.ts",
+      "default": "./dist/src/media/style-frame-images.js"
+    },
+    "./media/svg-rasterizer": {
+      "types": "./src/media/svg-rasterizer.ts",
+      "development": "./src/media/svg-rasterizer.ts",
+      "default": "./dist/src/media/svg-rasterizer.js"
+    },
+    "./media/agnes-scene-clip-generator": {
+      "types": "./src/media/agnes-scene-clip-generator.ts",
+      "development": "./src/media/agnes-scene-clip-generator.ts",
+      "default": "./dist/src/media/agnes-scene-clip-generator.js"
+    },
+    "./media/scene-clip-check": {
+      "types": "./src/media/scene-clip-check.ts",
+      "development": "./src/media/scene-clip-check.ts",
+      "default": "./dist/src/media/scene-clip-check.js"
+    }
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "3.1137.0",
+    "@aws-sdk/s3-request-presigner": "3.1137.0",
+    "@money-maker/contracts": "workspace:*",
+    "@money-maker/core": "workspace:*",
+    "@prisma/adapter-pg": "7.10.0",
+    "@prisma/client": "7.10.0",
+    "modal": "0.10.1",
+    "pg": "8.23.0",
+    "sharp": "0.35.4"
+  },
+  "devDependencies": {
+    "@types/pg": "8.23.1",
+    "dotenv": "17.4.2",
+    "prisma": "7.10.0"
+  }
+}

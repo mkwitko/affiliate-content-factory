@@ -1,0 +1,370 @@
+{
+  "split": "holdout",
+  "characters": [
+    {
+      "key": "alex",
+      "name": "Alex",
+      "role": "main",
+      "rigId": "stick-v1",
+      "rigVersion": 1,
+      "palette": {
+        "line": "#161616",
+        "fill": "#ffffff",
+        "accent": "#ff5a36"
+      }
+    },
+    {
+      "key": "bia",
+      "name": "Bia",
+      "role": "secondary",
+      "rigId": "stick-v1",
+      "rigVersion": 1,
+      "palette": {
+        "line": "#161616",
+        "fill": "#ffe9d6",
+        "accent": "#2f7de1"
+      },
+      "accessory": "glasses"
+    },
+    {
+      "key": "rafa",
+      "name": "Rafa",
+      "role": "secondary",
+      "rigId": "stick-v1",
+      "rigVersion": 1,
+      "palette": {
+        "line": "#161616",
+        "fill": "#e7f5e1",
+        "accent": "#1f9d55"
+      },
+      "accessory": "cap"
+    }
+  ],
+  "fixtures": [
+    {
+      "id": "h01-toalha",
+      "class": "problem_presentation",
+      "case": "approved",
+      "source": "synthetic",
+      "language": "pt-BR",
+      "body": "Sua toalha nova não seca direito e parece plástico. É o amaciante. Ele cobre as fibras com uma camada que repele água. Lave a toalha duas vezes sem amaciante, com meio copo de vinagre no enxágue. Depois disso ela volta a absorver e fica macia do mesmo jeito.",
+      "claims": [
+        {
+          "text": "O amaciante reduz a absorção da toalha.",
+          "kind": "reasonable_simplification",
+          "note": "O efeito varia com o tecido.",
+          "evidence": []
+        }
+      ],
+      "beats": [
+        {
+          "kind": "hook",
+          "atChar": 0,
+          "label": "mistake"
+        },
+        {
+          "kind": "payoff",
+          "atChar": 119
+        }
+      ],
+      "cast": ["alex"],
+      "expected": {
+        "validator": "pass"
+      }
+    },
+    {
+      "id": "h02-disjuntor",
+      "class": "walk_to_object",
+      "case": "approved",
+      "source": "synthetic",
+      "language": "pt-BR",
+      "body": "A Bia sai da sala, atravessa o corredor e vai até o quadro de luz. Toda vez que o micro-ondas e o chuveiro ligam juntos, o disjuntor cai. Ela descobriu que os dois estão no mesmo circuito. A solução foi simples: nunca usar os dois ao mesmo tempo até o eletricista separar os circuitos.",
+      "claims": [
+        {
+          "text": "Dois aparelhos potentes no mesmo circuito derrubam o disjuntor.",
+          "kind": "reasonable_simplification",
+          "note": "Depende da capacidade do circuito.",
+          "evidence": []
+        }
+      ],
+      "beats": [
+        {
+          "kind": "hook",
+          "atChar": 0,
+          "label": "cause_effect"
+        },
+        {
+          "kind": "payoff",
+          "atChar": 189
+        }
+      ],
+      "cast": ["alex", "bia"],
+      "expected": {
+        "validator": "pass",
+        "requireActions": ["walk_to"]
+      }
+    },
+    {
+      "id": "h03-chaleira",
+      "class": "point_at_number",
+      "case": "approved",
+      "source": "synthetic",
+      "language": "pt-BR",
+      "body": "Repara nesse detalhe: 1.500 watts. É isso que a chaleira puxa da tomada. Por isso ela ferve a água em poucos minutos. E também por isso não é boa ideia ligar a chaleira na mesma extensão do aquecedor.",
+      "claims": [
+        {
+          "text": "A chaleira tem potência de 1.500 watts.",
+          "kind": "verified_fact",
+          "evidence": [
+            {
+              "kind": "commercial_fact",
+              "snapshotId": "fixture-h03",
+              "key": "power_watts"
+            }
+          ]
+        }
+      ],
+      "beats": [
+        {
+          "kind": "hook",
+          "atChar": 0,
+          "label": "number_proof"
+        },
+        {
+          "kind": "payoff",
+          "atChar": 73
+        }
+      ],
+      "cast": ["alex"],
+      "expected": {
+        "validator": "pass",
+        "requireActions": ["point_at"]
+      },
+      "note": "The number is on screen as a prop label or overlay copied from the script; the actor points at it with point_at."
+    },
+    {
+      "id": "h04-fone",
+      "class": "two_actors",
+      "case": "approved",
+      "source": "synthetic",
+      "language": "pt-BR",
+      "body": "O Rafa achava que o fone da Bia era melhor porque era mais caro. Ela colocou os dois lado a lado e pediu para ele ouvir a mesma música. Ele não conseguiu dizer qual era qual. O preço maior pagava a marca, não o som. Agora os dois escolhem pelo teste, não pela etiqueta.",
+      "claims": [
+        {
+          "text": "Teste cego entre dois fones.",
+          "kind": "fictional_example",
+          "evidence": []
+        }
+      ],
+      "beats": [
+        {
+          "kind": "hook",
+          "atChar": 0,
+          "label": "contrarian"
+        },
+        {
+          "kind": "payoff",
+          "atChar": 175
+        }
+      ],
+      "cast": ["alex", "bia", "rafa"],
+      "expected": {
+        "validator": "pass",
+        "minActorsInOneScene": 2
+      }
+    },
+    {
+      "id": "h05-panelas",
+      "class": "price_in_reais",
+      "case": "approved",
+      "source": "synthetic",
+      "language": "pt-BR",
+      "body": "Esse jogo de panelas sai por R$ 189,90 e vem com cinco peças. Dá R$ 37,98 por panela. As avaliações elogiam o fundo grosso, que não queima o arroz. A reclamação mais comum é o cabo, que esquenta no fogo alto. Confira o preço de hoje no link.",
+      "claims": [
+        {
+          "text": "Preço de R$ 189,90 por cinco peças.",
+          "kind": "verified_fact",
+          "evidence": [
+            {
+              "kind": "commercial_fact",
+              "snapshotId": "fixture-h05",
+              "key": "price"
+            }
+          ]
+        },
+        {
+          "text": "Fundo grosso elogiado nas avaliações.",
+          "kind": "verified_fact",
+          "evidence": [
+            {
+              "kind": "research_observation",
+              "observationId": "fixture-h05"
+            }
+          ]
+        }
+      ],
+      "beats": [
+        {
+          "kind": "hook",
+          "atChar": 0,
+          "label": "money_question"
+        },
+        {
+          "kind": "payoff",
+          "atChar": 62
+        }
+      ],
+      "cast": ["alex"],
+      "expected": {
+        "validator": "pass"
+      },
+      "note": "37,98 is derived from 189,90 / 5; any on-screen price must copy it exactly."
+    },
+    {
+      "id": "h06-etiqueta",
+      "class": "percentages",
+      "case": "adversarial",
+      "source": "synthetic",
+      "language": "pt-BR",
+      "body": "Só 12% das pessoas leem a etiqueta de lavagem antes de lavar uma roupa nova. Os outros 88% descobrem o problema quando a blusa encolhe. A etiqueta diz a temperatura máxima e se pode ir na secadora. Leia antes da primeira lavagem e a roupa dura muito mais.",
+      "claims": [
+        {
+          "text": "12% leem a etiqueta; 88% não.",
+          "kind": "fictional_example",
+          "evidence": []
+        }
+      ],
+      "beats": [
+        {
+          "kind": "hook",
+          "atChar": 0,
+          "label": "surprising_fact"
+        },
+        {
+          "kind": "payoff",
+          "atChar": 198
+        }
+      ],
+      "cast": ["alex"],
+      "expected": {
+        "validator": "pass"
+      },
+      "note": "The percentages are a fictional example: a percent diagram needs a verified claim and is rejected; overlays may copy 12% or 88%."
+    },
+    {
+      "id": "h07-home-office",
+      "class": "many_props",
+      "case": "approved",
+      "source": "synthetic",
+      "language": "pt-BR",
+      "body": "Para trabalhar de casa, o Alex precisou de pouco: o notebook, o celular no silencioso, um relógio à vista e um documento com as tarefas do dia. Ele deixou o cartão e o dinheiro na gaveta para não comprar besteira na internet. Resultado: menos distração e o dia rende.",
+      "claims": [],
+      "beats": [
+        {
+          "kind": "hook",
+          "atChar": 0,
+          "label": "secret_system"
+        },
+        {
+          "kind": "payoff",
+          "atChar": 226
+        }
+      ],
+      "cast": ["alex"],
+      "expected": {
+        "validator": "pass",
+        "requireProps": ["laptop", "clock"]
+      },
+      "note": "Six objects that all exist as props; at most 3 per scene."
+    },
+    {
+      "id": "h08-geladeira",
+      "class": "unsupported_action",
+      "case": "adversarial",
+      "source": "synthetic",
+      "language": "pt-BR",
+      "body": "A Bia queria que o Alex dançasse de alegria e desse uma estrela no meio da cozinha quando a geladeira parou de fazer barulho. Ele só ficou surpreso. O barulho era a geladeira encostada na parede. Afastar dez centímetros resolveu.",
+      "claims": [
+        {
+          "text": "Geladeira encostada na parede vibra e faz barulho.",
+          "kind": "reasonable_simplification",
+          "note": "Outras causas existem.",
+          "evidence": []
+        }
+      ],
+      "beats": [
+        {
+          "kind": "hook",
+          "atChar": 0,
+          "label": "everyday_mystery"
+        },
+        {
+          "kind": "payoff",
+          "atChar": 149
+        }
+      ],
+      "cast": ["alex", "bia"],
+      "expected": {
+        "validator": "pass"
+      },
+      "note": "Dancing and a cartwheel are not rig actions; use the surprised pose or expression."
+    },
+    {
+      "id": "h09-vago",
+      "class": "ambiguous_script",
+      "case": "problematic",
+      "source": "synthetic",
+      "language": "pt-BR",
+      "body": "Quase todo mundo faz isso errado. E ninguém te conta. Mas depois que você percebe, não consegue mais deixar de ver. Presta atenção da próxima vez.",
+      "claims": [],
+      "beats": [
+        {
+          "kind": "hook",
+          "atChar": 0,
+          "label": "curiosity_gap"
+        },
+        {
+          "kind": "payoff",
+          "atChar": 116
+        }
+      ],
+      "cast": ["alex"],
+      "expected": {
+        "validator": "pass"
+      },
+      "note": "Vague on purpose: no numbers, products or names may be added."
+    },
+    {
+      "id": "h10-mercado",
+      "class": "long_script",
+      "case": "approved",
+      "source": "synthetic",
+      "language": "pt-BR",
+      "body": "Fazer compras com fome custa caro, e não é impressão sua. Com fome, tudo na prateleira parece necessário. Os corredores são pensados para você parar e pegar mais um item. Por isso, a primeira regra é comer antes de sair. A segunda é levar uma lista curta e fechada. O que não está na lista fica para a próxima semana. A terceira é olhar o preço por quilo, não o preço da embalagem. A embalagem maior nem sempre é a mais barata. A quarta é deixar o carrinho de lado quando a compra é pequena. Com a cesta na mão, você para quando pesa. Parece pouco, mas junta. No fim do mês, a diferença aparece na fatura. Teste uma semana e compare.",
+      "claims": [
+        {
+          "text": "Comprar com fome aumenta itens não planejados.",
+          "kind": "reasonable_simplification",
+          "note": "Efeito médio; varia por pessoa.",
+          "evidence": []
+        }
+      ],
+      "beats": [
+        {
+          "kind": "hook",
+          "atChar": 0,
+          "label": "cause_effect"
+        },
+        {
+          "kind": "payoff",
+          "atChar": 171
+        }
+      ],
+      "cast": ["alex"],
+      "expected": {
+        "validator": "pass"
+      },
+      "note": "13 sentences for at most 12 scenes; the director must join segments."
+    }
+  ]
+}

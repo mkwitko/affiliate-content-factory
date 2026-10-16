@@ -1,0 +1,82 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`visual QA on the golden style frames > passes the thumbnail gate on every style frame, flat and with the flat profile 1`] = `
+{
+  "00-motion-test": [
+    "hero_area",
+    "value_tiers",
+  ],
+  "01-character-model-close": [
+    "accent_missing",
+  ],
+  "01-character-model-front": [
+    "accent_missing",
+    "hero_area",
+    "value_tiers",
+  ],
+  "01-character-model-side": [
+    "accent_missing",
+    "hero_area",
+    "value_tiers",
+  ],
+  "02-expression-anger": [
+    "accent_missing",
+  ],
+  "02-expression-awe": [
+    "accent_missing",
+    "actor_caption_overlap",
+  ],
+  "02-expression-deadpan": [
+    "accent_missing",
+  ],
+  "02-expression-doubt": [
+    "accent_missing",
+  ],
+  "02-expression-fear": [
+    "accent_missing",
+  ],
+  "02-expression-joy": [
+    "accent_missing",
+  ],
+  "03-establishing-wide": [
+    "hero_area",
+    "value_tiers",
+  ],
+  "04-hero-prop-number-caption": [
+    "hero_area",
+  ],
+  "05-insert": [
+    "value_tiers",
+  ],
+  "06-two-character-dialogue": [
+    "accent_missing",
+  ],
+  "07-metaphor-no-characters": [
+    "accent_missing",
+    "value_tiers",
+  ],
+  "08-night-tension": [
+    "accent_missing",
+  ],
+  "09-warm-resolution": [
+    "accent_missing",
+    "actor_caption_overlap",
+    "hero_area",
+  ],
+  "10-information-heavy-chart": [
+    "accent_missing",
+    "hero_area",
+    "value_tiers",
+  ],
+  "11-crowd": [
+    "accent_missing",
+    "actor_caption_overlap",
+  ],
+  "12-match-cut-a": [
+    "hero_area",
+  ],
+  "12-match-cut-b": [
+    "hero_area",
+  ],
+}
+`;

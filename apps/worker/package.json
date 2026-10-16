@@ -1,0 +1,36 @@
+{
+  "name": "@money-maker/worker",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "start": "node dist/main.js",
+    "autonomy-burn-in": "node dist/commands/autonomy-burn-in.js",
+    "cloud-budget": "node dist/commands/cloud-budget.js",
+    "cloud-clip-trial": "node dist/commands/cloud-clip-trial.js",
+    "fill-scene-bank": "node dist/commands/fill-scene-bank.js",
+    "import-local-media": "node dist/commands/import-local-media.js",
+    "explainer-prompts": "node dist/commands/explainer-prompts.js",
+    "render-bench": "node dist/commands/render-bench.js",
+    "director-bench": "node dist/commands/director-bench.js",
+    "image-bench": "node dist/commands/image-bench.js",
+    "voice-bench": "node dist/commands/voice-bench.js",
+    "video-bench": "node dist/commands/video-bench.js",
+    "verify-models": "node dist/commands/verify-models.js",
+    "tts-long-bench": "node dist/commands/tts-long-bench.js",
+    "style-frames": "node dist/commands/style-frames.js",
+    "measure-style-frames": "node dist/commands/measure-style-frames.js",
+    "home-worker": "node dist/commands/home-worker.js",
+    "doctor": "node dist/commands/doctor.js",
+    "test": "vitest run",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@money-maker/config": "workspace:*",
+    "@money-maker/contracts": "workspace:*",
+    "@money-maker/core": "workspace:*",
+    "@money-maker/providers": "workspace:*",
+    "sharp": "0.35.4"
+  }
+}
