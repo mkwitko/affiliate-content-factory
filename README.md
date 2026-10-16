@@ -45,6 +45,7 @@ Operator panel running against mocked API fixtures with fictitious seed data; pr
 ## Architecture
 
 ```mermaid
+%%{init: {"theme":"base","themeVariables":{"background":"#0B0C0E","primaryColor":"#15171B","primaryTextColor":"#E6E8EB","primaryBorderColor":"#9AA0A8","secondaryColor":"#1E2126","tertiaryColor":"#1E2126","lineColor":"#9AA0A8","textColor":"#E6E8EB","clusterBkg":"#101216","clusterBorder":"#2A2E35","edgeLabelBackground":"#0B0C0E","actorBkg":"#15171B","actorBorder":"#9AA0A8","actorTextColor":"#E6E8EB","signalColor":"#9AA0A8","signalTextColor":"#E6E8EB","noteBkgColor":"#1E2126","noteTextColor":"#E6E8EB","noteBorderColor":"#2A2E35","fontFamily":"ui-monospace, SFMono-Regular, Menlo, monospace","fontSize":"13px"}, "flowchart":{"curve":"linear","nodeSpacing":40,"rankSpacing":48,"padding":12}}}%%
 flowchart LR
   Operator["Operator"] --> Web["apps/web<br/>review panel"]
   Operator --> Chat["Chat assistant"]
@@ -89,6 +90,7 @@ ADRs in [docs/adr](docs/adr): modular monolith (0001), PostgreSQL as source of t
 ### Core flow: offer to reviewed post
 
 ```mermaid
+%%{init: {"theme":"base","themeVariables":{"background":"#0B0C0E","primaryColor":"#15171B","primaryTextColor":"#E6E8EB","primaryBorderColor":"#9AA0A8","secondaryColor":"#1E2126","tertiaryColor":"#1E2126","lineColor":"#9AA0A8","textColor":"#E6E8EB","clusterBkg":"#101216","clusterBorder":"#2A2E35","edgeLabelBackground":"#0B0C0E","actorBkg":"#15171B","actorBorder":"#9AA0A8","actorTextColor":"#E6E8EB","signalColor":"#9AA0A8","signalTextColor":"#E6E8EB","noteBkgColor":"#1E2126","noteTextColor":"#E6E8EB","noteBorderColor":"#2A2E35","fontFamily":"ui-monospace, SFMono-Regular, Menlo, monospace","fontSize":"13px"}, "flowchart":{"curve":"linear","nodeSpacing":40,"rankSpacing":48,"padding":12}}}%%
 sequenceDiagram
   participant O as Operator
   participant A as API / MCP
@@ -114,6 +116,7 @@ Files: `apps/worker/src/handlers/produce-offer-package.ts`, `render-creatives.ts
 43 Prisma models in `packages/providers/prisma/schema.prisma`; the main chain is:
 
 ```mermaid
+%%{init: {"theme":"base","themeVariables":{"background":"#0B0C0E","primaryColor":"#15171B","primaryTextColor":"#E6E8EB","primaryBorderColor":"#9AA0A8","secondaryColor":"#1E2126","tertiaryColor":"#1E2126","lineColor":"#9AA0A8","textColor":"#E6E8EB","clusterBkg":"#101216","clusterBorder":"#2A2E35","edgeLabelBackground":"#0B0C0E","actorBkg":"#15171B","actorBorder":"#9AA0A8","actorTextColor":"#E6E8EB","signalColor":"#9AA0A8","signalTextColor":"#E6E8EB","noteBkgColor":"#1E2126","noteTextColor":"#E6E8EB","noteBorderColor":"#2A2E35","fontFamily":"ui-monospace, SFMono-Regular, Menlo, monospace","fontSize":"13px"}, "flowchart":{"curve":"linear","nodeSpacing":40,"rankSpacing":48,"padding":12}}}%%
 erDiagram
   Workspace ||--o{ Membership : grants
   Workspace ||--o{ Niche : owns
