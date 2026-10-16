@@ -16,6 +16,32 @@ An AI content factory that turns affiliate offers into reviewed social posts: sc
 - A bounded "autonomy cycle" that keeps candidate products flowing but never approves, publishes or spends (`packages/core/src/autonomy`, ADR 0013).
 - Routing of generation between free, local and hosted providers under a budget (`packages/core/src/generation`).
 
+## Screenshots
+
+Operator panel running against mocked API fixtures with fictitious seed data; product images are solid-colour placeholders.
+
+<table>
+  <tr>
+    <td width="50%"><img src="docs/screenshots/01-approve-queue-desktop.png" alt="Approval queue: packages awaiting the operator's decision"><br><sub>Approval queue: packages awaiting the operator's decision.</sub></td>
+    <td width="50%"><img src="docs/screenshots/02-package-ticket-desktop.png" alt="Package ticket with slide previews, copy and price; Return or Approve"><br><sub>Package ticket with slide previews, copy and price; Return or Approve.</sub></td>
+  </tr>
+  <tr>
+    <td width="50%"><img src="docs/screenshots/03-content-desktop.png" alt="Content list"><br><sub>Content list.</sub></td>
+    <td width="50%"><img src="docs/screenshots/04-offers-desktop.png" alt="Offers desk"><br><sub>Offers desk.</sub></td>
+  </tr>
+  <tr>
+    <td width="50%"><img src="docs/screenshots/05-results-desktop.png" alt="Results desk"><br><sub>Results desk.</sub></td>
+    <td></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width="25%"><img src="docs/screenshots/01-approve-queue-mobile.png" alt="Approval queue on mobile"><br><sub>Approval queue on mobile.</sub></td>
+    <td width="25%"><img src="docs/screenshots/02-package-ticket-mobile.png" alt="Package ticket on mobile"><br><sub>Package ticket on mobile.</sub></td>
+  </tr>
+</table>
+
 ## Architecture
 
 ```mermaid
